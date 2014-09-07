@@ -8,8 +8,8 @@
                    type="application/rss+xml" />
         <lastBuildDate>Mon, 11 Aug 2014 00:00:00 UT</lastBuildDate>
         <item>
-    <title>2014-08-11-Record Syntax, Lenses and Prisms 2</title>
-    <link>http://epsilonhalbe.github.io/posts/2014-08-11-Record%20Syntax%2C%20Lenses%20and%20Prisms%202.html</link>
+    <title>Record Syntax, Lenses and Prisms: Part 2 - Lenses</title>
+    <link>http://epsilonhalbe.github.io/posts/2014-08-11-Record%20Syntax%2C%20Lenses%20and%20Prisms.html</link>
     <description><![CDATA[<h1 id="lenses">Lenses</h1>
 <p>Lenses are a quite interesting idea first mentioned by Twan van Laarhoven and have lived through a few implementations until the <code>lens</code>-library by Ed Kmett has proven to be the stable solution for now. It has a <em>batteries included</em> approach and provides many operators and a template haskell convention to generate lenses for your own algebraic data types.</p>
 <p>The convention is to put an <code>_</code> at the beginning of the record names in the record syntax definition. And then use the magic of template haskell to generate the corresponding lenses a.k.a. functional getters and setters with <code>makeLenses ''MyADT</code>.</p>
@@ -163,10 +163,10 @@ Installed lens-4.3.3 (the current lens version as of 11th of August 2014)</code>
         <span class="fu">...</span>
         <span class="dt">Age</span><span class="fu">:</span> <span class="dv">52</span></code></pre>]]></description>
     <pubDate>Mon, 11 Aug 2014 00:00:00 UT</pubDate>
-    <guid>http://epsilonhalbe.github.io/posts/2014-08-11-Record%20Syntax%2C%20Lenses%20and%20Prisms%202.html</guid>
+    <guid>http://epsilonhalbe.github.io/posts/2014-08-11-Record%20Syntax%2C%20Lenses%20and%20Prisms.html</guid>
 </item>
 <item>
-    <title>2014-08-10-Record Syntax, Lenses and Prisms</title>
+    <title>Record Syntax, Lenses and Prisms: Part 1 - Record Syntax</title>
     <link>http://epsilonhalbe.github.io/posts/2014-08-10-Record%20Syntax%2C%20Lenses%20and%20Prisms.html</link>
     <description><![CDATA[<h1 id="intro">Intro</h1>
 <h2 id="pirates-and-records">Pirates and Records</h2>
