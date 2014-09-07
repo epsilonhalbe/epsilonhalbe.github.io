@@ -1,0 +1,225 @@
+<!DOCTYPE HTML>
+<!--
+  Striped 2.5 by HTML5 Up!
+  html5up.net | @n33co
+  Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+<title>Bricolage</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="description" content="A site about programming, cooking and other stuff" />
+<meta name="keywords" content="haskell, linux, programming, functional programming, cooking" />
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,700|Open+Sans+Condensed:300,700" rel="stylesheet" />
+<link rel="shortcut icon" href="favicon.ico" />
+<script src="../css/js/jquery.min.js"></script>
+<script src="../css/js/skel.min.js"></script>
+<script src="../css/js/skel-panels.min.js"></script>
+<script src="../css/js/init.js"></script>
+<noscript>
+  <link rel="stylesheet" href="../css/skel-noscript.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/style-desktop.css" />
+  <link rel="stylesheet" href="../css/style-wide.css" />
+</noscript>
+<!--[if lte IE 9]><link rel="stylesheet" href="/css/ie9.css" /><![endif]-->
+<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/css/ie8.css" /><![endif]-->
+<!--[if lte IE 7]><link rel="stylesheet" href="/css/ie7.css" /><![endif]-->
+</head>
+
+
+<body class="right-sidebar">
+<div id="wrapper">
+  <div id="content">
+    <div id="content-inner">
+      <article class="is-post is-post-excerpt">
+    <header>
+        <h2><a href="../posts/2014-08-10-Record%20Syntax%2C%20Lenses%20and%20Prisms.html">2014-08-10-Record Syntax, Lenses and Prisms</a></h2>
+    
+          <span class="byline">Functional getters and setters and a bit more</span>
+    
+    </header>
+    
+    <div class="info">
+            <span class="date"><span class="month">Aug<span>ust</span></span> <span class="day">10</span><span class="year">, 2014</span></span>
+        <!--
+        <ul class="stats">
+            <li><a href="#" class="fa fa-comment" > 16</a></li>
+            <li><a href="#" class="fa fa-heart"   > 32</a></li>
+            <li><a href="#" class="fa fa-twitter" > 64</a></li>
+            <li><a href="#" class="fa fa-facebook">128</a></li>
+        </ul>
+        -->
+    </div>
+    
+    <p>
+        <h2 id="intro">Intro</h2>
+<h3 id="pirates-and-records">Pirates and Records</h3>
+<p>As a programmer you are often tasked with the problem of modelling reality and thus your customers have assigned you to make a complex data structure, something like a pirate captain and a gruesome crew of marauders.</p>
+<p>In an object oriented approach one would start with designing a “plain old object” and inheriting a whole bunch of attributes. The haskell equivalent of objects are <strong>A</strong>lgebraic <strong>D</strong>ata <strong>T</strong>ypes or ADTs for short.</p>
+<!--
+
+> module Pirates where
+> import Data.Char (toLower)
+> import Data.List (intercalate)
+
+-->
+
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">Pirate</span> <span class="fu">=</span> <span class="dt">Captain</span> <span class="fu">|</span> <span class="dt">FirstMate</span> <span class="fu">|</span> <span class="dt">Marauder</span> <span class="kw">deriving</span> (<span class="dt">Show</span>)</code></pre>
+<p>This definition above is quite similar to objects, but it actually defines a type which consists of three possible <em>“constructors”</em>, the last statement <code>deriving (Show)</code> is haskell’s way of saying we have a <code>toString</code>-method called <code>show</code>.</p>
+<p>But your customers want to customize those Pirates (hence the name). So you decide to come up with a more accurate model of pirates.</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<span class="kw">data</span> <span class="dt">Pirate</span> <span class="fu">=</span> <span class="dt">Captain</span>   {<span class="ot"> name ::</span> <span class="dt">String</span>,<span class="ot"> ship ::</span> <span class="dt">String</span>}
+            <span class="fu">|</span> <span class="dt">FirstMate</span> {<span class="ot"> name ::</span> <span class="dt">String</span>,<span class="ot"> shanty ::</span> <span class="dt">String</span>}
+            <span class="fu">|</span> <span class="dt">Marauder</span>  {<span class="ot"> name ::</span> <span class="dt">String</span>,<span class="ot"> hometown ::</span> <span class="dt">String</span>}
+
+<span class="kw">instance</span> <span class="dt">Show</span> <span class="dt">Pirate</span> <span class="kw">where</span>
+  show (<span class="dt">Captain</span> n s) <span class="fu">=</span> <span class="st">&quot;Captain &quot;</span><span class="fu">++</span>n<span class="fu">++</span><span class="st">&quot; of the &quot;</span><span class="fu">++</span>s
+  show (<span class="dt">FirstMate</span> n s) <span class="fu">=</span> <span class="st">&quot;Mate &quot;</span><span class="fu">++</span>n<span class="fu">++</span><span class="st">&quot; sings &quot;</span><span class="fu">++</span>s
+  show (<span class="dt">Marauder</span> n h) <span class="fu">=</span> <span class="st">&quot;Fearsome Pirate &quot;</span><span class="fu">++</span>n<span class="fu">++</span><span class="st">&quot; from &quot;</span><span class="fu">++</span>h</code></pre>
+<p>The customers like the prototype - but as they are very unfamiliar with functional programming they ask you to prepare a little demo.</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">
+cpt <span class="fu">=</span> <span class="dt">Captain</span> <span class="st">&quot;Blackbeard&quot;</span> <span class="st">&quot;SS Sea Serpent&quot;</span>
+mt1 <span class="fu">=</span> <span class="dt">FirstMate</span> {name <span class="fu">=</span> <span class="st">&quot;Redbeard&quot;</span>, shanty <span class="fu">=</span> <span class="st">&quot;What shall we do with the drunken sailor&quot;</span>}
+mrd <span class="fu">=</span> <span class="dt">Marauder</span> {name <span class="fu">=</span> <span class="st">&quot;Neckbeard&quot;</span>}
+crw <span class="fu">=</span> map (\t <span class="ot">-&gt;</span> mrd {hometown <span class="fu">=</span> t}) [<span class="st">&quot;Yorkshire&quot;</span>, <span class="st">&quot;Jamestown&quot;</span>, <span class="st">&quot;Moscow&quot;</span>, <span class="st">&quot;Port-au-Prince&quot;</span>]
+pirates <span class="fu">=</span> [cpt,mt1]<span class="fu">++</span>crw
+
+cpt' <span class="fu">=</span> cpt {name <span class="fu">=</span> <span class="st">&quot;Greybeard&quot;</span>} <span class="ot">=&gt;</span> <span class="st">&quot;Captain Greybeard of the SS Sea Serpent&quot;</span></code></pre>
+<p>Still the customers is impressed with the prototype but still not content, so you start with designing a very detailed model starting with humans.</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Human</span> <span class="fu">=</span> <span class="dt">Attributes</span> {<span class="ot"> name ::</span> <span class="dt">String</span>,<span class="ot"> body ::</span> <span class="dt">Body</span>,<span class="ot"> age ::</span> <span class="dt">Int</span>} <span class="kw">deriving</span> (<span class="dt">Show</span>)
+<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Body</span> <span class="fu">=</span> <span class="dt">Body</span> {<span class="ot"> hat ::</span> <span class="dt">Maybe</span> <span class="dt">Hat</span>
+<span class="fu">&gt;</span>                  ,<span class="ot"> beard ::</span> <span class="dt">Maybe</span> <span class="dt">Beard</span>
+<span class="fu">&gt;</span>                  ,<span class="ot"> torso ::</span> <span class="dt">Torso</span>
+<span class="fu">&gt;</span>                  ,<span class="ot"> accessories ::</span> [<span class="dt">Accessories</span>]}</code></pre>
+<!--
+
+> instance Show Body where
+>   show b = "\t Hat: "  ++show (hat b)++"\n"
+>          ++"\t Beard: "++show (beard b)++"\n"
+>          ++"\t Torso: "++show (torso b)++"\n"
+>          ++"\t Accessories: "++ (intercalate ", " $ map show (accessories b))
+
+-->
+
+<p>Then you come up with the nitty gritty details like <code>Hat</code>, <code>Torso</code> and so on.</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Hat</span> <span class="fu">=</span> <span class="dt">Tricorne</span> <span class="fu">|</span> <span class="dt">WideBrimmedHat</span> <span class="fu">|</span> <span class="dt">Bandana</span> <span class="kw">deriving</span> (<span class="dt">Show</span>)
+<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Torso</span> <span class="fu">=</span> <span class="dt">Naked</span> <span class="fu">|</span> <span class="dt">Vest</span> <span class="fu">|</span> <span class="dt">ShabbyShirt</span> <span class="kw">deriving</span> (<span class="dt">Show</span>)
+<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Accessories</span> <span class="fu">=</span> <span class="dt">Parrot</span> <span class="fu">|</span> <span class="dt">Monkey</span> <span class="fu">|</span> <span class="dt">PegLeg</span> <span class="fu">|</span> <span class="dt">EyePatch</span> <span class="fu">|</span> <span class="dt">EarRing</span> <span class="fu">|</span> <span class="dt">Hook</span> <span class="kw">deriving</span> (<span class="dt">Show</span>)
+
+<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Beard</span> <span class="fu">=</span> <span class="dt">Beard</span> <span class="dt">Colour</span> <span class="dt">BeardType</span>
+<span class="fu">&gt;</span> <span class="kw">instance</span> <span class="dt">Show</span> <span class="dt">Beard</span> <span class="kw">where</span> show (<span class="dt">Beard</span> c t) <span class="fu">=</span> <span class="st">&quot;an exquisite &quot;</span><span class="fu">++</span> map toLower (show c)<span class="fu">++</span><span class="st">&quot; &quot;</span><span class="fu">++</span>show t
+<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Colour</span> <span class="fu">=</span> <span class="dt">Black</span> <span class="fu">|</span> <span class="dt">Red</span> <span class="fu">|</span> <span class="dt">Blond</span> <span class="fu">|</span> <span class="dt">White</span> <span class="fu">|</span> <span class="dt">Brown</span> <span class="kw">deriving</span> (<span class="dt">Show</span>)
+<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">BeardType</span> <span class="fu">=</span> <span class="dt">Moustache</span> <span class="fu">|</span> <span class="dt">Ladybeard</span> <span class="fu">|</span> <span class="dt">Goatee</span> <span class="fu">|</span> <span class="dt">FullBeard</span> <span class="kw">deriving</span> (<span class="dt">Show</span>)
+
+<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Pirate</span> <span class="fu">=</span> <span class="dt">Captain</span>   {<span class="ot"> attributes ::</span> <span class="dt">Human</span>,<span class="ot"> ship ::</span> <span class="dt">String</span>}
+<span class="fu">&gt;</span>             <span class="fu">|</span> <span class="dt">FirstMate</span> {<span class="ot"> attributes ::</span> <span class="dt">Human</span>,<span class="ot"> shanty ::</span> <span class="dt">String</span>}
+<span class="fu">&gt;</span>             <span class="fu">|</span> <span class="dt">Marauder</span>  {<span class="ot"> attributes ::</span> <span class="dt">Human</span>,<span class="ot"> hometown ::</span> <span class="dt">String</span>}</code></pre>
+<!--
+
+> instance Show Pirate where
+>   show (Captain a s)   =  "The infamous Captain "++ name a++" of the "++ s++"\n"
+>                        ++ show (body a)++"\n"
+>                        ++ "\t Age: "++show (age a)
+>   show (FirstMate a s) =  "Mate "++name a++" sings "++s
+>                        ++ show (body a)++"\n"
+>                        ++ "\t Age: "++show (age a)
+>   show (Marauder a h) =   "Fearsome Pirate "++name a++" from "++h++"\n"
+>                        ++ show (body a)++"\n"
+>                        ++ "\t Age: "++show (age a)
+
+-->
+
+<p>The customer asks for a demo so you make a new crew based on the old examples.</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<span class="fu">&gt;</span> cpt <span class="fu">=</span> <span class="dt">Captain</span> ( <span class="dt">Attributes</span>  <span class="st">&quot;Blackbeard&quot;</span>
+<span class="fu">&gt;</span>                            ( <span class="dt">Body</span> ( <span class="dt">Just</span> <span class="dt">Tricorne</span>)
+<span class="fu">&gt;</span>                                   ( <span class="dt">Just</span> (<span class="dt">Beard</span> <span class="dt">Black</span> <span class="dt">FullBeard</span>))
+<span class="fu">&gt;</span>                                     <span class="dt">Vest</span>
+<span class="fu">&gt;</span>                                     [<span class="dt">Parrot</span>, <span class="dt">PegLeg</span>]
+<span class="fu">&gt;</span>                                   )
+<span class="fu">&gt;</span>                             <span class="dv">42</span>)
+<span class="fu">&gt;</span>                 <span class="st">&quot;SS Sea Serpent&quot;</span></code></pre>
+<p>Not really good and readable code so you try it a bit more verbose.</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<span class="fu">&gt;</span> mt1 <span class="fu">=</span> <span class="dt">FirstMate</span> { attributes <span class="fu">=</span> <span class="dt">Attributes</span> { name <span class="fu">=</span> <span class="st">&quot;Redbeard&quot;</span>
+<span class="fu">&gt;</span>                                           , body <span class="fu">=</span> <span class="dt">Body</span> { hat   <span class="fu">=</span> <span class="dt">Just</span> <span class="dt">WideBrimmedHat</span>
+<span class="fu">&gt;</span>                                                         , beard <span class="fu">=</span> <span class="dt">Nothing</span>
+<span class="fu">&gt;</span>                                                         , torso <span class="fu">=</span> <span class="dt">Naked</span>
+<span class="fu">&gt;</span>                                                         , accessories <span class="fu">=</span> [<span class="dt">EarRing</span>, <span class="dt">Monkey</span>]
+<span class="fu">&gt;</span>                                                         }
+<span class="fu">&gt;</span>                                           , age <span class="fu">=</span> <span class="dv">30</span>
+<span class="fu">&gt;</span>                                           }
+<span class="fu">&gt;</span>                 , shanty <span class="fu">=</span> <span class="st">&quot;What shall we do with the drunken sailor&quot;</span>
+<span class="fu">&gt;</span>                 }</code></pre>
+<p>The last piece - a.k.a. the crew was not too easy in the first example so you don’t expect this to be a piece of cake, well it isn’t.</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<span class="fu">&gt;</span> mrd <span class="fu">=</span> <span class="dt">Marauder</span> { attributes <span class="fu">=</span> <span class="dt">Attributes</span> { name <span class="fu">=</span> <span class="st">&quot;Neckbeard &quot;</span>
+<span class="fu">&gt;</span>                                           , body <span class="fu">=</span> <span class="dt">Body</span> { hat   <span class="fu">=</span> <span class="dt">Just</span> <span class="dt">Bandana</span>
+<span class="fu">&gt;</span>                                                         , beard <span class="fu">=</span> <span class="dt">Just</span> (<span class="dt">Beard</span> <span class="dt">Brown</span> <span class="dt">Goatee</span>)
+<span class="fu">&gt;</span>                                                         , torso <span class="fu">=</span> <span class="dt">ShabbyShirt</span>
+<span class="fu">&gt;</span>                                                         , accessories <span class="fu">=</span> [<span class="dt">EyePatch</span>]
+<span class="fu">&gt;</span>                                                         }
+<span class="fu">&gt;</span>                                           , age <span class="fu">=</span> <span class="dv">20</span>
+<span class="fu">&gt;</span>                                           }
+<span class="fu">&gt;</span>                 }</code></pre>
+<p>After the initial constructor the tricky part just begins - it takes four tries and a lot of hard thinking to get the following lambda expression right.</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<span class="fu">&gt;</span> crw <span class="fu">=</span> map (\(n,t) <span class="ot">-&gt;</span> mrd { attributes <span class="fu">=</span> (attributes mrd) {name <span class="fu">=</span> (name<span class="fu">.</span>attributes) mrd <span class="fu">++</span>  n}
+<span class="fu">&gt;</span>                          , hometown   <span class="fu">=</span> t})
+<span class="fu">&gt;</span>           [(<span class="st">&quot;Joe&quot;</span>  , <span class="st">&quot;Yorkshire&quot;</span>     )
+<span class="fu">&gt;</span>           ,(<span class="st">&quot;Jack&quot;</span> , <span class="st">&quot;Jamestown&quot;</span>     )
+<span class="fu">&gt;</span>           ,(<span class="st">&quot;Igor&quot;</span> , <span class="st">&quot;Moscow&quot;</span>        )
+<span class="fu">&gt;</span>           ,(<span class="st">&quot;Maria&quot;</span>, <span class="st">&quot;Port-au-Prince&quot;</span>)]</code></pre>
+<p>There are signs of bad code in this, a lot of signs - <code>mrd</code> is written three times, it is complicated not only to a programmer new to the haskell world.</p>
+<p>But then there comes Edward Kmett’s lens library to the rescue.</p>
+    </p>
+</article>
+
+<!--partial("templates/pager.html")-->
+    </div>
+  </div>
+  <div id="sidebar">
+    <div id="logo">
+    
+    <h1><a href="index.html" style="text-decoration:none;">BRICOLAGE</a></h1>
+</div>
+
+    <nav id="nav">
+  <ul>
+    <!--<li class="current_page_item"><a href="#">Latest Post</a></li>-->
+    <li><a href="../posts.html">Archives</a></li>
+    <li><a href="../about.html">About Me</a></li>
+    <li><a href="../contact.html">Contact Me</a></li>
+  </ul>
+</nav>
+
+    <!--partial("templates/calendar.html")-->
+    <section class="is-text-style1">
+  <div class="inner">
+    <p>
+    <strong>Bricolage:</strong> Is a site about programming, math,
+    cooking and maybe more …
+    </p>
+  </div>
+</section>
+
+    <div id="copyright">
+  <p>
+  Content: © by Martin Heuschober.<br />
+  Design: <a href="http://html5up.net/">HTML5 UP</a><br />
+  Proudly generated with <a href="http://jaspervdj.be/hakyll/">hakyll</a>!<br />
+  Unless otherwisely noted every content is published under a creative commons
+  license <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+      <img src="./images/by-nc-sa-4.0.png" alt="creative commons- 4.0" /></a>
+
+  </p>
+</div>
+
+  </div>
+</div>
+
+</body>
+</html>
