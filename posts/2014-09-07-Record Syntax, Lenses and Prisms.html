@@ -1,0 +1,299 @@
+<!DOCTYPE HTML>
+<!--
+  Striped 2.5 by HTML5 Up!
+  html5up.net | @n33co
+  Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+<title>Bricolage</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="description" content="A site about programming, cooking and other stuff" />
+<meta name="keywords" content="haskell, linux, programming, functional programming, cooking" />
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,700|Open+Sans+Condensed:300,700" rel="stylesheet" />
+<link rel="shortcut icon" href="favicon.ico" />
+<script src="../css/js/jquery.min.js"></script>
+<script src="../css/js/skel.min.js"></script>
+<script src="../css/js/skel-panels.min.js"></script>
+<script src="../css/js/init.js"></script>
+<noscript>
+  <link rel="stylesheet" href="../css/skel-noscript.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/style-desktop.css" />
+  <link rel="stylesheet" href="../css/style-wide.css" />
+</noscript>
+<!--[if lte IE 9]><link rel="stylesheet" href="/css/ie9.css" /><![endif]-->
+<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="/css/ie8.css" /><![endif]-->
+<!--[if lte IE 7]><link rel="stylesheet" href="/css/ie7.css" /><![endif]-->
+</head>
+
+
+<body class="right-sidebar">
+<div id="wrapper">
+  <div id="content">
+    <div id="content-inner">
+      <article class="is-post is-post-excerpt">
+    <header>
+        <h2><a href="../posts/2014-09-07-Record%20Syntax%2C%20Lenses%20and%20Prisms.html">Record Syntax, Lenses and Prisms: Part 3 - Prisms</a></h2>
+    
+          <span class="byline">Prisms - a solution for the shanty problem</span>
+    
+    </header>
+    
+    <div class="info">
+            <span class="date"><span class="month">Sep<span>tember</span></span> <span class="day"> 7</span><span class="year">, 2014</span></span>
+        <!--
+        <ul class="stats">
+            <li><a href="#" class="fa fa-comment" > 16</a></li>
+            <li><a href="#" class="fa fa-heart"   > 32</a></li>
+            <li><a href="#" class="fa fa-twitter" > 64</a></li>
+            <li><a href="#" class="fa fa-facebook">128</a></li>
+        </ul>
+        -->
+    </div>
+    
+    <p>
+        <h2 id="prisms">Prisms</h2>
+<h3 id="so-what-are-prisms">So what are prisms?</h3>
+<p>Prisms are like lenses just for sum types … - the most memorable sentence, but I don’t think very helpful at first glance.</p>
+<p>So let us start with defining a sum type.</p>
+<!--
+
+> {-# LANGUAGE TemplateHaskell #-}
+
+> module Pirates where
+> import Data.Char (toLower, toUpper)
+> import Data.List (intercalate)
+
+> import Control.Lens
+
+> data Human = Attributes { _name :: String, _body :: Body, _age :: Int} deriving (Show)
+> data Body = Body { _hat :: Maybe Hat
+>                  , _beard :: Maybe Beard
+>                  , _torso :: Torso
+>                  , _accessories :: [Accessories]}
+
+> data Hat = Tricorne | WideBrimmedHat | Bandana deriving (Show)
+> data Torso = Naked | Vest | ShabbyShirt deriving (Show)
+> data Accessories = Parrot | Monkey | PegLeg | EyePatch | EarRing | Hook deriving (Show)
+
+> data Beard = Beard Colour BeardType
+> instance Show Beard where show (Beard c t) = "an exquisite "++ map toLower (show c)++" "++show t
+> data Colour = Black | Red | Blond | White | Brown deriving (Show)
+> data BeardType = Moustache | Ladybeard | Goatee | FullBeard deriving (Show)
+
+> instance Show Body where
+>   show b = "\t Hat: "  ++show (_hat b)++"\n"
+>          ++"\t Beard: "++show (_beard b)++"\n"
+>          ++"\t Torso: "++show (_torso b)++"\n"
+>          ++"\t Accessories: "++ (intercalate ", " $ map show (_accessories b))
+
+
+-->
+
+<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Town</span> <span class="fu">=</span> <span class="dt">Prague</span> <span class="fu">|</span> <span class="dt">Vienna</span> <span class="fu">|</span> <span class="dt">Kingston</span> <span class="fu">|</span> <span class="dt">London</span> <span class="fu">|</span> <span class="dt">Hipsterhausen</span> <span class="kw">deriving</span> (<span class="dt">Show</span>, <span class="dt">Eq</span>)
+
+<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Pirate</span> <span class="fu">=</span> <span class="dt">Captain</span>   { _<span class="ot">attributes ::</span> <span class="dt">Human</span>, _<span class="ot">ship ::</span> <span class="dt">String</span>}
+<span class="fu">&gt;</span>             <span class="fu">|</span> <span class="dt">FirstMate</span> { _<span class="ot">attributes ::</span> <span class="dt">Human</span>, _<span class="ot">shanty ::</span> <span class="dt">String</span>}
+<span class="fu">&gt;</span>             <span class="fu">|</span> <span class="dt">Marauder</span>  { _<span class="ot">attributes ::</span> <span class="dt">Human</span>, _<span class="ot">hometown ::</span> <span class="dt">Town</span>}
+
+<span class="fu">&gt;</span> makeLenses <span class="ch">''</span><span class="dt">Human</span>
+<span class="fu">&gt;</span> makeLenses <span class="ch">''</span><span class="dt">Body</span>
+<span class="fu">&gt;</span> makeLenses <span class="ch">''</span><span class="dt">Pirate</span></code></pre>
+<p>Pirate is a sum type - with different records in each constructor.</p>
+<h2 id="a-tangent-on-sums-and-products">A tangent on sums and products</h2>
+<h3 id="sums">Sums</h3>
+<p>Why is the above called a sum type, just let us calculate the number of options we have in a sum type:</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<span class="kw">data</span> <span class="dt">Sum</span> <span class="fu">=</span> <span class="dt">One</span> <span class="fu">|</span> <span class="dt">Two</span> <span class="fu">|</span> <span class="dt">Three</span></code></pre>
+<p>If I have a variable <code>x :: Sum</code> it has exactly three values it can be</p>
+<ul>
+<li><code>x = One</code></li>
+<li><code>x = Two</code></li>
+<li><code>x = Three</code></li>
+</ul>
+<p>so the sum of the number of constructors is the solution of how many options <code>x</code> can be.</p>
+<h3 id="product">Product</h3>
+<p>So how come product types to their names - you might already guess it.</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<span class="kw">data</span> <span class="dt">Product</span> <span class="fu">=</span> <span class="dt">P</span> <span class="dt">Sum</span> <span class="dt">Sum</span></code></pre>
+<p>For a variable <code>y :: Product</code> we find <code>y</code> can be <code>|Sum|×|Sum|</code> many possible values:</p>
+<ul>
+<li><code>y = P One One</code></li>
+<li><code>y = P One Two</code></li>
+<li><code>y = P One Three</code></li>
+<li><code>y = P Two One</code></li>
+<li><code>y = P Two Two</code></li>
+<li><code>y = P Two Three</code></li>
+<li><code>y = P Three One</code></li>
+<li><code>y = P Three Two</code></li>
+<li><code>y = P Three Three</code></li>
+</ul>
+<h3 id="so-can-anybody-find-what-exponential-types-are">So can anybody find what exponential types are?</h3>
+<p>The answer is functions</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<span class="kw">data</span> <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">One</span> <span class="fu">|</span> <span class="dt">Two</span>
+<span class="kw">data</span> <span class="dt">THREE</span> <span class="fu">=</span> <span class="dt">ONE</span> <span class="fu">|</span> <span class="dt">TWO</span> <span class="fu">|</span> <span class="dt">THREE</span></code></pre>
+<p>So the functions from <code>Two -&gt; THREE</code> have exactly <code>|Two|^|THREE|</code> many elements.</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">
+one,two,three,four,five,six,seven,<span class="ot">eight ::</span> <span class="dt">Two</span> <span class="ot">-&gt;</span> <span class="dt">THREE</span>
+one   <span class="dt">One</span> <span class="fu">=</span> <span class="dt">ONE</span>
+one   <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">ONE</span>
+two   <span class="dt">One</span> <span class="fu">=</span> <span class="dt">TWO</span>
+two   <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">TWO</span>
+three <span class="dt">One</span> <span class="fu">=</span> <span class="dt">THREE</span>
+three <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">THREE</span>
+four  <span class="dt">One</span> <span class="fu">=</span> <span class="dt">ONE</span>
+four  <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">TWO</span>
+five  <span class="dt">One</span> <span class="fu">=</span> <span class="dt">ONE</span>
+five  <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">THREE</span>
+six   <span class="dt">One</span> <span class="fu">=</span> <span class="dt">TWO</span>
+six   <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">THREE</span>
+seven <span class="dt">One</span> <span class="fu">=</span> <span class="dt">THREE</span>
+seven <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">ONE</span>
+eight <span class="dt">One</span> <span class="fu">=</span> <span class="dt">THREE</span>
+eight <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">TWO</span></code></pre>
+<h2 id="back-to-prisms">Back to Prisms</h2>
+<p>The problem with lenses is that <code>cpt</code> some getters don’t make sense. For datatypes that have a special elements, so called monoids like <code>String</code> with <code>&quot;&quot;</code> we get special getters, but for <code>Town</code> for example …</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<span class="dt">Prelude</span> <span class="fu">&gt;</span> cpt<span class="fu">^.</span>shanty
+<span class="st">&quot;&quot;</span>
+<span class="dt">Prelude</span> <span class="fu">&gt;</span> cpt<span class="fu">^.</span>hometown
+<span class="fu">...</span>
+error message complaining about <span class="dt">Town</span> not being a monoid
+<span class="fu">...</span></code></pre>
+<p>So an easy way to get <em>special</em> elements is combining it with <code>Maybe</code>. And that’s what prisms are - getters with <code>Maybe</code>-values instead of errors.</p>
+<p>So how do we get them - again as with prisms we (have to) build them with template haskell magic using</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<span class="fu">&gt;</span> makePrisms <span class="ch">''</span><span class="dt">Human</span>
+<span class="fu">&gt;</span> makePrisms <span class="ch">''</span><span class="dt">Body</span>
+<span class="fu">&gt;</span> makePrisms <span class="ch">''</span><span class="dt">Pirate</span></code></pre>
+<p>This magic words create “Constructors” <code>_Captain</code>, <code>_FirstMate</code> and <code>_Marauder</code> and the lens library provides functions <code>preview</code>, <code>review</code> and <code>^?</code>.</p>
+<!--
+
+> instance Show Pirate where
+>   show (Captain a s)   =  "The infamous Captain "++ a^.name++" of the "++ s ++"\n"
+>                        ++ show (a^.body)++"\n"
+>                        ++ "\t Age: "++show (a^.age)
+>   show (FirstMate a s) =  "Mate "++a^.name++" sings "++s
+>                        ++ show (a^.body)++"\n"
+>                        ++ "\t Age: "++show (a^.age)
+>   show (Marauder a h) =   "Fearsome Pirate "++a^.name++" from "++show h++"\n"
+>                        ++ show (a^.body)++"\n"
+>                        ++ "\t Age: "++show (a^.age)
+
+> cpt = Captain ( Attributes  "Blackbeard"
+>                            ( Body ( Just Tricorne)
+>                                   ( Just (Beard Black FullBeard))
+>                                     Vest
+>                                     [Parrot, PegLeg]
+>                                   )
+>                             42)
+>                 "SS Sea Serpent"
+
+> mt1 = FirstMate { _attributes = Attributes { _name = "Redbeard"
+>                                            , _body = Body { _hat   = Just WideBrimmedHat
+>                                                           , _beard = Nothing
+>                                                           , _torso = Naked
+>                                                           , _accessories = [EarRing, Monkey]
+>                                                           }
+>                                            , _age = 30
+>                                            }
+>                 , _shanty = "What shall we do with the drunken sailor"
+>                 }
+
+> mrd = Marauder { _attributes = Attributes { _name = "Neckbeard"
+>                                           , _body = Body { _hat   = Just Bandana
+>                                                          , _beard = Just (Beard Brown Goatee)
+>                                                          , _torso = ShabbyShirt
+>                                                          , _accessories = [EyePatch]
+>                                                          }
+>                                           , _age = 20
+>                                           }
+>                , _hometown = Hipsterhausen
+>                }
+
+-->
+
+<p>Now what are those functions doing - they select one <em>branch</em> in a sum type.</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<span class="dt">Prelude</span> <span class="fu">&gt;</span> preview _<span class="dt">Captain</span> cpt
+<span class="dt">Just</span> (<span class="dt">Attributes</span> {<span class="fu">...</span>},<span class="st">&quot;SS Sea Serpent&quot;</span>)
+<span class="dt">Prelude</span> <span class="fu">&gt;</span> preview _<span class="dt">Captain</span> mrd
+<span class="dt">Nothing</span></code></pre>
+<p>But there is also an infix shortcut for <code>preview</code> - <code>(^?)</code> so we could have written the above <code>cpt^._Captain</code> or use it with accessor-like functions as <code>hometown</code>,<code>ship</code>,<code>shanty</code> or <code>attributes</code>.</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<span class="dt">Prelude</span> <span class="fu">&gt;</span> cpt<span class="fu">^?</span>hometown
+<span class="dt">Nothing</span>
+<span class="dt">Prelude</span> <span class="fu">&gt;</span> cpt<span class="fu">^?</span>ship
+<span class="dt">Just</span> <span class="st">&quot;SS Sea Serpent&quot;</span>
+<span class="dt">Prelude</span> <span class="fu">&gt;</span> mrd<span class="fu">^?</span>hometown
+<span class="dt">Just</span> <span class="dt">Hipsterhausen</span></code></pre>
+<h3 id="so-what-about-review">So what about <code>review</code>?</h3>
+<p>The <code>review</code> function can create new things from the results of <code>preview</code>, well not exactly but almost and with use of <code>(&lt;$&gt;)</code> from <code>Control.Applicative</code> we can make them work together</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="fu">:</span>t preview _<span class="dt">Captain</span> cpt
+preview _<span class="dt">Captain</span><span class="ot"> cpt ::</span> <span class="dt">Maybe</span> (<span class="dt">Human</span>, <span class="dt">String</span>)
+<span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="kw">let</span> <span class="dt">Just</span> x <span class="fu">=</span> preview _<span class="dt">Captain</span> cpt
+<span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="fu">:</span>t review _<span class="dt">Captain</span> x
+review _<span class="dt">Captain</span><span class="ot"> x ::</span> <span class="dt">Pirate</span>
+<span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="fu">:</span>t review _<span class="dt">Captain</span> <span class="fu">&lt;$&gt;</span> preview _<span class="dt">Captain</span> cpt
+review _<span class="dt">Captain</span> <span class="fu">&lt;$&gt;</span> preview _<span class="dt">Captain</span><span class="ot"> cpt ::</span> <span class="dt">Maybe</span> <span class="dt">Pirate</span>
+<span class="dt">Prelude</span><span class="fu">&gt;</span> review _<span class="dt">Captain</span> <span class="fu">&lt;$&gt;</span> preview _<span class="dt">Captain</span> cpt
+<span class="dt">Just</span> <span class="dt">Captain</span> {<span class="dt">Attributes</span> {<span class="fu">...</span>},<span class="st">&quot;SS Sea Serpent&quot;</span>}
+<span class="dt">Prelude</span><span class="fu">&gt;</span> review _<span class="dt">Captain</span> <span class="fu">&lt;$&gt;</span> preview _<span class="dt">Captain</span> mrd
+<span class="dt">Nothing</span>
+<span class="dt">Prelude</span><span class="fu">&gt;</span> review _<span class="dt">Captain</span> <span class="fu">&lt;$&gt;</span> preview _<span class="dt">Marauder</span> mrd
+<span class="fu">...</span> <span class="dt">Error</span> <span class="fu">...</span> <span class="co">-- Captain needs String (ship name) where Marauder has a Town as</span>
+a second argument</code></pre>
+<p>So Prisms do not fix everything - but provide a safety layer for simple accessing stuff and sometimes for generating stuff as well.</p>
+<p>So thats all I know about Lenses and Prisms - for understanding the type signatures - I still do not feel confident to present about.</p>
+    </p>
+</article>
+
+<!--partial("templates/pager.html")-->
+    </div>
+  </div>
+  <div id="sidebar">
+    <div id="logo">
+    
+    <h1><a href="index.html" style="text-decoration:none;">BRICOLAGE</a></h1>
+</div>
+
+    <nav id="nav">
+  <ul>
+    <!--<li class="current_page_item"><a href="#">Latest Post</a></li>-->
+    <li><a href="../posts.html">Archives</a></li>
+    <li><a href="../about.html">About Me</a></li>
+    <li><a href="../contact.html">Contact Me</a></li>
+  </ul>
+</nav>
+
+    <!--partial("templates/calendar.html")-->
+    <section class="is-text-style1">
+  <div class="inner">
+    <p>
+    <strong>Bricolage:</strong> Is a site about programming, math,
+    cooking and maybe more …
+    </p>
+  </div>
+</section>
+
+    <div id="copyright">
+  <p>
+  Content: © by Martin Heuschober.<br />
+  Design: <a href="http://html5up.net/">HTML5 UP</a><br />
+  Proudly generated with <a href="http://jaspervdj.be/hakyll/">hakyll</a>!<br />
+  Unless otherwisely noted every content is published under a creative commons
+  license <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+      <img src="./images/by-nc-sa-4.0.png" alt="creative commons- 4.0" /></a>
+
+  </p>
+</div>
+
+  </div>
+</div>
+
+</body>
+</html>
