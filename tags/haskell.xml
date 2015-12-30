@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"
+    xmlns:dc="http://purl.org/dc/elements/1.1/">
     <channel>
         <title>bricolage - Posts tagged haskell</title>
-        <link>http://epsilonhalbe.github.io</link>
+        <link>//epsilonhalbe.github.io</link>
         <description><![CDATA[Personal blog of epsilonhalbe]]></description>
-        <atom:link href="http://epsilonhalbe.github.io/tags/haskell.xml" rel="self"
+        <atom:link href="//epsilonhalbe.github.io/tags/haskell.xml" rel="self"
                    type="application/rss+xml" />
         <lastBuildDate>Sun, 07 Sep 2014 00:00:00 UT</lastBuildDate>
         <item>
     <title>Record Syntax, Lenses and Prisms: Part 3 - Prisms</title>
-    <link>http://epsilonhalbe.github.io/posts/2014-09-07-Record%20Syntax%2C%20Lenses%20and%20Prisms.html</link>
+    <link>//epsilonhalbe.github.io/posts/2014-09-07-Record%20Syntax%2C%20Lenses%20and%20Prisms.html</link>
     <description><![CDATA[<h1 id="prisms">Prisms</h1>
 <h2 id="so-what-are-prisms">So what are prisms?</h2>
 <p>Prisms are like lenses just for sum types … - the most memorable sentence, but I don’t think very helpful at first glance.</p>
@@ -47,8 +48,7 @@
 
 
 -->
-
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Town</span> <span class="fu">=</span> <span class="dt">Prague</span> <span class="fu">|</span> <span class="dt">Vienna</span> <span class="fu">|</span> <span class="dt">Kingston</span> <span class="fu">|</span> <span class="dt">London</span> <span class="fu">|</span> <span class="dt">Hipsterhausen</span> <span class="kw">deriving</span> (<span class="dt">Show</span>, <span class="dt">Eq</span>)
 
 <span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Pirate</span> <span class="fu">=</span> <span class="dt">Captain</span>   { _<span class="ot">attributes ::</span> <span class="dt">Human</span>, _<span class="ot">ship ::</span> <span class="dt">String</span>}
@@ -57,13 +57,13 @@
 
 <span class="fu">&gt;</span> makeLenses <span class="ch">&#39;&#39;</span><span class="dt">Human</span>
 <span class="fu">&gt;</span> makeLenses <span class="ch">&#39;&#39;</span><span class="dt">Body</span>
-<span class="fu">&gt;</span> makeLenses <span class="ch">&#39;&#39;</span><span class="dt">Pirate</span></code></pre>
+<span class="fu">&gt;</span> makeLenses <span class="ch">&#39;&#39;</span><span class="dt">Pirate</span></code></pre></div>
 <p>Pirate is a sum type - with different records in each constructor.</p>
 <h1 id="a-tangent-on-sums-and-products">A tangent on sums and products</h1>
 <h2 id="sums">Sums</h2>
 <p>Why is the above called a sum type, just let us calculate the number of options we have in a sum type:</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="kw">data</span> <span class="dt">Sum</span> <span class="fu">=</span> <span class="dt">One</span> <span class="fu">|</span> <span class="dt">Two</span> <span class="fu">|</span> <span class="dt">Three</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
+<span class="kw">data</span> <span class="dt">Sum</span> <span class="fu">=</span> <span class="dt">One</span> <span class="fu">|</span> <span class="dt">Two</span> <span class="fu">|</span> <span class="dt">Three</span></code></pre></div>
 <p>If I have a variable <code>x :: Sum</code> it has exactly three values it can be</p>
 <ul>
 <li><code>x = One</code></li>
@@ -73,8 +73,8 @@
 <p>so the sum of the number of constructors is the solution of how many options <code>x</code> can be.</p>
 <h2 id="product">Product</h2>
 <p>So how come product types to their names - you might already guess it.</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="kw">data</span> <span class="dt">Product</span> <span class="fu">=</span> <span class="dt">P</span> <span class="dt">Sum</span> <span class="dt">Sum</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
+<span class="kw">data</span> <span class="dt">Product</span> <span class="fu">=</span> <span class="dt">P</span> <span class="dt">Sum</span> <span class="dt">Sum</span></code></pre></div>
 <p>For a variable <code>y :: Product</code> we find <code>y</code> can be <code>|Sum|×|Sum|</code> many possible values:</p>
 <ul>
 <li><code>y = P One One</code></li>
@@ -89,11 +89,11 @@
 </ul>
 <h2 id="so-can-anybody-find-what-exponential-types-are">So can anybody find what exponential types are?</h2>
 <p>The answer is functions</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="kw">data</span> <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">One</span> <span class="fu">|</span> <span class="dt">Two</span>
-<span class="kw">data</span> <span class="dt">THREE</span> <span class="fu">=</span> <span class="dt">ONE</span> <span class="fu">|</span> <span class="dt">TWO</span> <span class="fu">|</span> <span class="dt">THREE</span></code></pre>
+<span class="kw">data</span> <span class="dt">THREE</span> <span class="fu">=</span> <span class="dt">ONE</span> <span class="fu">|</span> <span class="dt">TWO</span> <span class="fu">|</span> <span class="dt">THREE</span></code></pre></div>
 <p>So the functions from <code>Two -&gt; THREE</code> have exactly <code>|Two|^|THREE|</code> many elements.</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 one,two,three,four,five,six,seven,<span class="ot">eight ::</span> <span class="dt">Two</span> <span class="ot">-&gt;</span> <span class="dt">THREE</span>
 one   <span class="dt">One</span> <span class="fu">=</span> <span class="dt">ONE</span>
 one   <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">ONE</span>
@@ -110,22 +110,22 @@ six   <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">THR
 seven <span class="dt">One</span> <span class="fu">=</span> <span class="dt">THREE</span>
 seven <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">ONE</span>
 eight <span class="dt">One</span> <span class="fu">=</span> <span class="dt">THREE</span>
-eight <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">TWO</span></code></pre>
+eight <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">TWO</span></code></pre></div>
 <h1 id="back-to-prisms">Back to Prisms</h1>
 <p>The problem with lenses is that <code>cpt</code> some getters don’t make sense. For datatypes that have a special elements, so called monoids like <code>String</code> with <code>&quot;&quot;</code> we get special getters, but for <code>Town</code> for example …</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="dt">Prelude</span> <span class="fu">&gt;</span> cpt<span class="fu">^.</span>shanty
 <span class="st">&quot;&quot;</span>
 <span class="dt">Prelude</span> <span class="fu">&gt;</span> cpt<span class="fu">^.</span>hometown
 <span class="fu">...</span>
 error message complaining about <span class="dt">Town</span> not being a monoid
-<span class="fu">...</span></code></pre>
+<span class="fu">...</span></code></pre></div>
 <p>So an easy way to get <em>special</em> elements is combining it with <code>Maybe</code>. And that’s what prisms are - getters with <code>Maybe</code>-values instead of errors.</p>
 <p>So how do we get them - again as with prisms we (have to) build them with template haskell magic using</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="fu">&gt;</span> makePrisms <span class="ch">&#39;&#39;</span><span class="dt">Human</span>
 <span class="fu">&gt;</span> makePrisms <span class="ch">&#39;&#39;</span><span class="dt">Body</span>
-<span class="fu">&gt;</span> makePrisms <span class="ch">&#39;&#39;</span><span class="dt">Pirate</span></code></pre>
+<span class="fu">&gt;</span> makePrisms <span class="ch">&#39;&#39;</span><span class="dt">Pirate</span></code></pre></div>
 <p>This magic words create “Constructors” <code>_Captain</code>, <code>_FirstMate</code> and <code>_Marauder</code> and the lens library provides functions <code>preview</code>, <code>review</code> and <code>^?</code>.</p>
 <!--
 
@@ -172,24 +172,23 @@ error message complaining about <span class="dt">Town</span> not being a monoid
 >                }
 
 -->
-
 <p>Now what are those functions doing - they select one <em>branch</em> in a sum type.</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="dt">Prelude</span> <span class="fu">&gt;</span> preview _<span class="dt">Captain</span> cpt
 <span class="dt">Just</span> (<span class="dt">Attributes</span> {<span class="fu">...</span>},<span class="st">&quot;SS Sea Serpent&quot;</span>)
 <span class="dt">Prelude</span> <span class="fu">&gt;</span> preview _<span class="dt">Captain</span> mrd
-<span class="dt">Nothing</span></code></pre>
+<span class="dt">Nothing</span></code></pre></div>
 <p>But there is also an infix shortcut for <code>preview</code> - <code>(^?)</code> so we could have written the above <code>cpt^._Captain</code> or use it with accessor-like functions as <code>hometown</code>,<code>ship</code>,<code>shanty</code> or <code>attributes</code>.</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="dt">Prelude</span> <span class="fu">&gt;</span> cpt<span class="fu">^?</span>hometown
 <span class="dt">Nothing</span>
 <span class="dt">Prelude</span> <span class="fu">&gt;</span> cpt<span class="fu">^?</span>ship
 <span class="dt">Just</span> <span class="st">&quot;SS Sea Serpent&quot;</span>
 <span class="dt">Prelude</span> <span class="fu">&gt;</span> mrd<span class="fu">^?</span>hometown
-<span class="dt">Just</span> <span class="dt">Hipsterhausen</span></code></pre>
+<span class="dt">Just</span> <span class="dt">Hipsterhausen</span></code></pre></div>
 <h2 id="so-what-about-review">So what about <code>review</code>?</h2>
 <p>The <code>review</code> function can create new things from the results of <code>preview</code>, well not exactly but almost and with use of <code>(&lt;$&gt;)</code> from <code>Control.Applicative</code> we can make them work together</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="fu">:</span>t preview _<span class="dt">Captain</span> cpt
 preview _<span class="dt">Captain</span><span class="ot"> cpt ::</span> <span class="dt">Maybe</span> (<span class="dt">Human</span>, <span class="dt">String</span>)
 <span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="kw">let</span> <span class="dt">Just</span> x <span class="fu">=</span> preview _<span class="dt">Captain</span> cpt
@@ -203,22 +202,23 @@ review _<span class="dt">Captain</span> <span class="fu">&lt;$&gt;</span> previe
 <span class="dt">Nothing</span>
 <span class="dt">Prelude</span><span class="fu">&gt;</span> review _<span class="dt">Captain</span> <span class="fu">&lt;$&gt;</span> preview _<span class="dt">Marauder</span> mrd
 <span class="fu">...</span> <span class="dt">Error</span> <span class="fu">...</span> <span class="co">-- Captain needs String (ship name) where Marauder has a Town as</span>
-a second argument</code></pre>
+a second argument</code></pre></div>
 <p>So Prisms do not fix everything - but provide a safety layer for simple accessing stuff and sometimes for generating stuff as well.</p>
 <p>So thats all I know about Lenses and Prisms - for understanding the type signatures - I still do not feel confident to present about.</p>]]></description>
     <pubDate>Sun, 07 Sep 2014 00:00:00 UT</pubDate>
-    <guid>http://epsilonhalbe.github.io/posts/2014-09-07-Record%20Syntax%2C%20Lenses%20and%20Prisms.html</guid>
+    <guid>//epsilonhalbe.github.io/posts/2014-09-07-Record%20Syntax%2C%20Lenses%20and%20Prisms.html</guid>
+    <dc:creator>Martin Heuschober</dc:creator>
 </item>
 <item>
     <title>Record Syntax, Lenses and Prisms: Part 2 - Lenses</title>
-    <link>http://epsilonhalbe.github.io/posts/2014-08-11-Record%20Syntax%2C%20Lenses%20and%20Prisms.html</link>
+    <link>//epsilonhalbe.github.io/posts/2014-08-11-Record%20Syntax%2C%20Lenses%20and%20Prisms.html</link>
     <description><![CDATA[<h1 id="lenses">Lenses</h1>
 <p>Lenses are a quite interesting idea first mentioned by Twan van Laarhoven and have lived through a few implementations until the <code>lens</code>-library by Ed Kmett has proven to be the stable solution for now. It has a <em>batteries included</em> approach and provides many operators and a template haskell convention to generate lenses for your own algebraic data types.</p>
 <p>The convention is to put an <code>_</code> at the beginning of the record names in the record syntax definition. And then use the magic of template haskell to generate the corresponding lenses a.k.a. functional getters and setters with <code>makeLenses ''MyADT</code>.</p>
 <p>Going back to the old examples one could rewrite it as follows.</p>
 <p>For one we need the template haskell language pragma to make the magic work.</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="fu">&gt;</span> <span class="ot">{-# LANGUAGE TemplateHaskell #-}</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
+<span class="fu">&gt;</span> <span class="ot">{-# LANGUAGE TemplateHaskell #-}</span></code></pre></div>
 <p>And we also need the lens library to be installed for which I recommend using <code>cabal</code>, the interface to the haskell packaging system.</p>
 <pre class="shell"><code>~ $ cabal update
 ~ $ cabal install lens
@@ -232,15 +232,14 @@ Installed lens-4.3.3 (the current lens version as of 11th of August 2014)</code>
 > import Data.List (intercalate)
 
 -->
-
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="fu">&gt;</span> <span class="kw">import </span><span class="dt">Control.Lens</span>
 
 <span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Human</span> <span class="fu">=</span> <span class="dt">Attributes</span> { _<span class="ot">name ::</span> <span class="dt">String</span>, _<span class="ot">body ::</span> <span class="dt">Body</span>, _<span class="ot">age ::</span> <span class="dt">Int</span>} <span class="kw">deriving</span> (<span class="dt">Show</span>)
 <span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Body</span> <span class="fu">=</span> <span class="dt">Body</span> { _<span class="ot">hat ::</span> <span class="dt">Maybe</span> <span class="dt">Hat</span>
 <span class="fu">&gt;</span>                  , _<span class="ot">beard ::</span> <span class="dt">Maybe</span> <span class="dt">Beard</span>
 <span class="fu">&gt;</span>                  , _<span class="ot">torso ::</span> <span class="dt">Torso</span>
-<span class="fu">&gt;</span>                  , _<span class="ot">accessories ::</span> [<span class="dt">Accessories</span>]}</code></pre>
+<span class="fu">&gt;</span>                  , _<span class="ot">accessories ::</span> [<span class="dt">Accessories</span>]}</code></pre></div>
 <!--
 
 > data Hat = Tricorne | WideBrimmedHat | Bandana deriving (Show)
@@ -259,23 +258,22 @@ Installed lens-4.3.3 (the current lens version as of 11th of August 2014)</code>
 >          ++"\t Accessories: "++ (intercalate ", " $ map show (_accessories b))
 
 -->
-
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Pirate</span> <span class="fu">=</span> <span class="dt">Captain</span>   { _<span class="ot">attributes ::</span> <span class="dt">Human</span>, _<span class="ot">ship ::</span> <span class="dt">String</span>}
 <span class="fu">&gt;</span>             <span class="fu">|</span> <span class="dt">FirstMate</span> { _<span class="ot">attributes ::</span> <span class="dt">Human</span>, _<span class="ot">shanty ::</span> <span class="dt">String</span>}
-<span class="fu">&gt;</span>             <span class="fu">|</span> <span class="dt">Marauder</span>  { _<span class="ot">attributes ::</span> <span class="dt">Human</span>, _<span class="ot">hometown ::</span> <span class="dt">String</span>}</code></pre>
+<span class="fu">&gt;</span>             <span class="fu">|</span> <span class="dt">Marauder</span>  { _<span class="ot">attributes ::</span> <span class="dt">Human</span>, _<span class="ot">hometown ::</span> <span class="dt">String</span>}</code></pre></div>
 <p>… and of course create the lenses. (In the background template haskell now creates functions attributes, ship, shanty and so on.)</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="fu">&gt;</span> makeLenses <span class="ch">&#39;&#39;</span><span class="dt">Human</span>
 <span class="fu">&gt;</span> makeLenses <span class="ch">&#39;&#39;</span><span class="dt">Body</span>
-<span class="fu">&gt;</span> makeLenses <span class="ch">&#39;&#39;</span><span class="dt">Pirate</span></code></pre>
+<span class="fu">&gt;</span> makeLenses <span class="ch">&#39;&#39;</span><span class="dt">Pirate</span></code></pre></div>
 <p>Now would be a great moment to talk about the types of Lens and the famous Lens-laws, but I’d rather have some use of them before I bore you to death.</p>
 <p>So let us have a look at the instance declaration for <code>Show</code></p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="fu">&gt;</span> <span class="kw">instance</span> <span class="dt">Show</span> <span class="dt">Pirate</span> <span class="kw">where</span>
 <span class="fu">&gt;</span>   show (<span class="dt">Captain</span> a s)   <span class="fu">=</span>  <span class="st">&quot;The infamous Captain &quot;</span><span class="fu">++</span> a<span class="fu">^.</span>name<span class="fu">++</span><span class="st">&quot; of the &quot;</span><span class="fu">++</span> s<span class="fu">++</span><span class="st">&quot;\n&quot;</span>
 <span class="fu">&gt;</span>                        <span class="fu">++</span> show (a<span class="fu">^.</span>body)<span class="fu">++</span><span class="st">&quot;\n&quot;</span>
-<span class="fu">&gt;</span>                        <span class="fu">++</span> <span class="st">&quot;\t Age: &quot;</span><span class="fu">++</span>show (a<span class="fu">^.</span>age)</code></pre>
+<span class="fu">&gt;</span>                        <span class="fu">++</span> <span class="st">&quot;\t Age: &quot;</span><span class="fu">++</span>show (a<span class="fu">^.</span>age)</code></pre></div>
 <!--
 
 >   show (FirstMate a s) =  "Mate "++a^.name++" sings "++s
@@ -286,20 +284,19 @@ Installed lens-4.3.3 (the current lens version as of 11th of August 2014)</code>
 >                        ++ "\t Age: "++show (a^.age)
 
 -->
-
 <p>I wouldn’t call that an improvement but the average object oriented programmer might. So what is this <code>^.</code> operator, it is an alias for the <code>view</code>-function that can focus on the parts of a lens.</p>
 <p>The type signature for <code>(^.)</code> is a bit complicated, but if we combine it with the generated functions we see</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="dt">GHCi</span><span class="fu">&gt;</span> <span class="fu">:</span>t (<span class="fu">^.</span>attributes)
 (<span class="fu">^.</span>attributes)<span class="ot"> ::</span> <span class="dt">Pirate</span> <span class="ot">-&gt;</span> <span class="dt">Human</span>
 <span class="dt">GHCi</span><span class="fu">&gt;</span> <span class="fu">:</span>t (<span class="fu">^.</span>attributes<span class="fu">.</span>name)
-(<span class="fu">^.</span>attributes<span class="fu">.</span>name)<span class="ot"> ::</span> <span class="dt">Pirate</span> <span class="ot">-&gt;</span> <span class="dt">String</span></code></pre>
+(<span class="fu">^.</span>attributes<span class="fu">.</span>name)<span class="ot"> ::</span> <span class="dt">Pirate</span> <span class="ot">-&gt;</span> <span class="dt">String</span></code></pre></div>
 <p>But where the combined type signature of <code>(^.)</code> and <code>attributes</code> is simple their own type signature is - let’s just call it <em>not</em> simple.</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="dt">GHCi</span><span class="fu">&gt;</span> <span class="fu">:</span>t (<span class="fu">^.</span>)
 <span class="ot">(^.) ::</span> s <span class="ot">-&gt;</span> <span class="dt">Getting</span> a s a <span class="ot">-&gt;</span> a
 <span class="dt">GHCi</span><span class="fu">&gt;</span> <span class="fu">:</span>t attributes
-<span class="ot">attributes ::</span> <span class="dt">Functor</span> f <span class="ot">=&gt;</span> (<span class="dt">Human</span> <span class="ot">-&gt;</span> f <span class="dt">Human</span>) <span class="ot">-&gt;</span> <span class="dt">Pirate</span> <span class="ot">-&gt;</span> f <span class="dt">Pirate</span></code></pre>
+<span class="ot">attributes ::</span> <span class="dt">Functor</span> f <span class="ot">=&gt;</span> (<span class="dt">Human</span> <span class="ot">-&gt;</span> f <span class="dt">Human</span>) <span class="ot">-&gt;</span> <span class="dt">Pirate</span> <span class="ot">-&gt;</span> f <span class="dt">Pirate</span></code></pre></div>
 <p>As we saw we have something called <code>Getting</code> so there should also be some setting stuff and indeed we have a <code>set</code>-function and the infix alias <code>(.~)</code> which is more useful with the <code>&amp;</code>-operator which is just reverse function application: <code>x &amp; f = f x</code>.</p>
 <!--
 
@@ -335,24 +332,23 @@ Installed lens-4.3.3 (the current lens version as of 11th of August 2014)</code>
 >                }
 
 -->
-
 <p>A few examples should provide a bit more insight…</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="fu">&gt;</span> hel <span class="fu">=</span> cpt <span class="fu">&amp;</span> attributes<span class="fu">.</span>name<span class="fu">.~</span> <span class="st">&quot;Hellscream&quot;</span>
 
 <span class="dt">GHCi</span> <span class="fu">&gt;</span> hel
 <span class="dt">The</span> infamous <span class="dt">Captain</span> <span class="dt">Hellscream</span> <span class="kw">of</span> the <span class="dt">SS</span> <span class="dt">Sea</span> <span class="dt">Serpent</span>
         <span class="dt">Hat</span><span class="fu">:</span> <span class="dt">Just</span> <span class="dt">Tricorne</span>
         <span class="fu">...</span>
-        <span class="dt">Age</span><span class="fu">:</span> <span class="dv">42</span></code></pre>
+        <span class="dt">Age</span><span class="fu">:</span> <span class="dv">42</span></code></pre></div>
 <p>… and see that now it is really easy to undress our pirates with:</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="fu">&gt;</span> undress pirate <span class="fu">=</span> pirate <span class="fu">&amp;</span> attributes <span class="fu">.</span> body <span class="fu">.</span> hat <span class="fu">.~</span> <span class="dt">Nothing</span>
 <span class="fu">&gt;</span>                         <span class="fu">&amp;</span> attributes <span class="fu">.</span> body <span class="fu">.</span> beard <span class="fu">.~</span> <span class="dt">Nothing</span>
 <span class="fu">&gt;</span>                         <span class="fu">&amp;</span> attributes <span class="fu">.</span> body <span class="fu">.</span> torso <span class="fu">.~</span> <span class="dt">Naked</span>
-<span class="fu">&gt;</span>                         <span class="fu">&amp;</span> attributes <span class="fu">.</span> body <span class="fu">.</span> accessories <span class="fu">.~</span> []</code></pre>
+<span class="fu">&gt;</span>                         <span class="fu">&amp;</span> attributes <span class="fu">.</span> body <span class="fu">.</span> accessories <span class="fu">.~</span> []</code></pre></div>
 <p>So we have getters and setters, but we want more we want to use functions, this is where the <code>over</code> function or the <code>(%~)</code>-operator comes into play.</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="dt">GHCi</span><span class="fu">&gt;</span> hel <span class="fu">&amp;</span> attributes <span class="fu">.</span> name <span class="fu">%~</span> map toUpper 
 <span class="dt">The</span> infamous <span class="dt">Captain</span> <span class="dt">HELLSCREAM</span> <span class="kw">of</span> the <span class="dt">SS</span> <span class="dt">Sea</span> <span class="dt">Serpent</span>
         <span class="dt">Hat</span><span class="fu">:</span> <span class="dt">Just</span> <span class="dt">Tricorne</span>
@@ -363,13 +359,14 @@ Installed lens-4.3.3 (the current lens version as of 11th of August 2014)</code>
 <span class="dt">The</span> infamous <span class="dt">Captain</span> <span class="dt">Hellscream</span> <span class="kw">of</span> the <span class="dt">SS</span> <span class="dt">Sea</span> <span class="dt">Serpent</span>
         <span class="dt">Hat</span><span class="fu">:</span> <span class="dt">Just</span> <span class="dt">Tricorne</span>
         <span class="fu">...</span>
-        <span class="dt">Age</span><span class="fu">:</span> <span class="dv">52</span></code></pre>]]></description>
+        <span class="dt">Age</span><span class="fu">:</span> <span class="dv">52</span></code></pre></div>]]></description>
     <pubDate>Mon, 11 Aug 2014 00:00:00 UT</pubDate>
-    <guid>http://epsilonhalbe.github.io/posts/2014-08-11-Record%20Syntax%2C%20Lenses%20and%20Prisms.html</guid>
+    <guid>//epsilonhalbe.github.io/posts/2014-08-11-Record%20Syntax%2C%20Lenses%20and%20Prisms.html</guid>
+    <dc:creator>Martin Heuschober</dc:creator>
 </item>
 <item>
     <title>Record Syntax, Lenses and Prisms: Part 1 - Record Syntax</title>
-    <link>http://epsilonhalbe.github.io/posts/2014-08-10-Record%20Syntax%2C%20Lenses%20and%20Prisms.html</link>
+    <link>//epsilonhalbe.github.io/posts/2014-08-10-Record%20Syntax%2C%20Lenses%20and%20Prisms.html</link>
     <description><![CDATA[<h1 id="intro">Intro</h1>
 <h2 id="pirates-and-records">Pirates and Records</h2>
 <p>As a programmer you are often tasked with the problem of modelling reality and thus your customers have assigned you to make a complex data structure, something like a pirate captain and a gruesome crew of marauders.</p>
@@ -381,11 +378,10 @@ Installed lens-4.3.3 (the current lens version as of 11th of August 2014)</code>
 > import Data.List (intercalate)
 
 -->
-
-<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">Pirate</span> <span class="fu">=</span> <span class="dt">Captain</span> <span class="fu">|</span> <span class="dt">FirstMate</span> <span class="fu">|</span> <span class="dt">Marauder</span> <span class="kw">deriving</span> (<span class="dt">Show</span>)</code></pre>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">Pirate</span> <span class="fu">=</span> <span class="dt">Captain</span> <span class="fu">|</span> <span class="dt">FirstMate</span> <span class="fu">|</span> <span class="dt">Marauder</span> <span class="kw">deriving</span> (<span class="dt">Show</span>)</code></pre></div>
 <p>This definition above is quite similar to objects, but it actually defines a type which consists of three possible <em>“constructors”</em>, the last statement <code>deriving (Show)</code> is haskell’s way of saying we have a <code>toString</code>-method called <code>show</code>.</p>
 <p>But your customers want to customize those Pirates (hence the name). So you decide to come up with a more accurate model of pirates.</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="kw">data</span> <span class="dt">Pirate</span> <span class="fu">=</span> <span class="dt">Captain</span>   {<span class="ot"> name ::</span> <span class="dt">String</span>,<span class="ot"> ship ::</span> <span class="dt">String</span>}
             <span class="fu">|</span> <span class="dt">FirstMate</span> {<span class="ot"> name ::</span> <span class="dt">String</span>,<span class="ot"> shanty ::</span> <span class="dt">String</span>}
             <span class="fu">|</span> <span class="dt">Marauder</span>  {<span class="ot"> name ::</span> <span class="dt">String</span>,<span class="ot"> hometown ::</span> <span class="dt">String</span>}
@@ -393,23 +389,23 @@ Installed lens-4.3.3 (the current lens version as of 11th of August 2014)</code>
 <span class="kw">instance</span> <span class="dt">Show</span> <span class="dt">Pirate</span> <span class="kw">where</span>
   show (<span class="dt">Captain</span> n s) <span class="fu">=</span> <span class="st">&quot;Captain &quot;</span><span class="fu">++</span>n<span class="fu">++</span><span class="st">&quot; of the &quot;</span><span class="fu">++</span>s
   show (<span class="dt">FirstMate</span> n s) <span class="fu">=</span> <span class="st">&quot;Mate &quot;</span><span class="fu">++</span>n<span class="fu">++</span><span class="st">&quot; sings &quot;</span><span class="fu">++</span>s
-  show (<span class="dt">Marauder</span> n h) <span class="fu">=</span> <span class="st">&quot;Fearsome Pirate &quot;</span><span class="fu">++</span>n<span class="fu">++</span><span class="st">&quot; from &quot;</span><span class="fu">++</span>h</code></pre>
+  show (<span class="dt">Marauder</span> n h) <span class="fu">=</span> <span class="st">&quot;Fearsome Pirate &quot;</span><span class="fu">++</span>n<span class="fu">++</span><span class="st">&quot; from &quot;</span><span class="fu">++</span>h</code></pre></div>
 <p>The customers like the prototype - but as they are very unfamiliar with functional programming they ask you to prepare a little demo.</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 cpt <span class="fu">=</span> <span class="dt">Captain</span> <span class="st">&quot;Blackbeard&quot;</span> <span class="st">&quot;SS Sea Serpent&quot;</span>
 mt1 <span class="fu">=</span> <span class="dt">FirstMate</span> {name <span class="fu">=</span> <span class="st">&quot;Redbeard&quot;</span>, shanty <span class="fu">=</span> <span class="st">&quot;What shall we do with the drunken sailor&quot;</span>}
 mrd <span class="fu">=</span> <span class="dt">Marauder</span> {name <span class="fu">=</span> <span class="st">&quot;Neckbeard&quot;</span>}
 crw <span class="fu">=</span> map (\t <span class="ot">-&gt;</span> mrd {hometown <span class="fu">=</span> t}) [<span class="st">&quot;Yorkshire&quot;</span>, <span class="st">&quot;Jamestown&quot;</span>, <span class="st">&quot;Moscow&quot;</span>, <span class="st">&quot;Port-au-Prince&quot;</span>]
 pirates <span class="fu">=</span> [cpt,mt1]<span class="fu">++</span>crw
 
-cpt&#39; <span class="fu">=</span> cpt {name <span class="fu">=</span> <span class="st">&quot;Greybeard&quot;</span>} <span class="ot">=&gt;</span> <span class="st">&quot;Captain Greybeard of the SS Sea Serpent&quot;</span></code></pre>
+cpt&#39; <span class="fu">=</span> cpt {name <span class="fu">=</span> <span class="st">&quot;Greybeard&quot;</span>} <span class="ot">=&gt;</span> <span class="st">&quot;Captain Greybeard of the SS Sea Serpent&quot;</span></code></pre></div>
 <p>Still the customers is impressed with the prototype but still not content, so you start with designing a very detailed model starting with humans.</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Human</span> <span class="fu">=</span> <span class="dt">Attributes</span> {<span class="ot"> name ::</span> <span class="dt">String</span>,<span class="ot"> body ::</span> <span class="dt">Body</span>,<span class="ot"> age ::</span> <span class="dt">Int</span>} <span class="kw">deriving</span> (<span class="dt">Show</span>)
 <span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Body</span> <span class="fu">=</span> <span class="dt">Body</span> {<span class="ot"> hat ::</span> <span class="dt">Maybe</span> <span class="dt">Hat</span>
 <span class="fu">&gt;</span>                  ,<span class="ot"> beard ::</span> <span class="dt">Maybe</span> <span class="dt">Beard</span>
 <span class="fu">&gt;</span>                  ,<span class="ot"> torso ::</span> <span class="dt">Torso</span>
-<span class="fu">&gt;</span>                  ,<span class="ot"> accessories ::</span> [<span class="dt">Accessories</span>]}</code></pre>
+<span class="fu">&gt;</span>                  ,<span class="ot"> accessories ::</span> [<span class="dt">Accessories</span>]}</code></pre></div>
 <!--
 
 > instance Show Body where
@@ -419,9 +415,8 @@ cpt&#39; <span class="fu">=</span> cpt {name <span class="fu">=</span> <span cla
 >          ++"\t Accessories: "++ (intercalate ", " $ map show (accessories b))
 
 -->
-
 <p>Then you come up with the nitty gritty details like <code>Hat</code>, <code>Torso</code> and so on.</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Hat</span> <span class="fu">=</span> <span class="dt">Tricorne</span> <span class="fu">|</span> <span class="dt">WideBrimmedHat</span> <span class="fu">|</span> <span class="dt">Bandana</span> <span class="kw">deriving</span> (<span class="dt">Show</span>)
 <span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Torso</span> <span class="fu">=</span> <span class="dt">Naked</span> <span class="fu">|</span> <span class="dt">Vest</span> <span class="fu">|</span> <span class="dt">ShabbyShirt</span> <span class="kw">deriving</span> (<span class="dt">Show</span>)
 <span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Accessories</span> <span class="fu">=</span> <span class="dt">Parrot</span> <span class="fu">|</span> <span class="dt">Monkey</span> <span class="fu">|</span> <span class="dt">PegLeg</span> <span class="fu">|</span> <span class="dt">EyePatch</span> <span class="fu">|</span> <span class="dt">EarRing</span> <span class="fu">|</span> <span class="dt">Hook</span> <span class="kw">deriving</span> (<span class="dt">Show</span>)
@@ -433,7 +428,7 @@ cpt&#39; <span class="fu">=</span> cpt {name <span class="fu">=</span> <span cla
 
 <span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Pirate</span> <span class="fu">=</span> <span class="dt">Captain</span>   {<span class="ot"> attributes ::</span> <span class="dt">Human</span>,<span class="ot"> ship ::</span> <span class="dt">String</span>}
 <span class="fu">&gt;</span>             <span class="fu">|</span> <span class="dt">FirstMate</span> {<span class="ot"> attributes ::</span> <span class="dt">Human</span>,<span class="ot"> shanty ::</span> <span class="dt">String</span>}
-<span class="fu">&gt;</span>             <span class="fu">|</span> <span class="dt">Marauder</span>  {<span class="ot"> attributes ::</span> <span class="dt">Human</span>,<span class="ot"> hometown ::</span> <span class="dt">String</span>}</code></pre>
+<span class="fu">&gt;</span>             <span class="fu">|</span> <span class="dt">Marauder</span>  {<span class="ot"> attributes ::</span> <span class="dt">Human</span>,<span class="ot"> hometown ::</span> <span class="dt">String</span>}</code></pre></div>
 <!--
 
 > instance Show Pirate where
@@ -448,9 +443,8 @@ cpt&#39; <span class="fu">=</span> cpt {name <span class="fu">=</span> <span cla
 >                        ++ "\t Age: "++show (age a)
 
 -->
-
 <p>The customer asks for a demo so you make a new crew based on the old examples.</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="fu">&gt;</span> cpt <span class="fu">=</span> <span class="dt">Captain</span> ( <span class="dt">Attributes</span>  <span class="st">&quot;Blackbeard&quot;</span>
 <span class="fu">&gt;</span>                            ( <span class="dt">Body</span> ( <span class="dt">Just</span> <span class="dt">Tricorne</span>)
 <span class="fu">&gt;</span>                                   ( <span class="dt">Just</span> (<span class="dt">Beard</span> <span class="dt">Black</span> <span class="dt">FullBeard</span>))
@@ -458,9 +452,9 @@ cpt&#39; <span class="fu">=</span> cpt {name <span class="fu">=</span> <span cla
 <span class="fu">&gt;</span>                                     [<span class="dt">Parrot</span>, <span class="dt">PegLeg</span>]
 <span class="fu">&gt;</span>                                   )
 <span class="fu">&gt;</span>                             <span class="dv">42</span>)
-<span class="fu">&gt;</span>                 <span class="st">&quot;SS Sea Serpent&quot;</span></code></pre>
+<span class="fu">&gt;</span>                 <span class="st">&quot;SS Sea Serpent&quot;</span></code></pre></div>
 <p>Not really good and readable code so you try it a bit more verbose.</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="fu">&gt;</span> mt1 <span class="fu">=</span> <span class="dt">FirstMate</span> { attributes <span class="fu">=</span> <span class="dt">Attributes</span> { name <span class="fu">=</span> <span class="st">&quot;Redbeard&quot;</span>
 <span class="fu">&gt;</span>                                           , body <span class="fu">=</span> <span class="dt">Body</span> { hat   <span class="fu">=</span> <span class="dt">Just</span> <span class="dt">WideBrimmedHat</span>
 <span class="fu">&gt;</span>                                                         , beard <span class="fu">=</span> <span class="dt">Nothing</span>
@@ -470,9 +464,9 @@ cpt&#39; <span class="fu">=</span> cpt {name <span class="fu">=</span> <span cla
 <span class="fu">&gt;</span>                                           , age <span class="fu">=</span> <span class="dv">30</span>
 <span class="fu">&gt;</span>                                           }
 <span class="fu">&gt;</span>                 , shanty <span class="fu">=</span> <span class="st">&quot;What shall we do with the drunken sailor&quot;</span>
-<span class="fu">&gt;</span>                 }</code></pre>
+<span class="fu">&gt;</span>                 }</code></pre></div>
 <p>The last piece - a.k.a. the crew was not too easy in the first example so you don’t expect this to be a piece of cake, well it isn’t.</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="fu">&gt;</span> mrd <span class="fu">=</span> <span class="dt">Marauder</span> { attributes <span class="fu">=</span> <span class="dt">Attributes</span> { name <span class="fu">=</span> <span class="st">&quot;Neckbeard &quot;</span>
 <span class="fu">&gt;</span>                                           , body <span class="fu">=</span> <span class="dt">Body</span> { hat   <span class="fu">=</span> <span class="dt">Just</span> <span class="dt">Bandana</span>
 <span class="fu">&gt;</span>                                                         , beard <span class="fu">=</span> <span class="dt">Just</span> (<span class="dt">Beard</span> <span class="dt">Brown</span> <span class="dt">Goatee</span>)
@@ -481,30 +475,30 @@ cpt&#39; <span class="fu">=</span> cpt {name <span class="fu">=</span> <span cla
 <span class="fu">&gt;</span>                                                         }
 <span class="fu">&gt;</span>                                           , age <span class="fu">=</span> <span class="dv">20</span>
 <span class="fu">&gt;</span>                                           }
-<span class="fu">&gt;</span>                 }</code></pre>
+<span class="fu">&gt;</span>                 }</code></pre></div>
 <p>After the initial constructor the tricky part just begins - it takes four tries and a lot of hard thinking to get the following lambda expression right.</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="fu">&gt;</span> crw <span class="fu">=</span> map (\(n,t) <span class="ot">-&gt;</span> mrd { attributes <span class="fu">=</span> (attributes mrd) {name <span class="fu">=</span> (name<span class="fu">.</span>attributes) mrd <span class="fu">++</span>  n}
 <span class="fu">&gt;</span>                          , hometown   <span class="fu">=</span> t})
 <span class="fu">&gt;</span>           [(<span class="st">&quot;Joe&quot;</span>  , <span class="st">&quot;Yorkshire&quot;</span>     )
 <span class="fu">&gt;</span>           ,(<span class="st">&quot;Jack&quot;</span> , <span class="st">&quot;Jamestown&quot;</span>     )
 <span class="fu">&gt;</span>           ,(<span class="st">&quot;Igor&quot;</span> , <span class="st">&quot;Moscow&quot;</span>        )
-<span class="fu">&gt;</span>           ,(<span class="st">&quot;Maria&quot;</span>, <span class="st">&quot;Port-au-Prince&quot;</span>)]</code></pre>
+<span class="fu">&gt;</span>           ,(<span class="st">&quot;Maria&quot;</span>, <span class="st">&quot;Port-au-Prince&quot;</span>)]</code></pre></div>
 <p>There are signs of bad code in this, a lot of signs - <code>mrd</code> is written three times, it is complicated not only to a programmer new to the haskell world.</p>
 <p>But then there comes Edward Kmett’s lens library to the rescue.</p>]]></description>
     <pubDate>Sun, 10 Aug 2014 00:00:00 UT</pubDate>
-    <guid>http://epsilonhalbe.github.io/posts/2014-08-10-Record%20Syntax%2C%20Lenses%20and%20Prisms.html</guid>
+    <guid>//epsilonhalbe.github.io/posts/2014-08-10-Record%20Syntax%2C%20Lenses%20and%20Prisms.html</guid>
+    <dc:creator>Martin Heuschober</dc:creator>
 </item>
 <item>
     <title>Ein bisschen wie LEGO<sup>®</sup></title>
-    <link>http://epsilonhalbe.github.io/posts/2014-05-10-LikeLegos.html</link>
+    <link>//epsilonhalbe.github.io/posts/2014-05-10-LikeLegos.html</link>
     <description><![CDATA[<!--
 <link rel="stylesheet" href="highlight.js/styles/solarized_light.css">
  <link rel="stylesheet" href="reveal.js/css/reveal.css"/>
 <script src="highlight.js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 -->
-
 <h1 id="intro">Intro</h1>
 <h2 id="warum-haskell-wie-lego">Warum Haskell wie Lego?</h2>
 <p>Beim Vorbereiten meines Vortrags habe ich überlegt wie ich Leuten so etwas abstraktes wie Haskell erkläre, ohne dass ich Programmierkenntnisse voraussetze. Dabei ist mir beim Thema “Immutability” eine Stelle aus “Sophies Welt” eingefallen, in der das griechische Atommodell mit Lego verglichen wurde. Ausgehend von dieser Idee sind mir immer mehr Parallelen zwischen diesen beiden Dingen eingefallen und ihr müsst euch den Blödsinn jetzt anhören.</p>
@@ -533,7 +527,7 @@ cpt&#39; <span class="fu">=</span> cpt {name <span class="fu">=</span> <span cla
 <h2 id="beispiele">Beispiele</h2>
 <p>Ein paar Beispiele die man am besten im Interpreter <code>ghci</code> ausprobiert. Also unter MSWindows <code>winghci.exe</code> ausführen oder unter Unix ein Terminal öffnen und <code>ghci</code> aufrufen.</p>
 <hr />
-<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="kw">let</span> a <span class="fu">=</span> <span class="ch">&#39;a&#39;</span>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="kw">let</span> a <span class="fu">=</span> <span class="ch">&#39;a&#39;</span>
 <span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="fu">:</span><span class="kw">type</span> a
 <span class="ot">a ::</span> <span class="dt">Char</span>
 <span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="kw">let</span> b <span class="fu">=</span> [<span class="ch">&#39;T&#39;</span>,<span class="ch">&#39;e&#39;</span>,<span class="ch">&#39;x&#39;</span>,<span class="ch">&#39;t&#39;</span>]
@@ -545,28 +539,28 @@ cpt&#39; <span class="fu">=</span> cpt {name <span class="fu">=</span> <span cla
 <span class="dt">Prelude</span><span class="fu">&gt;</span> b <span class="fu">==</span> c
 <span class="dt">True</span>
 <span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="fu">:</span>t b <span class="fu">==</span> c
-b <span class="fu">==</span><span class="ot"> c ::</span> <span class="dt">Bool</span></code></pre>
+b <span class="fu">==</span><span class="ot"> c ::</span> <span class="dt">Bool</span></code></pre></div>
 <h1 id="haskell-ist-statisch-typisiert">Haskell ist statisch typisiert</h1>
 <h2 id="statisch-typisiert">Statisch typisiert</h2>
 <p>Wo in anderen Programmiersprachen der Buchstabe <code>'a'</code> auch als Zahl verwendet werden kann und man <code>'a'+3</code> berechnen kann und <code>'d'</code> erwartet, erhält man in Haskell eine Fehlermeldung, dass der Operator <code>(+)</code> zwei Zahlen vom gleichen Typ erwartet.</p>
 <hr />
 <p>Auch die <code>putStrLn</code>-Funktion erwartet einen <code>String</code>, den sie auf der Kommandozeile ausgibt und macht <strong>keine</strong> implizite Umwandlung, d.h.</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="dt">Prelude</span><span class="fu">&gt;</span> putStrLn <span class="dv">3</span>
-<span class="co">--lange Errormessage</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="dt">Prelude</span><span class="fu">&gt;</span> putStrLn <span class="dv">3</span>
+<span class="co">--lange Errormessage</span></code></pre></div>
 <h2 id="alles-hat-einen-typ">Alles hat einen Typ</h2>
 <p>Auch Funktionen haben einen und der wird in einer Datei z.B. <code>MyFile.hs</code> meistens dazugeschrieben:</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">f ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span>
-f x y <span class="fu">=</span> <span class="dv">2</span> <span class="fu">*</span> x <span class="fu">+</span> y</code></pre>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">f ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span>
+f x y <span class="fu">=</span> <span class="dv">2</span> <span class="fu">*</span> x <span class="fu">+</span> y</code></pre></div>
 <ul>
 <li><code>f :: Int -&gt; Int -&gt; Int</code><br> heißt: <code>f</code> nimmt einen <code>Int</code> und auch einen zweiten <code>Int</code> und liefert (das ist immer das letzte Dings in so einer Zeile) einen <code>Int</code></li>
 <li>man verwendet Klammern nur da wo sie notwendig sind</li>
 </ul>
 <h2 id="eigene-typen">Eigene Typen</h2>
 <p>Haskell erlaubt es auch sich eigene Typen auszudenken.</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">Color</span> <span class="fu">=</span> <span class="dt">Black</span> <span class="fu">|</span> <span class="dt">Red</span>     <span class="fu">|</span> <span class="dt">Green</span> <span class="fu">|</span> <span class="dt">Yellow</span>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">Color</span> <span class="fu">=</span> <span class="dt">Black</span> <span class="fu">|</span> <span class="dt">Red</span>     <span class="fu">|</span> <span class="dt">Green</span> <span class="fu">|</span> <span class="dt">Yellow</span>
            <span class="fu">|</span> <span class="dt">Blue</span>  <span class="fu">|</span> <span class="dt">Magenta</span> <span class="fu">|</span> <span class="dt">Cyan</span>  <span class="fu">|</span> <span class="dt">White</span>
 <span class="kw">data</span> <span class="dt">Dimension</span> <span class="fu">=</span> <span class="dt">Dim</span> {<span class="ot">x ::</span> <span class="dt">Int</span>,<span class="ot"> y ::</span> <span class="dt">Int</span>}
-<span class="kw">data</span> <span class="dt">Lego</span> <span class="fu">=</span> <span class="dt">Lego</span> {<span class="ot">dim ::</span> <span class="dt">Dimension</span>,<span class="ot"> color ::</span> <span class="dt">Color</span>}</code></pre>
+<span class="kw">data</span> <span class="dt">Lego</span> <span class="fu">=</span> <span class="dt">Lego</span> {<span class="ot">dim ::</span> <span class="dt">Dimension</span>,<span class="ot"> color ::</span> <span class="dt">Color</span>}</code></pre></div>
 <h1 id="haskell-ist-funktional">Haskell ist funktional</h1>
 <h2 id="funktional">Funktional</h2>
 <p>Funktionen haben keinen besonderen Status, man kann sie wie jeden anderen Typ in Variablen speichern, in Listen packen oder als Parameter in anderen Funktionen verwenden.</p>
@@ -574,7 +568,7 @@ f x y <span class="fu">=</span> <span class="dv">2</span> <span class="fu">*</sp
 <p>Baupläne! Baupläne sind genauso wie Haskell-Funktionen, immer gleich. Soll heißen wenn ich einen Bauplan zwei mal hintereinander ausführe kommt das geiche Modell heraus bzw. bei Haskell der gleiche Wert.</p>
 <p>Weiters werden in Baupläne kleine Teilbaupläne verwendet - auch in Haskell-Funktionen werden kleinere Funktionen als “Bausteine” verwendet.</p>
 <h2 id="beispiele-1">Beispiele</h2>
-<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="kw">let</span> a x <span class="fu">=</span> <span class="dv">10</span><span class="fu">*</span>x
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="kw">let</span> a x <span class="fu">=</span> <span class="dv">10</span><span class="fu">*</span>x
 <span class="dt">Prelude</span><span class="fu">&gt;</span> a <span class="dv">10</span>
 <span class="dv">100</span>
 <span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="kw">let</span> b <span class="fu">=</span> (<span class="fu">+</span>)
@@ -585,12 +579,12 @@ f x y <span class="fu">=</span> <span class="dv">2</span> <span class="fu">*</sp
 <span class="dv">2</span>
 <span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="kw">let</span> d <span class="fu">=</span> \x y <span class="ot">-&gt;</span> x<span class="fu">*</span>y
 <span class="dt">Prelude</span><span class="fu">&gt;</span> d <span class="dv">2</span> <span class="dv">3</span>
-<span class="dv">6</span></code></pre>
+<span class="dv">6</span></code></pre></div>
 <h1 id="haskell-ist-lazy">Haskell ist “lazy”</h1>
 <h2 id="lazy">Lazy</h2>
 <p>So wie beim Bau eines Lego-Hauses, wo ich ein Bauteil erst dann suche wenn ich es benötige, wird auch in Haskell Zeug erst dann ausgewertet wenn es gebraucht wird.</p>
 <hr />
-<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="kw">let</span> a <span class="fu">=</span> <span class="dv">3</span>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="kw">let</span> a <span class="fu">=</span> <span class="dv">3</span>
 <span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="fu">:</span>sprint a
 a <span class="fu">=</span> <span class="dv">3</span>
 <span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="kw">let</span> b <span class="fu">=</span> [<span class="dv">1</span><span class="fu">..</span><span class="dv">10</span>]
@@ -603,28 +597,28 @@ c <span class="fu">=</span> _
 <span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="fu">:</span>sprint b
 b <span class="fu">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>]
 <span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="fu">:</span>sprint c
-c <span class="fu">=</span> [_,_,_,_,_,_,_,_,_,_]</code></pre>
+c <span class="fu">=</span> [_,_,_,_,_,_,_,_,_,_]</code></pre></div>
 <h2 id="nochmal-lazyness-in-action">Nochmal lazyness in Action</h2>
-<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="kw">let</span> fib <span class="fu">=</span> <span class="dv">1</span><span class="fu">:</span><span class="dv">1</span><span class="fu">:</span>zipWith (<span class="fu">+</span>) fib (tail fib)
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="kw">let</span> fib <span class="fu">=</span> <span class="dv">1</span><span class="fu">:</span><span class="dv">1</span><span class="fu">:</span>zipWith (<span class="fu">+</span>) fib (tail fib)
 <span class="dt">Prelude</span><span class="fu">&gt;</span> take <span class="dv">10</span> fib
-[<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">13</span>,<span class="dv">21</span>,<span class="dv">34</span>,<span class="dv">55</span>]</code></pre>
+[<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">13</span>,<span class="dv">21</span>,<span class="dv">34</span>,<span class="dv">55</span>]</code></pre></div>
 <h1 id="noch-einmal-legos">Noch einmal Legos</h1>
 <h2 id="ghci">GHCi</h2>
-<pre class="sourceCode bash"><code class="sourceCode bash">$<span class="kw">&gt;</span> <span class="kw">ghci</span> LikeLegos.hs</code></pre>
-<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">let</span> lego <span class="fu">=</span> <span class="dt">Lego</span> (<span class="dv">1</span>×<span class="dv">4</span>)
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$<span class="kw">&gt;</span> <span class="kw">ghci</span> LikeLegos.hs</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">let</span> lego <span class="fu">=</span> <span class="dt">Lego</span> (<span class="dv">1</span>×<span class="dv">4</span>)
 <span class="kw">let</span> colors <span class="fu">=</span> [<span class="dt">Black</span> <span class="fu">..</span> <span class="dt">White</span>]
 map lego colors
 pprint <span class="fu">$</span> map lego colors
 pprint <span class="fu">$</span> map lego (colors <span class="fu">++</span> colors)
 pprint <span class="fu">$</span> map lego (colors <span class="fu">++</span> reverse colors)
 pprint <span class="fu">$</span> map lego (colors <span class="fu">++</span> tail (reverse colors))
-<span class="kw">let</span> legos <span class="fu">=</span> map lego (colors <span class="fu">++</span> tail (reverse colors))</code></pre>
+<span class="kw">let</span> legos <span class="fu">=</span> map lego (colors <span class="fu">++</span> tail (reverse colors))</code></pre></div>
 <hr />
-<pre class="sourceCode haskell"><code class="sourceCode haskell">pprint <span class="fu">$</span> map (setX <span class="dv">2</span>) <span class="fu">$</span> legos&#39;
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">pprint <span class="fu">$</span> map (setX <span class="dv">2</span>) <span class="fu">$</span> legos&#39;
 pprint <span class="fu">$</span> map (setColor <span class="dt">Red</span> <span class="fu">.</span> setX <span class="dv">2</span>) legos&#39;
 pprint <span class="fu">$</span> zipWith setY [<span class="dv">1</span><span class="fu">..</span>] (map (setColor <span class="dt">Red</span>) legos&#39;)
 pprint <span class="fu">$</span> zipWith setY ([<span class="dv">1</span><span class="fu">..</span><span class="dv">8</span>]<span class="fu">++</span>[<span class="dv">7</span>,<span class="dv">6</span><span class="fu">..</span><span class="dv">1</span>]) legos&#39;
-pprint <span class="fu">$</span> zipWith setY (map (\x <span class="ot">-&gt;</span> <span class="dv">9</span><span class="fu">-</span>x) ([<span class="dv">1</span><span class="fu">..</span><span class="dv">8</span>]<span class="fu">++</span>[<span class="dv">7</span>,<span class="dv">6</span><span class="fu">..</span><span class="dv">1</span>])) legos&#39;</code></pre>
+pprint <span class="fu">$</span> zipWith setY (map (\x <span class="ot">-&gt;</span> <span class="dv">9</span><span class="fu">-</span>x) ([<span class="dv">1</span><span class="fu">..</span><span class="dv">8</span>]<span class="fu">++</span>[<span class="dv">7</span>,<span class="dv">6</span><span class="fu">..</span><span class="dv">1</span>])) legos&#39;</code></pre></div>
 <h1 id="was-brauche-ich-zum-herumspielen">Was brauche ich zum herumspielen?</h1>
 <h2 id="compiler">Compiler</h2>
 <ul>
@@ -664,8 +658,9 @@ pprint <span class="fu">$</span> zipWith setY (map (\x <span class="ot">-&gt;</s
 <li><a href="http://stackoverflow.com/questions/tagged/haskell">www.stackoverflow.com</a></li>
 </ul>]]></description>
     <pubDate>Sat, 10 May 2014 00:00:00 UT</pubDate>
-    <guid>http://epsilonhalbe.github.io/posts/2014-05-10-LikeLegos.html</guid>
+    <guid>//epsilonhalbe.github.io/posts/2014-05-10-LikeLegos.html</guid>
+    <dc:creator>Martin Heuschober</dc:creator>
 </item>
 
-    </channel> 
+    </channel>
 </rss>

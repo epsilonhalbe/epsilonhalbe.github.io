@@ -10,12 +10,14 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="description" content="A site about programming, cooking and other stuff" />
 <meta name="keywords" content="haskell, linux, programming, functional programming, cooking" />
-<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,700|Open+Sans+Condensed:300,700" rel="stylesheet" />
+<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,700|Open+Sans+Condensed:300,700" rel="stylesheet" />
 <link rel="shortcut icon" href="favicon.ico" />
 <script src="../css/js/jquery.min.js"></script>
 <script src="../css/js/skel.min.js"></script>
 <script src="../css/js/skel-panels.min.js"></script>
 <script src="../css/js/init.js"></script>
+<link rel="stylesheet" href="../css/default.css" />
+<link rel="stylesheet" href="../css/syntax.css" />
 <noscript>
   <link rel="stylesheet" href="../css/skel-noscript.css" />
   <link rel="stylesheet" href="../css/style.css" />
@@ -41,7 +43,9 @@
     </header>
     
     <div class="info">
-            <span class="date"><span class="month">Sep<span>tember</span></span> <span class="day"> 7</span><span class="year">, 2014</span></span>
+            <span class="date"><span class="month">Sep<span>tember</span></span>
+                               <span class="day"> 7</span><span class="month"><span>, </span></span>
+                               <span class="year">2014</span></span>
         <!--
         <ul class="stats">
             <li><a href="#" class="fa fa-comment" > 16</a></li>
@@ -90,8 +94,7 @@
 
 
 -->
-
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Town</span> <span class="fu">=</span> <span class="dt">Prague</span> <span class="fu">|</span> <span class="dt">Vienna</span> <span class="fu">|</span> <span class="dt">Kingston</span> <span class="fu">|</span> <span class="dt">London</span> <span class="fu">|</span> <span class="dt">Hipsterhausen</span> <span class="kw">deriving</span> (<span class="dt">Show</span>, <span class="dt">Eq</span>)
 
 <span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Pirate</span> <span class="fu">=</span> <span class="dt">Captain</span>   { _<span class="ot">attributes ::</span> <span class="dt">Human</span>, _<span class="ot">ship ::</span> <span class="dt">String</span>}
@@ -100,13 +103,13 @@
 
 <span class="fu">&gt;</span> makeLenses <span class="ch">''</span><span class="dt">Human</span>
 <span class="fu">&gt;</span> makeLenses <span class="ch">''</span><span class="dt">Body</span>
-<span class="fu">&gt;</span> makeLenses <span class="ch">''</span><span class="dt">Pirate</span></code></pre>
+<span class="fu">&gt;</span> makeLenses <span class="ch">''</span><span class="dt">Pirate</span></code></pre></div>
 <p>Pirate is a sum type - with different records in each constructor.</p>
 <h2 id="a-tangent-on-sums-and-products">A tangent on sums and products</h2>
 <h3 id="sums">Sums</h3>
 <p>Why is the above called a sum type, just let us calculate the number of options we have in a sum type:</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="kw">data</span> <span class="dt">Sum</span> <span class="fu">=</span> <span class="dt">One</span> <span class="fu">|</span> <span class="dt">Two</span> <span class="fu">|</span> <span class="dt">Three</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
+<span class="kw">data</span> <span class="dt">Sum</span> <span class="fu">=</span> <span class="dt">One</span> <span class="fu">|</span> <span class="dt">Two</span> <span class="fu">|</span> <span class="dt">Three</span></code></pre></div>
 <p>If I have a variable <code>x :: Sum</code> it has exactly three values it can be</p>
 <ul>
 <li><code>x = One</code></li>
@@ -116,8 +119,8 @@
 <p>so the sum of the number of constructors is the solution of how many options <code>x</code> can be.</p>
 <h3 id="product">Product</h3>
 <p>So how come product types to their names - you might already guess it.</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="kw">data</span> <span class="dt">Product</span> <span class="fu">=</span> <span class="dt">P</span> <span class="dt">Sum</span> <span class="dt">Sum</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
+<span class="kw">data</span> <span class="dt">Product</span> <span class="fu">=</span> <span class="dt">P</span> <span class="dt">Sum</span> <span class="dt">Sum</span></code></pre></div>
 <p>For a variable <code>y :: Product</code> we find <code>y</code> can be <code>|Sum|×|Sum|</code> many possible values:</p>
 <ul>
 <li><code>y = P One One</code></li>
@@ -132,11 +135,11 @@
 </ul>
 <h3 id="so-can-anybody-find-what-exponential-types-are">So can anybody find what exponential types are?</h3>
 <p>The answer is functions</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="kw">data</span> <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">One</span> <span class="fu">|</span> <span class="dt">Two</span>
-<span class="kw">data</span> <span class="dt">THREE</span> <span class="fu">=</span> <span class="dt">ONE</span> <span class="fu">|</span> <span class="dt">TWO</span> <span class="fu">|</span> <span class="dt">THREE</span></code></pre>
+<span class="kw">data</span> <span class="dt">THREE</span> <span class="fu">=</span> <span class="dt">ONE</span> <span class="fu">|</span> <span class="dt">TWO</span> <span class="fu">|</span> <span class="dt">THREE</span></code></pre></div>
 <p>So the functions from <code>Two -&gt; THREE</code> have exactly <code>|Two|^|THREE|</code> many elements.</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 one,two,three,four,five,six,seven,<span class="ot">eight ::</span> <span class="dt">Two</span> <span class="ot">-&gt;</span> <span class="dt">THREE</span>
 one   <span class="dt">One</span> <span class="fu">=</span> <span class="dt">ONE</span>
 one   <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">ONE</span>
@@ -153,22 +156,22 @@ six   <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">THR
 seven <span class="dt">One</span> <span class="fu">=</span> <span class="dt">THREE</span>
 seven <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">ONE</span>
 eight <span class="dt">One</span> <span class="fu">=</span> <span class="dt">THREE</span>
-eight <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">TWO</span></code></pre>
+eight <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">TWO</span></code></pre></div>
 <h2 id="back-to-prisms">Back to Prisms</h2>
 <p>The problem with lenses is that <code>cpt</code> some getters don’t make sense. For datatypes that have a special elements, so called monoids like <code>String</code> with <code>&quot;&quot;</code> we get special getters, but for <code>Town</code> for example …</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="dt">Prelude</span> <span class="fu">&gt;</span> cpt<span class="fu">^.</span>shanty
 <span class="st">&quot;&quot;</span>
 <span class="dt">Prelude</span> <span class="fu">&gt;</span> cpt<span class="fu">^.</span>hometown
 <span class="fu">...</span>
 error message complaining about <span class="dt">Town</span> not being a monoid
-<span class="fu">...</span></code></pre>
+<span class="fu">...</span></code></pre></div>
 <p>So an easy way to get <em>special</em> elements is combining it with <code>Maybe</code>. And that’s what prisms are - getters with <code>Maybe</code>-values instead of errors.</p>
 <p>So how do we get them - again as with prisms we (have to) build them with template haskell magic using</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="fu">&gt;</span> makePrisms <span class="ch">''</span><span class="dt">Human</span>
 <span class="fu">&gt;</span> makePrisms <span class="ch">''</span><span class="dt">Body</span>
-<span class="fu">&gt;</span> makePrisms <span class="ch">''</span><span class="dt">Pirate</span></code></pre>
+<span class="fu">&gt;</span> makePrisms <span class="ch">''</span><span class="dt">Pirate</span></code></pre></div>
 <p>This magic words create “Constructors” <code>_Captain</code>, <code>_FirstMate</code> and <code>_Marauder</code> and the lens library provides functions <code>preview</code>, <code>review</code> and <code>^?</code>.</p>
 <!--
 
@@ -215,24 +218,23 @@ error message complaining about <span class="dt">Town</span> not being a monoid
 >                }
 
 -->
-
 <p>Now what are those functions doing - they select one <em>branch</em> in a sum type.</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="dt">Prelude</span> <span class="fu">&gt;</span> preview _<span class="dt">Captain</span> cpt
 <span class="dt">Just</span> (<span class="dt">Attributes</span> {<span class="fu">...</span>},<span class="st">&quot;SS Sea Serpent&quot;</span>)
 <span class="dt">Prelude</span> <span class="fu">&gt;</span> preview _<span class="dt">Captain</span> mrd
-<span class="dt">Nothing</span></code></pre>
+<span class="dt">Nothing</span></code></pre></div>
 <p>But there is also an infix shortcut for <code>preview</code> - <code>(^?)</code> so we could have written the above <code>cpt^._Captain</code> or use it with accessor-like functions as <code>hometown</code>,<code>ship</code>,<code>shanty</code> or <code>attributes</code>.</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="dt">Prelude</span> <span class="fu">&gt;</span> cpt<span class="fu">^?</span>hometown
 <span class="dt">Nothing</span>
 <span class="dt">Prelude</span> <span class="fu">&gt;</span> cpt<span class="fu">^?</span>ship
 <span class="dt">Just</span> <span class="st">&quot;SS Sea Serpent&quot;</span>
 <span class="dt">Prelude</span> <span class="fu">&gt;</span> mrd<span class="fu">^?</span>hometown
-<span class="dt">Just</span> <span class="dt">Hipsterhausen</span></code></pre>
+<span class="dt">Just</span> <span class="dt">Hipsterhausen</span></code></pre></div>
 <h3 id="so-what-about-review">So what about <code>review</code>?</h3>
 <p>The <code>review</code> function can create new things from the results of <code>preview</code>, well not exactly but almost and with use of <code>(&lt;$&gt;)</code> from <code>Control.Applicative</code> we can make them work together</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="fu">:</span>t preview _<span class="dt">Captain</span> cpt
 preview _<span class="dt">Captain</span><span class="ot"> cpt ::</span> <span class="dt">Maybe</span> (<span class="dt">Human</span>, <span class="dt">String</span>)
 <span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="kw">let</span> <span class="dt">Just</span> x <span class="fu">=</span> preview _<span class="dt">Captain</span> cpt
@@ -246,7 +248,7 @@ review _<span class="dt">Captain</span> <span class="fu">&lt;$&gt;</span> previe
 <span class="dt">Nothing</span>
 <span class="dt">Prelude</span><span class="fu">&gt;</span> review _<span class="dt">Captain</span> <span class="fu">&lt;$&gt;</span> preview _<span class="dt">Marauder</span> mrd
 <span class="fu">...</span> <span class="dt">Error</span> <span class="fu">...</span> <span class="co">-- Captain needs String (ship name) where Marauder has a Town as</span>
-a second argument</code></pre>
+a second argument</code></pre></div>
 <p>So Prisms do not fix everything - but provide a safety layer for simple accessing stuff and sometimes for generating stuff as well.</p>
 <p>So thats all I know about Lenses and Prisms - for understanding the type signatures - I still do not feel confident to present about.</p>
     </p>
@@ -282,7 +284,7 @@ a second argument</code></pre>
 
     <div id="copyright">
   <p>
-  Content: © by Martin Heuschober.<br />
+  Content: &copy; by Martin Heuschober.<br />
   Design: <a href="http://html5up.net/">HTML5 UP</a><br />
   Proudly generated with <a href="http://jaspervdj.be/hakyll/">hakyll</a>!<br />
   Unless otherwisely noted every content is published under a creative commons

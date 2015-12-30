@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"
+    xmlns:dc="http://purl.org/dc/elements/1.1/">
     <channel>
         <title>bricolage - Posts tagged uni</title>
-        <link>http://epsilonhalbe.github.io</link>
+        <link>//epsilonhalbe.github.io</link>
         <description><![CDATA[Personal blog of epsilonhalbe]]></description>
-        <atom:link href="http://epsilonhalbe.github.io/tags/uni.xml" rel="self"
+        <atom:link href="//epsilonhalbe.github.io/tags/uni.xml" rel="self"
                    type="application/rss+xml" />
         <lastBuildDate>Wed, 28 May 2014 00:00:00 UT</lastBuildDate>
         <item>
     <title>Gibt es ein Leben nach der Uni</title>
-    <link>http://epsilonhalbe.github.io/posts/2014-05-28-Infoveranstaltung.html</link>
+    <link>//epsilonhalbe.github.io/posts/2014-05-28-Infoveranstaltung.html</link>
     <description><![CDATA[<h1 id="studis-life-after-uni">∀ Studis: ∃: Life after Uni ??</h1>
 <h2 id="martin-heuschober">Martin Heuschober</h2>
 <h2 id="mai-2014">28. Mai 2014</h2>
@@ -109,8 +110,9 @@
 <p>Wenn du jetzt noch Fragen hast - schreib mir eine Email, frag die Leute von der <a href="http://rotervektor.blogspot.co.at/">Studierendenvertretung</a>, einen Freund oder Freundin, Professor oder Kollegen.</p>
 <p>Dein Martin Heuschober</p>]]></description>
     <pubDate>Wed, 28 May 2014 00:00:00 UT</pubDate>
-    <guid>http://epsilonhalbe.github.io/posts/2014-05-28-Infoveranstaltung.html</guid>
+    <guid>//epsilonhalbe.github.io/posts/2014-05-28-Infoveranstaltung.html</guid>
+    <dc:creator>Martin Heuschober</dc:creator>
 </item>
 
-    </channel> 
+    </channel>
 </rss>

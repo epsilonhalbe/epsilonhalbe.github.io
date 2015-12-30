@@ -10,12 +10,14 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="description" content="A site about programming, cooking and other stuff" />
 <meta name="keywords" content="haskell, linux, programming, functional programming, cooking" />
-<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,700|Open+Sans+Condensed:300,700" rel="stylesheet" />
+<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,700|Open+Sans+Condensed:300,700" rel="stylesheet" />
 <link rel="shortcut icon" href="favicon.ico" />
 <script src="../css/js/jquery.min.js"></script>
 <script src="../css/js/skel.min.js"></script>
 <script src="../css/js/skel-panels.min.js"></script>
 <script src="../css/js/init.js"></script>
+<link rel="stylesheet" href="../css/default.css" />
+<link rel="stylesheet" href="../css/syntax.css" />
 <noscript>
   <link rel="stylesheet" href="../css/skel-noscript.css" />
   <link rel="stylesheet" href="../css/style.css" />
@@ -41,7 +43,9 @@
     </header>
     
     <div class="info">
-            <span class="date"><span class="month">May<span></span></span> <span class="day">10</span><span class="year">, 2014</span></span>
+            <span class="date"><span class="month">May<span></span></span>
+                               <span class="day">10</span><span class="month"><span>, </span></span>
+                               <span class="year">2014</span></span>
         <!--
         <ul class="stats">
             <li><a href="#" class="fa fa-comment" > 16</a></li>
@@ -59,7 +63,6 @@
 <script src="highlight.js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 -->
-
 <h2 id="intro">Intro</h2>
 <h3 id="warum-haskell-wie-lego">Warum Haskell wie Lego?</h3>
 <p>Beim Vorbereiten meines Vortrags habe ich überlegt wie ich Leuten so etwas abstraktes wie Haskell erkläre, ohne dass ich Programmierkenntnisse voraussetze. Dabei ist mir beim Thema “Immutability” eine Stelle aus “Sophies Welt” eingefallen, in der das griechische Atommodell mit Lego verglichen wurde. Ausgehend von dieser Idee sind mir immer mehr Parallelen zwischen diesen beiden Dingen eingefallen und ihr müsst euch den Blödsinn jetzt anhören.</p>
@@ -88,7 +91,7 @@
 <h3 id="beispiele">Beispiele</h3>
 <p>Ein paar Beispiele die man am besten im Interpreter <code>ghci</code> ausprobiert. Also unter MSWindows <code>winghci.exe</code> ausführen oder unter Unix ein Terminal öffnen und <code>ghci</code> aufrufen.</p>
 <hr />
-<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="kw">let</span> a <span class="fu">=</span> <span class="ch">'a'</span>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="kw">let</span> a <span class="fu">=</span> <span class="ch">'a'</span>
 <span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="fu">:</span><span class="kw">type</span> a
 <span class="ot">a ::</span> <span class="dt">Char</span>
 <span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="kw">let</span> b <span class="fu">=</span> [<span class="ch">'T'</span>,<span class="ch">'e'</span>,<span class="ch">'x'</span>,<span class="ch">'t'</span>]
@@ -100,28 +103,28 @@
 <span class="dt">Prelude</span><span class="fu">&gt;</span> b <span class="fu">==</span> c
 <span class="dt">True</span>
 <span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="fu">:</span>t b <span class="fu">==</span> c
-b <span class="fu">==</span><span class="ot"> c ::</span> <span class="dt">Bool</span></code></pre>
+b <span class="fu">==</span><span class="ot"> c ::</span> <span class="dt">Bool</span></code></pre></div>
 <h2 id="haskell-ist-statisch-typisiert">Haskell ist statisch typisiert</h2>
 <h3 id="statisch-typisiert">Statisch typisiert</h3>
 <p>Wo in anderen Programmiersprachen der Buchstabe <code>'a'</code> auch als Zahl verwendet werden kann und man <code>'a'+3</code> berechnen kann und <code>'d'</code> erwartet, erhält man in Haskell eine Fehlermeldung, dass der Operator <code>(+)</code> zwei Zahlen vom gleichen Typ erwartet.</p>
 <hr />
 <p>Auch die <code>putStrLn</code>-Funktion erwartet einen <code>String</code>, den sie auf der Kommandozeile ausgibt und macht <strong>keine</strong> implizite Umwandlung, d.h.</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="dt">Prelude</span><span class="fu">&gt;</span> putStrLn <span class="dv">3</span>
-<span class="co">--lange Errormessage</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="dt">Prelude</span><span class="fu">&gt;</span> putStrLn <span class="dv">3</span>
+<span class="co">--lange Errormessage</span></code></pre></div>
 <h3 id="alles-hat-einen-typ">Alles hat einen Typ</h3>
 <p>Auch Funktionen haben einen und der wird in einer Datei z.B. <code>MyFile.hs</code> meistens dazugeschrieben:</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">f ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span>
-f x y <span class="fu">=</span> <span class="dv">2</span> <span class="fu">*</span> x <span class="fu">+</span> y</code></pre>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">f ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span>
+f x y <span class="fu">=</span> <span class="dv">2</span> <span class="fu">*</span> x <span class="fu">+</span> y</code></pre></div>
 <ul>
 <li><code>f :: Int -&gt; Int -&gt; Int</code><br> heißt: <code>f</code> nimmt einen <code>Int</code> und auch einen zweiten <code>Int</code> und liefert (das ist immer das letzte Dings in so einer Zeile) einen <code>Int</code></li>
 <li>man verwendet Klammern nur da wo sie notwendig sind</li>
 </ul>
 <h3 id="eigene-typen">Eigene Typen</h3>
 <p>Haskell erlaubt es auch sich eigene Typen auszudenken.</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">Color</span> <span class="fu">=</span> <span class="dt">Black</span> <span class="fu">|</span> <span class="dt">Red</span>     <span class="fu">|</span> <span class="dt">Green</span> <span class="fu">|</span> <span class="dt">Yellow</span>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">Color</span> <span class="fu">=</span> <span class="dt">Black</span> <span class="fu">|</span> <span class="dt">Red</span>     <span class="fu">|</span> <span class="dt">Green</span> <span class="fu">|</span> <span class="dt">Yellow</span>
            <span class="fu">|</span> <span class="dt">Blue</span>  <span class="fu">|</span> <span class="dt">Magenta</span> <span class="fu">|</span> <span class="dt">Cyan</span>  <span class="fu">|</span> <span class="dt">White</span>
 <span class="kw">data</span> <span class="dt">Dimension</span> <span class="fu">=</span> <span class="dt">Dim</span> {<span class="ot">x ::</span> <span class="dt">Int</span>,<span class="ot"> y ::</span> <span class="dt">Int</span>}
-<span class="kw">data</span> <span class="dt">Lego</span> <span class="fu">=</span> <span class="dt">Lego</span> {<span class="ot">dim ::</span> <span class="dt">Dimension</span>,<span class="ot"> color ::</span> <span class="dt">Color</span>}</code></pre>
+<span class="kw">data</span> <span class="dt">Lego</span> <span class="fu">=</span> <span class="dt">Lego</span> {<span class="ot">dim ::</span> <span class="dt">Dimension</span>,<span class="ot"> color ::</span> <span class="dt">Color</span>}</code></pre></div>
 <h2 id="haskell-ist-funktional">Haskell ist funktional</h2>
 <h3 id="funktional">Funktional</h3>
 <p>Funktionen haben keinen besonderen Status, man kann sie wie jeden anderen Typ in Variablen speichern, in Listen packen oder als Parameter in anderen Funktionen verwenden.</p>
@@ -129,7 +132,7 @@ f x y <span class="fu">=</span> <span class="dv">2</span> <span class="fu">*</sp
 <p>Baupläne! Baupläne sind genauso wie Haskell-Funktionen, immer gleich. Soll heißen wenn ich einen Bauplan zwei mal hintereinander ausführe kommt das geiche Modell heraus bzw. bei Haskell der gleiche Wert.</p>
 <p>Weiters werden in Baupläne kleine Teilbaupläne verwendet - auch in Haskell-Funktionen werden kleinere Funktionen als “Bausteine” verwendet.</p>
 <h3 id="beispiele-1">Beispiele</h3>
-<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="kw">let</span> a x <span class="fu">=</span> <span class="dv">10</span><span class="fu">*</span>x
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="kw">let</span> a x <span class="fu">=</span> <span class="dv">10</span><span class="fu">*</span>x
 <span class="dt">Prelude</span><span class="fu">&gt;</span> a <span class="dv">10</span>
 <span class="dv">100</span>
 <span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="kw">let</span> b <span class="fu">=</span> (<span class="fu">+</span>)
@@ -140,12 +143,12 @@ f x y <span class="fu">=</span> <span class="dv">2</span> <span class="fu">*</sp
 <span class="dv">2</span>
 <span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="kw">let</span> d <span class="fu">=</span> \x y <span class="ot">-&gt;</span> x<span class="fu">*</span>y
 <span class="dt">Prelude</span><span class="fu">&gt;</span> d <span class="dv">2</span> <span class="dv">3</span>
-<span class="dv">6</span></code></pre>
+<span class="dv">6</span></code></pre></div>
 <h2 id="haskell-ist-lazy">Haskell ist “lazy”</h2>
 <h3 id="lazy">Lazy</h3>
 <p>So wie beim Bau eines Lego-Hauses, wo ich ein Bauteil erst dann suche wenn ich es benötige, wird auch in Haskell Zeug erst dann ausgewertet wenn es gebraucht wird.</p>
 <hr />
-<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="kw">let</span> a <span class="fu">=</span> <span class="dv">3</span>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="kw">let</span> a <span class="fu">=</span> <span class="dv">3</span>
 <span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="fu">:</span>sprint a
 a <span class="fu">=</span> <span class="dv">3</span>
 <span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="kw">let</span> b <span class="fu">=</span> [<span class="dv">1</span><span class="fu">..</span><span class="dv">10</span>]
@@ -158,28 +161,28 @@ c <span class="fu">=</span> _
 <span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="fu">:</span>sprint b
 b <span class="fu">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>]
 <span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="fu">:</span>sprint c
-c <span class="fu">=</span> [_,_,_,_,_,_,_,_,_,_]</code></pre>
+c <span class="fu">=</span> [_,_,_,_,_,_,_,_,_,_]</code></pre></div>
 <h3 id="nochmal-lazyness-in-action">Nochmal lazyness in Action</h3>
-<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="kw">let</span> fib <span class="fu">=</span> <span class="dv">1</span><span class="fu">:</span><span class="dv">1</span><span class="fu">:</span>zipWith (<span class="fu">+</span>) fib (tail fib)
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="kw">let</span> fib <span class="fu">=</span> <span class="dv">1</span><span class="fu">:</span><span class="dv">1</span><span class="fu">:</span>zipWith (<span class="fu">+</span>) fib (tail fib)
 <span class="dt">Prelude</span><span class="fu">&gt;</span> take <span class="dv">10</span> fib
-[<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">13</span>,<span class="dv">21</span>,<span class="dv">34</span>,<span class="dv">55</span>]</code></pre>
+[<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">13</span>,<span class="dv">21</span>,<span class="dv">34</span>,<span class="dv">55</span>]</code></pre></div>
 <h2 id="noch-einmal-legos">Noch einmal Legos</h2>
 <h3 id="ghci">GHCi</h3>
-<pre class="sourceCode bash"><code class="sourceCode bash">$<span class="kw">&gt;</span> <span class="kw">ghci</span> LikeLegos.hs</code></pre>
-<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">let</span> lego <span class="fu">=</span> <span class="dt">Lego</span> (<span class="dv">1</span>×<span class="dv">4</span>)
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$<span class="kw">&gt;</span> <span class="kw">ghci</span> LikeLegos.hs</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">let</span> lego <span class="fu">=</span> <span class="dt">Lego</span> (<span class="dv">1</span>×<span class="dv">4</span>)
 <span class="kw">let</span> colors <span class="fu">=</span> [<span class="dt">Black</span> <span class="fu">..</span> <span class="dt">White</span>]
 map lego colors
 pprint <span class="fu">$</span> map lego colors
 pprint <span class="fu">$</span> map lego (colors <span class="fu">++</span> colors)
 pprint <span class="fu">$</span> map lego (colors <span class="fu">++</span> reverse colors)
 pprint <span class="fu">$</span> map lego (colors <span class="fu">++</span> tail (reverse colors))
-<span class="kw">let</span> legos <span class="fu">=</span> map lego (colors <span class="fu">++</span> tail (reverse colors))</code></pre>
+<span class="kw">let</span> legos <span class="fu">=</span> map lego (colors <span class="fu">++</span> tail (reverse colors))</code></pre></div>
 <hr />
-<pre class="sourceCode haskell"><code class="sourceCode haskell">pprint <span class="fu">$</span> map (setX <span class="dv">2</span>) <span class="fu">$</span> legos'
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">pprint <span class="fu">$</span> map (setX <span class="dv">2</span>) <span class="fu">$</span> legos'
 pprint <span class="fu">$</span> map (setColor <span class="dt">Red</span> <span class="fu">.</span> setX <span class="dv">2</span>) legos'
 pprint <span class="fu">$</span> zipWith setY [<span class="dv">1</span><span class="fu">..</span>] (map (setColor <span class="dt">Red</span>) legos')
 pprint <span class="fu">$</span> zipWith setY ([<span class="dv">1</span><span class="fu">..</span><span class="dv">8</span>]<span class="fu">++</span>[<span class="dv">7</span>,<span class="dv">6</span><span class="fu">..</span><span class="dv">1</span>]) legos'
-pprint <span class="fu">$</span> zipWith setY (map (\x <span class="ot">-&gt;</span> <span class="dv">9</span><span class="fu">-</span>x) ([<span class="dv">1</span><span class="fu">..</span><span class="dv">8</span>]<span class="fu">++</span>[<span class="dv">7</span>,<span class="dv">6</span><span class="fu">..</span><span class="dv">1</span>])) legos'</code></pre>
+pprint <span class="fu">$</span> zipWith setY (map (\x <span class="ot">-&gt;</span> <span class="dv">9</span><span class="fu">-</span>x) ([<span class="dv">1</span><span class="fu">..</span><span class="dv">8</span>]<span class="fu">++</span>[<span class="dv">7</span>,<span class="dv">6</span><span class="fu">..</span><span class="dv">1</span>])) legos'</code></pre></div>
 <h2 id="was-brauche-ich-zum-herumspielen">Was brauche ich zum herumspielen?</h2>
 <h3 id="compiler">Compiler</h3>
 <ul>
@@ -251,7 +254,7 @@ pprint <span class="fu">$</span> zipWith setY (map (\x <span class="ot">-&gt;</s
 
     <div id="copyright">
   <p>
-  Content: © by Martin Heuschober.<br />
+  Content: &copy; by Martin Heuschober.<br />
   Design: <a href="http://html5up.net/">HTML5 UP</a><br />
   Proudly generated with <a href="http://jaspervdj.be/hakyll/">hakyll</a>!<br />
   Unless otherwisely noted every content is published under a creative commons

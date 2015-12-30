@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"
+    xmlns:dc="http://purl.org/dc/elements/1.1/">
     <channel>
         <title>bricolage - Posts tagged rezepte</title>
-        <link>http://epsilonhalbe.github.io</link>
+        <link>//epsilonhalbe.github.io</link>
         <description><![CDATA[Personal blog of epsilonhalbe]]></description>
-        <atom:link href="http://epsilonhalbe.github.io/tags/rezepte.xml" rel="self"
+        <atom:link href="//epsilonhalbe.github.io/tags/rezepte.xml" rel="self"
                    type="application/rss+xml" />
         <lastBuildDate>Tue, 24 Jun 2014 00:00:00 UT</lastBuildDate>
         <item>
     <title>Tiramisu</title>
-    <link>http://epsilonhalbe.github.io/posts/2014-06-24-Tiramisu.html</link>
+    <link>//epsilonhalbe.github.io/posts/2014-06-24-Tiramisu.html</link>
     <description><![CDATA[<h1 id="tiramisu">Tiramisu</h1>
 <h2 id="personen">10 Personen</h2>
 <blockquote>
@@ -26,11 +27,12 @@
 <p>Schlagobers + Zucker schlagen, Quimic beimengen, Mascarpone beimengen. Biskotten kurz in Rum + Pago (oder Kaffee) tunken, und abwechselnd mit Mascarpone, Erdbeeren in Lagen aufschichten.</p>
 <p><strong>Alternativ</strong>: Erdbeeren durch Ananas ersetzen.</p>]]></description>
     <pubDate>Tue, 24 Jun 2014 00:00:00 UT</pubDate>
-    <guid>http://epsilonhalbe.github.io/posts/2014-06-24-Tiramisu.html</guid>
+    <guid>//epsilonhalbe.github.io/posts/2014-06-24-Tiramisu.html</guid>
+    <dc:creator>Martin Heuschober</dc:creator>
 </item>
 <item>
     <title>Mohnstrudl</title>
-    <link>http://epsilonhalbe.github.io/posts/2014-06-24-Mohnstrudl.html</link>
+    <link>//epsilonhalbe.github.io/posts/2014-06-24-Mohnstrudl.html</link>
     <description><![CDATA[<h1 id="kranzkuchen-mohnstrudel">Kranzkuchen Mohnstrudel</h1>
 <h2 id="teig">Teig</h2>
 <blockquote>
@@ -60,11 +62,12 @@
 <p>Teig ausrollen mit Mohnmasse bestreichen, einrollen mit Ei bestreichen, Hagelzucker darüber streuen und einschneiden.</p>
 <p>Bei 160°C im offenen Backrohr, dann 35 min geschlossen backen.</p>]]></description>
     <pubDate>Tue, 24 Jun 2014 00:00:00 UT</pubDate>
-    <guid>http://epsilonhalbe.github.io/posts/2014-06-24-Mohnstrudl.html</guid>
+    <guid>//epsilonhalbe.github.io/posts/2014-06-24-Mohnstrudl.html</guid>
+    <dc:creator>Martin Heuschober</dc:creator>
 </item>
 <item>
     <title>Marillenknödel</title>
-    <link>http://epsilonhalbe.github.io/posts/2014-06-24-Marillenkn%C3%B6del.html</link>
+    <link>//epsilonhalbe.github.io/posts/2014-06-24-Marillenkn%C3%B6del.html</link>
     <description><![CDATA[<h1 id="marillenknödel">Marillenknödel</h1>
 <h2 id="teig">Teig</h2>
 <blockquote>
@@ -89,11 +92,12 @@
 </blockquote>
 <p>Topfenteig in flache Scheibe formen, Marille einlegen und mit Teig umwickeln. Wasser kochen Knödel 8-10 min kochen dann in Brösel wälzen</p>]]></description>
     <pubDate>Tue, 24 Jun 2014 00:00:00 UT</pubDate>
-    <guid>http://epsilonhalbe.github.io/posts/2014-06-24-Marillenkn%C3%B6del.html</guid>
+    <guid>//epsilonhalbe.github.io/posts/2014-06-24-Marillenkn%C3%B6del.html</guid>
+    <dc:creator>Martin Heuschober</dc:creator>
 </item>
 <item>
     <title>Cantucchini</title>
-    <link>http://epsilonhalbe.github.io/posts/2014-06-24-Cantucchini.html</link>
+    <link>//epsilonhalbe.github.io/posts/2014-06-24-Cantucchini.html</link>
     <description><![CDATA[<h1 id="cantucchini">Cantucchini</h1>
 <blockquote>
 <p>4 Eier</p>
@@ -104,8 +108,9 @@
 </blockquote>
 <p>Zutaten vermengen und in 3 cm breite, 1 cm hohe Streifen auf Backpapier verteilen. Bei 180°C im Backrohr 20 - 25 min backen. Auskühlen lassen und in 1 cm breite Streifen schneiden.</p>]]></description>
     <pubDate>Tue, 24 Jun 2014 00:00:00 UT</pubDate>
-    <guid>http://epsilonhalbe.github.io/posts/2014-06-24-Cantucchini.html</guid>
+    <guid>//epsilonhalbe.github.io/posts/2014-06-24-Cantucchini.html</guid>
+    <dc:creator>Martin Heuschober</dc:creator>
 </item>
 
-    </channel> 
+    </channel>
 </rss>
