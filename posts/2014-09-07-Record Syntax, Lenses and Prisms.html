@@ -97,9 +97,9 @@
 <div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Town</span> <span class="fu">=</span> <span class="dt">Prague</span> <span class="fu">|</span> <span class="dt">Vienna</span> <span class="fu">|</span> <span class="dt">Kingston</span> <span class="fu">|</span> <span class="dt">London</span> <span class="fu">|</span> <span class="dt">Hipsterhausen</span> <span class="kw">deriving</span> (<span class="dt">Show</span>, <span class="dt">Eq</span>)
 
-<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Pirate</span> <span class="fu">=</span> <span class="dt">Captain</span>   { _<span class="ot">attributes ::</span> <span class="dt">Human</span>, _<span class="ot">ship ::</span> <span class="dt">String</span>}
-<span class="fu">&gt;</span>             <span class="fu">|</span> <span class="dt">FirstMate</span> { _<span class="ot">attributes ::</span> <span class="dt">Human</span>, _<span class="ot">shanty ::</span> <span class="dt">String</span>}
-<span class="fu">&gt;</span>             <span class="fu">|</span> <span class="dt">Marauder</span>  { _<span class="ot">attributes ::</span> <span class="dt">Human</span>, _<span class="ot">hometown ::</span> <span class="dt">Town</span>}
+<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Pirate</span> <span class="fu">=</span> <span class="dt">Captain</span>   {<span class="ot"> _attributes ::</span> <span class="dt">Human</span>,<span class="ot"> _ship ::</span> <span class="dt">String</span>}
+<span class="fu">&gt;</span>             <span class="fu">|</span> <span class="dt">FirstMate</span> {<span class="ot"> _attributes ::</span> <span class="dt">Human</span>,<span class="ot"> _shanty ::</span> <span class="dt">String</span>}
+<span class="fu">&gt;</span>             <span class="fu">|</span> <span class="dt">Marauder</span>  {<span class="ot"> _attributes ::</span> <span class="dt">Human</span>,<span class="ot"> _hometown ::</span> <span class="dt">Town</span>}
 
 <span class="fu">&gt;</span> makeLenses <span class="ch">''</span><span class="dt">Human</span>
 <span class="fu">&gt;</span> makeLenses <span class="ch">''</span><span class="dt">Body</span>
@@ -220,9 +220,9 @@ error message complaining about <span class="dt">Town</span> not being a monoid
 -->
 <p>Now what are those functions doing - they select one <em>branch</em> in a sum type.</p>
 <div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="dt">Prelude</span> <span class="fu">&gt;</span> preview _<span class="dt">Captain</span> cpt
+<span class="dt">Prelude</span> <span class="fu">&gt;</span> preview _Captain cpt
 <span class="dt">Just</span> (<span class="dt">Attributes</span> {<span class="fu">...</span>},<span class="st">&quot;SS Sea Serpent&quot;</span>)
-<span class="dt">Prelude</span> <span class="fu">&gt;</span> preview _<span class="dt">Captain</span> mrd
+<span class="dt">Prelude</span> <span class="fu">&gt;</span> preview _Captain mrd
 <span class="dt">Nothing</span></code></pre></div>
 <p>But there is also an infix shortcut for <code>preview</code> - <code>(^?)</code> so we could have written the above <code>cpt^._Captain</code> or use it with accessor-like functions as <code>hometown</code>,<code>ship</code>,<code>shanty</code> or <code>attributes</code>.</p>
 <div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
@@ -235,18 +235,18 @@ error message complaining about <span class="dt">Town</span> not being a monoid
 <h3 id="so-what-about-review">So what about <code>review</code>?</h3>
 <p>The <code>review</code> function can create new things from the results of <code>preview</code>, well not exactly but almost and with use of <code>(&lt;$&gt;)</code> from <code>Control.Applicative</code> we can make them work together</p>
 <div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="fu">:</span>t preview _<span class="dt">Captain</span> cpt
-preview _<span class="dt">Captain</span><span class="ot"> cpt ::</span> <span class="dt">Maybe</span> (<span class="dt">Human</span>, <span class="dt">String</span>)
-<span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="kw">let</span> <span class="dt">Just</span> x <span class="fu">=</span> preview _<span class="dt">Captain</span> cpt
-<span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="fu">:</span>t review _<span class="dt">Captain</span> x
-review _<span class="dt">Captain</span><span class="ot"> x ::</span> <span class="dt">Pirate</span>
-<span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="fu">:</span>t review _<span class="dt">Captain</span> <span class="fu">&lt;$&gt;</span> preview _<span class="dt">Captain</span> cpt
-review _<span class="dt">Captain</span> <span class="fu">&lt;$&gt;</span> preview _<span class="dt">Captain</span><span class="ot"> cpt ::</span> <span class="dt">Maybe</span> <span class="dt">Pirate</span>
-<span class="dt">Prelude</span><span class="fu">&gt;</span> review _<span class="dt">Captain</span> <span class="fu">&lt;$&gt;</span> preview _<span class="dt">Captain</span> cpt
+<span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="fu">:</span>t preview _Captain cpt
+preview _Captain<span class="ot"> cpt ::</span> <span class="dt">Maybe</span> (<span class="dt">Human</span>, <span class="dt">String</span>)
+<span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="kw">let</span> <span class="dt">Just</span> x <span class="fu">=</span> preview _Captain cpt
+<span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="fu">:</span>t review _Captain x
+review _Captain<span class="ot"> x ::</span> <span class="dt">Pirate</span>
+<span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="fu">:</span>t review _Captain <span class="fu">&lt;$&gt;</span> preview _Captain cpt
+review _Captain <span class="fu">&lt;$&gt;</span> preview _Captain<span class="ot"> cpt ::</span> <span class="dt">Maybe</span> <span class="dt">Pirate</span>
+<span class="dt">Prelude</span><span class="fu">&gt;</span> review _Captain <span class="fu">&lt;$&gt;</span> preview _Captain cpt
 <span class="dt">Just</span> <span class="dt">Captain</span> {<span class="dt">Attributes</span> {<span class="fu">...</span>},<span class="st">&quot;SS Sea Serpent&quot;</span>}
-<span class="dt">Prelude</span><span class="fu">&gt;</span> review _<span class="dt">Captain</span> <span class="fu">&lt;$&gt;</span> preview _<span class="dt">Captain</span> mrd
+<span class="dt">Prelude</span><span class="fu">&gt;</span> review _Captain <span class="fu">&lt;$&gt;</span> preview _Captain mrd
 <span class="dt">Nothing</span>
-<span class="dt">Prelude</span><span class="fu">&gt;</span> review _<span class="dt">Captain</span> <span class="fu">&lt;$&gt;</span> preview _<span class="dt">Marauder</span> mrd
+<span class="dt">Prelude</span><span class="fu">&gt;</span> review _Captain <span class="fu">&lt;$&gt;</span> preview _Marauder mrd
 <span class="fu">...</span> <span class="dt">Error</span> <span class="fu">...</span> <span class="co">-- Captain needs String (ship name) where Marauder has a Town as</span>
 a second argument</code></pre></div>
 <p>So Prisms do not fix everything - but provide a safety layer for simple accessing stuff and sometimes for generating stuff as well.</p>
@@ -259,14 +259,15 @@ a second argument</code></pre></div>
   </div>
   <div id="sidebar">
     <div id="logo">
-    
-    <h1><a href="index.html" style="text-decoration:none;">BRICOLAGE</a></h1>
+  <h1><a href="../index.html" style="text-decoration:none;">BRICOLAGE</a></h1>
 </div>
 
     <nav id="nav">
   <ul>
     <!--<li class="current_page_item"><a href="#">Latest Post</a></li>-->
+    <li><a href="../index.html">Home</a></li>
     <li><a href="../posts.html">Archives</a></li>
+    <li><a href="../projects.html">Projects</a></li>
     <li><a href="../about.html">About Me</a></li>
     <li><a href="../contact.html">Contact Me</a></li>
   </ul>

@@ -80,11 +80,11 @@ Installed lens-4.3.3 (the current lens version as of 11th of August 2014)</code>
 <div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="fu">&gt;</span> <span class="kw">import </span><span class="dt">Control.Lens</span>
 
-<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Human</span> <span class="fu">=</span> <span class="dt">Attributes</span> { _<span class="ot">name ::</span> <span class="dt">String</span>, _<span class="ot">body ::</span> <span class="dt">Body</span>, _<span class="ot">age ::</span> <span class="dt">Int</span>} <span class="kw">deriving</span> (<span class="dt">Show</span>)
-<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Body</span> <span class="fu">=</span> <span class="dt">Body</span> { _<span class="ot">hat ::</span> <span class="dt">Maybe</span> <span class="dt">Hat</span>
-<span class="fu">&gt;</span>                  , _<span class="ot">beard ::</span> <span class="dt">Maybe</span> <span class="dt">Beard</span>
-<span class="fu">&gt;</span>                  , _<span class="ot">torso ::</span> <span class="dt">Torso</span>
-<span class="fu">&gt;</span>                  , _<span class="ot">accessories ::</span> [<span class="dt">Accessories</span>]}</code></pre></div>
+<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Human</span> <span class="fu">=</span> <span class="dt">Attributes</span> {<span class="ot"> _name ::</span> <span class="dt">String</span>,<span class="ot"> _body ::</span> <span class="dt">Body</span>,<span class="ot"> _age ::</span> <span class="dt">Int</span>} <span class="kw">deriving</span> (<span class="dt">Show</span>)
+<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Body</span> <span class="fu">=</span> <span class="dt">Body</span> {<span class="ot"> _hat ::</span> <span class="dt">Maybe</span> <span class="dt">Hat</span>
+<span class="fu">&gt;</span>                  ,<span class="ot"> _beard ::</span> <span class="dt">Maybe</span> <span class="dt">Beard</span>
+<span class="fu">&gt;</span>                  ,<span class="ot"> _torso ::</span> <span class="dt">Torso</span>
+<span class="fu">&gt;</span>                  ,<span class="ot"> _accessories ::</span> [<span class="dt">Accessories</span>]}</code></pre></div>
 <!--
 
 > data Hat = Tricorne | WideBrimmedHat | Bandana deriving (Show)
@@ -104,9 +104,9 @@ Installed lens-4.3.3 (the current lens version as of 11th of August 2014)</code>
 
 -->
 <div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Pirate</span> <span class="fu">=</span> <span class="dt">Captain</span>   { _<span class="ot">attributes ::</span> <span class="dt">Human</span>, _<span class="ot">ship ::</span> <span class="dt">String</span>}
-<span class="fu">&gt;</span>             <span class="fu">|</span> <span class="dt">FirstMate</span> { _<span class="ot">attributes ::</span> <span class="dt">Human</span>, _<span class="ot">shanty ::</span> <span class="dt">String</span>}
-<span class="fu">&gt;</span>             <span class="fu">|</span> <span class="dt">Marauder</span>  { _<span class="ot">attributes ::</span> <span class="dt">Human</span>, _<span class="ot">hometown ::</span> <span class="dt">String</span>}</code></pre></div>
+<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Pirate</span> <span class="fu">=</span> <span class="dt">Captain</span>   {<span class="ot"> _attributes ::</span> <span class="dt">Human</span>,<span class="ot"> _ship ::</span> <span class="dt">String</span>}
+<span class="fu">&gt;</span>             <span class="fu">|</span> <span class="dt">FirstMate</span> {<span class="ot"> _attributes ::</span> <span class="dt">Human</span>,<span class="ot"> _shanty ::</span> <span class="dt">String</span>}
+<span class="fu">&gt;</span>             <span class="fu">|</span> <span class="dt">Marauder</span>  {<span class="ot"> _attributes ::</span> <span class="dt">Human</span>,<span class="ot"> _hometown ::</span> <span class="dt">String</span>}</code></pre></div>
 <p>… and of course create the lenses. (In the background template haskell now creates functions attributes, ship, shanty and so on.)</p>
 <div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
 <span class="fu">&gt;</span> makeLenses <span class="ch">''</span><span class="dt">Human</span>
@@ -213,14 +213,15 @@ Installed lens-4.3.3 (the current lens version as of 11th of August 2014)</code>
   </div>
   <div id="sidebar">
     <div id="logo">
-    
-    <h1><a href="index.html" style="text-decoration:none;">BRICOLAGE</a></h1>
+  <h1><a href="../index.html" style="text-decoration:none;">BRICOLAGE</a></h1>
 </div>
 
     <nav id="nav">
   <ul>
     <!--<li class="current_page_item"><a href="#">Latest Post</a></li>-->
+    <li><a href="../index.html">Home</a></li>
     <li><a href="../posts.html">Archives</a></li>
+    <li><a href="../projects.html">Projects</a></li>
     <li><a href="../about.html">About Me</a></li>
     <li><a href="../contact.html">Contact Me</a></li>
   </ul>

@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"
     xmlns:dc="http://purl.org/dc/elements/1.1/">
     <channel>
-        <title>bricolage - Posts tagged deu</title>
+        <title>bricolage - Posts tagged "deu"</title>
         <link>//epsilonhalbe.github.io</link>
         <description><![CDATA[Personal blog of epsilonhalbe]]></description>
         <atom:link href="//epsilonhalbe.github.io/tags/deu.xml" rel="self"
@@ -330,7 +330,7 @@ c <span class="fu">=</span> [_,_,_,_,_,_,_,_,_,_]</code></pre></div>
 [<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">13</span>,<span class="dv">21</span>,<span class="dv">34</span>,<span class="dv">55</span>]</code></pre></div>
 <h1 id="noch-einmal-legos">Noch einmal Legos</h1>
 <h2 id="ghci">GHCi</h2>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$<span class="kw">&gt;</span> <span class="kw">ghci</span> LikeLegos.hs</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$<span class="op">&gt;</span> <span class="ex">ghci</span> LikeLegos.hs</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">let</span> lego <span class="fu">=</span> <span class="dt">Lego</span> (<span class="dv">1</span>×<span class="dv">4</span>)
 <span class="kw">let</span> colors <span class="fu">=</span> [<span class="dt">Black</span> <span class="fu">..</span> <span class="dt">White</span>]
 map lego colors

@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"
     xmlns:dc="http://purl.org/dc/elements/1.1/">
     <channel>
-        <title>bricolage - Posts tagged vegetarisch</title>
+        <title>bricolage - Posts tagged "vegetarisch"</title>
         <link>//epsilonhalbe.github.io</link>
         <description><![CDATA[Personal blog of epsilonhalbe]]></description>
         <atom:link href="//epsilonhalbe.github.io/tags/vegetarisch.xml" rel="self"
