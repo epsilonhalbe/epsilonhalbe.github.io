@@ -68,34 +68,34 @@
 > import Data.List (intercalate)
 
 -->
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">Pirate</span> <span class="fu">=</span> <span class="dt">Captain</span> <span class="fu">|</span> <span class="dt">FirstMate</span> <span class="fu">|</span> <span class="dt">Marauder</span> <span class="kw">deriving</span> (<span class="dt">Show</span>)</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">data</span> <span class="dt">Pirate</span> <span class="fu">=</span> <span class="dt">Captain</span> <span class="fu">|</span> <span class="dt">FirstMate</span> <span class="fu">|</span> <span class="dt">Marauder</span> <span class="kw">deriving</span> (<span class="dt">Show</span>)</a></code></pre></div>
 <p>This definition above is quite similar to objects, but it actually defines a type which consists of three possible <em>“constructors”</em>, the last statement <code>deriving (Show)</code> is haskell’s way of saying we have a <code>toString</code>-method called <code>show</code>.</p>
 <p>But your customers want to customize those Pirates (hence the name). So you decide to come up with a more accurate model of pirates.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="kw">data</span> <span class="dt">Pirate</span> <span class="fu">=</span> <span class="dt">Captain</span>   {<span class="ot"> name ::</span> <span class="dt">String</span>,<span class="ot"> ship ::</span> <span class="dt">String</span>}
-            <span class="fu">|</span> <span class="dt">FirstMate</span> {<span class="ot"> name ::</span> <span class="dt">String</span>,<span class="ot"> shanty ::</span> <span class="dt">String</span>}
-            <span class="fu">|</span> <span class="dt">Marauder</span>  {<span class="ot"> name ::</span> <span class="dt">String</span>,<span class="ot"> hometown ::</span> <span class="dt">String</span>}
-
-<span class="kw">instance</span> <span class="dt">Show</span> <span class="dt">Pirate</span> <span class="kw">where</span>
-  show (<span class="dt">Captain</span> n s) <span class="fu">=</span> <span class="st">&quot;Captain &quot;</span><span class="fu">++</span>n<span class="fu">++</span><span class="st">&quot; of the &quot;</span><span class="fu">++</span>s
-  show (<span class="dt">FirstMate</span> n s) <span class="fu">=</span> <span class="st">&quot;Mate &quot;</span><span class="fu">++</span>n<span class="fu">++</span><span class="st">&quot; sings &quot;</span><span class="fu">++</span>s
-  show (<span class="dt">Marauder</span> n h) <span class="fu">=</span> <span class="st">&quot;Fearsome Pirate &quot;</span><span class="fu">++</span>n<span class="fu">++</span><span class="st">&quot; from &quot;</span><span class="fu">++</span>h</code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb2-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">data</span> <span class="dt">Pirate</span> <span class="fu">=</span> <span class="dt">Captain</span>   {<span class="ot"> name ::</span> <span class="dt">String</span>,<span class="ot"> ship ::</span> <span class="dt">String</span>}</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">            <span class="fu">|</span> <span class="dt">FirstMate</span> {<span class="ot"> name ::</span> <span class="dt">String</span>,<span class="ot"> shanty ::</span> <span class="dt">String</span>}</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">            <span class="fu">|</span> <span class="dt">Marauder</span>  {<span class="ot"> name ::</span> <span class="dt">String</span>,<span class="ot"> hometown ::</span> <span class="dt">String</span>}</a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="kw">instance</span> <span class="dt">Show</span> <span class="dt">Pirate</span> <span class="kw">where</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">  show (<span class="dt">Captain</span> n s) <span class="fu">=</span> <span class="st">&quot;Captain &quot;</span><span class="fu">++</span>n<span class="fu">++</span><span class="st">&quot; of the &quot;</span><span class="fu">++</span>s</a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">  show (<span class="dt">FirstMate</span> n s) <span class="fu">=</span> <span class="st">&quot;Mate &quot;</span><span class="fu">++</span>n<span class="fu">++</span><span class="st">&quot; sings &quot;</span><span class="fu">++</span>s</a>
+<a class="sourceLine" id="cb2-9" data-line-number="9">  show (<span class="dt">Marauder</span> n h) <span class="fu">=</span> <span class="st">&quot;Fearsome Pirate &quot;</span><span class="fu">++</span>n<span class="fu">++</span><span class="st">&quot; from &quot;</span><span class="fu">++</span>h</a></code></pre></div>
 <p>The customers like the prototype - but as they are very unfamiliar with functional programming they ask you to prepare a little demo.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-cpt <span class="fu">=</span> <span class="dt">Captain</span> <span class="st">&quot;Blackbeard&quot;</span> <span class="st">&quot;SS Sea Serpent&quot;</span>
-mt1 <span class="fu">=</span> <span class="dt">FirstMate</span> {name <span class="fu">=</span> <span class="st">&quot;Redbeard&quot;</span>, shanty <span class="fu">=</span> <span class="st">&quot;What shall we do with the drunken sailor&quot;</span>}
-mrd <span class="fu">=</span> <span class="dt">Marauder</span> {name <span class="fu">=</span> <span class="st">&quot;Neckbeard&quot;</span>}
-crw <span class="fu">=</span> map (\t <span class="ot">-&gt;</span> mrd {hometown <span class="fu">=</span> t}) [<span class="st">&quot;Yorkshire&quot;</span>, <span class="st">&quot;Jamestown&quot;</span>, <span class="st">&quot;Moscow&quot;</span>, <span class="st">&quot;Port-au-Prince&quot;</span>]
-pirates <span class="fu">=</span> [cpt,mt1]<span class="fu">++</span>crw
-
-cpt' <span class="fu">=</span> cpt {name <span class="fu">=</span> <span class="st">&quot;Greybeard&quot;</span>} <span class="ot">=&gt;</span> <span class="st">&quot;Captain Greybeard of the SS Sea Serpent&quot;</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb3-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">cpt <span class="fu">=</span> <span class="dt">Captain</span> <span class="st">&quot;Blackbeard&quot;</span> <span class="st">&quot;SS Sea Serpent&quot;</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">mt1 <span class="fu">=</span> <span class="dt">FirstMate</span> {name <span class="fu">=</span> <span class="st">&quot;Redbeard&quot;</span>, shanty <span class="fu">=</span> <span class="st">&quot;What shall we do with the drunken sailor&quot;</span>}</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">mrd <span class="fu">=</span> <span class="dt">Marauder</span> {name <span class="fu">=</span> <span class="st">&quot;Neckbeard&quot;</span>}</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">crw <span class="fu">=</span> map (\t <span class="ot">-&gt;</span> mrd {hometown <span class="fu">=</span> t}) [<span class="st">&quot;Yorkshire&quot;</span>, <span class="st">&quot;Jamestown&quot;</span>, <span class="st">&quot;Moscow&quot;</span>, <span class="st">&quot;Port-au-Prince&quot;</span>]</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">pirates <span class="fu">=</span> [cpt,mt1]<span class="fu">++</span>crw</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8">cpt' <span class="fu">=</span> cpt {name <span class="fu">=</span> <span class="st">&quot;Greybeard&quot;</span>} <span class="ot">=&gt;</span> <span class="st">&quot;Captain Greybeard of the SS Sea Serpent&quot;</span></a></code></pre></div>
 <p>Still the customers is impressed with the prototype but still not content, so you start with designing a very detailed model starting with humans.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Human</span> <span class="fu">=</span> <span class="dt">Attributes</span> {<span class="ot"> name ::</span> <span class="dt">String</span>,<span class="ot"> body ::</span> <span class="dt">Body</span>,<span class="ot"> age ::</span> <span class="dt">Int</span>} <span class="kw">deriving</span> (<span class="dt">Show</span>)
-<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Body</span> <span class="fu">=</span> <span class="dt">Body</span> {<span class="ot"> hat ::</span> <span class="dt">Maybe</span> <span class="dt">Hat</span>
-<span class="fu">&gt;</span>                  ,<span class="ot"> beard ::</span> <span class="dt">Maybe</span> <span class="dt">Beard</span>
-<span class="fu">&gt;</span>                  ,<span class="ot"> torso ::</span> <span class="dt">Torso</span>
-<span class="fu">&gt;</span>                  ,<span class="ot"> accessories ::</span> [<span class="dt">Accessories</span>]}</code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb4-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Human</span> <span class="fu">=</span> <span class="dt">Attributes</span> {<span class="ot"> name ::</span> <span class="dt">String</span>,<span class="ot"> body ::</span> <span class="dt">Body</span>,<span class="ot"> age ::</span> <span class="dt">Int</span>} <span class="kw">deriving</span> (<span class="dt">Show</span>)</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Body</span> <span class="fu">=</span> <span class="dt">Body</span> {<span class="ot"> hat ::</span> <span class="dt">Maybe</span> <span class="dt">Hat</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="fu">&gt;</span>                  ,<span class="ot"> beard ::</span> <span class="dt">Maybe</span> <span class="dt">Beard</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="fu">&gt;</span>                  ,<span class="ot"> torso ::</span> <span class="dt">Torso</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="fu">&gt;</span>                  ,<span class="ot"> accessories ::</span> [<span class="dt">Accessories</span>]}</a></code></pre></div>
 <!--
 
 > instance Show Body where
@@ -106,19 +106,19 @@ cpt' <span class="fu">=</span> cpt {name <span class="fu">=</span> <span class="
 
 -->
 <p>Then you come up with the nitty gritty details like <code>Hat</code>, <code>Torso</code> and so on.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Hat</span> <span class="fu">=</span> <span class="dt">Tricorne</span> <span class="fu">|</span> <span class="dt">WideBrimmedHat</span> <span class="fu">|</span> <span class="dt">Bandana</span> <span class="kw">deriving</span> (<span class="dt">Show</span>)
-<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Torso</span> <span class="fu">=</span> <span class="dt">Naked</span> <span class="fu">|</span> <span class="dt">Vest</span> <span class="fu">|</span> <span class="dt">ShabbyShirt</span> <span class="kw">deriving</span> (<span class="dt">Show</span>)
-<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Accessories</span> <span class="fu">=</span> <span class="dt">Parrot</span> <span class="fu">|</span> <span class="dt">Monkey</span> <span class="fu">|</span> <span class="dt">PegLeg</span> <span class="fu">|</span> <span class="dt">EyePatch</span> <span class="fu">|</span> <span class="dt">EarRing</span> <span class="fu">|</span> <span class="dt">Hook</span> <span class="kw">deriving</span> (<span class="dt">Show</span>)
-
-<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Beard</span> <span class="fu">=</span> <span class="dt">Beard</span> <span class="dt">Colour</span> <span class="dt">BeardType</span>
-<span class="fu">&gt;</span> <span class="kw">instance</span> <span class="dt">Show</span> <span class="dt">Beard</span> <span class="kw">where</span> show (<span class="dt">Beard</span> c t) <span class="fu">=</span> <span class="st">&quot;an exquisite &quot;</span><span class="fu">++</span> map toLower (show c)<span class="fu">++</span><span class="st">&quot; &quot;</span><span class="fu">++</span>show t
-<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Colour</span> <span class="fu">=</span> <span class="dt">Black</span> <span class="fu">|</span> <span class="dt">Red</span> <span class="fu">|</span> <span class="dt">Blond</span> <span class="fu">|</span> <span class="dt">White</span> <span class="fu">|</span> <span class="dt">Brown</span> <span class="kw">deriving</span> (<span class="dt">Show</span>)
-<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">BeardType</span> <span class="fu">=</span> <span class="dt">Moustache</span> <span class="fu">|</span> <span class="dt">Ladybeard</span> <span class="fu">|</span> <span class="dt">Goatee</span> <span class="fu">|</span> <span class="dt">FullBeard</span> <span class="kw">deriving</span> (<span class="dt">Show</span>)
-
-<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Pirate</span> <span class="fu">=</span> <span class="dt">Captain</span>   {<span class="ot"> attributes ::</span> <span class="dt">Human</span>,<span class="ot"> ship ::</span> <span class="dt">String</span>}
-<span class="fu">&gt;</span>             <span class="fu">|</span> <span class="dt">FirstMate</span> {<span class="ot"> attributes ::</span> <span class="dt">Human</span>,<span class="ot"> shanty ::</span> <span class="dt">String</span>}
-<span class="fu">&gt;</span>             <span class="fu">|</span> <span class="dt">Marauder</span>  {<span class="ot"> attributes ::</span> <span class="dt">Human</span>,<span class="ot"> hometown ::</span> <span class="dt">String</span>}</code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb5-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Hat</span> <span class="fu">=</span> <span class="dt">Tricorne</span> <span class="fu">|</span> <span class="dt">WideBrimmedHat</span> <span class="fu">|</span> <span class="dt">Bandana</span> <span class="kw">deriving</span> (<span class="dt">Show</span>)</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Torso</span> <span class="fu">=</span> <span class="dt">Naked</span> <span class="fu">|</span> <span class="dt">Vest</span> <span class="fu">|</span> <span class="dt">ShabbyShirt</span> <span class="kw">deriving</span> (<span class="dt">Show</span>)</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Accessories</span> <span class="fu">=</span> <span class="dt">Parrot</span> <span class="fu">|</span> <span class="dt">Monkey</span> <span class="fu">|</span> <span class="dt">PegLeg</span> <span class="fu">|</span> <span class="dt">EyePatch</span> <span class="fu">|</span> <span class="dt">EarRing</span> <span class="fu">|</span> <span class="dt">Hook</span> <span class="kw">deriving</span> (<span class="dt">Show</span>)</a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Beard</span> <span class="fu">=</span> <span class="dt">Beard</span> <span class="dt">Colour</span> <span class="dt">BeardType</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="fu">&gt;</span> <span class="kw">instance</span> <span class="dt">Show</span> <span class="dt">Beard</span> <span class="kw">where</span> show (<span class="dt">Beard</span> c t) <span class="fu">=</span> <span class="st">&quot;an exquisite &quot;</span><span class="fu">++</span> map toLower (show c)<span class="fu">++</span><span class="st">&quot; &quot;</span><span class="fu">++</span>show t</a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Colour</span> <span class="fu">=</span> <span class="dt">Black</span> <span class="fu">|</span> <span class="dt">Red</span> <span class="fu">|</span> <span class="dt">Blond</span> <span class="fu">|</span> <span class="dt">White</span> <span class="fu">|</span> <span class="dt">Brown</span> <span class="kw">deriving</span> (<span class="dt">Show</span>)</a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">BeardType</span> <span class="fu">=</span> <span class="dt">Moustache</span> <span class="fu">|</span> <span class="dt">Ladybeard</span> <span class="fu">|</span> <span class="dt">Goatee</span> <span class="fu">|</span> <span class="dt">FullBeard</span> <span class="kw">deriving</span> (<span class="dt">Show</span>)</a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Pirate</span> <span class="fu">=</span> <span class="dt">Captain</span>   {<span class="ot"> attributes ::</span> <span class="dt">Human</span>,<span class="ot"> ship ::</span> <span class="dt">String</span>}</a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="fu">&gt;</span>             <span class="fu">|</span> <span class="dt">FirstMate</span> {<span class="ot"> attributes ::</span> <span class="dt">Human</span>,<span class="ot"> shanty ::</span> <span class="dt">String</span>}</a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="fu">&gt;</span>             <span class="fu">|</span> <span class="dt">Marauder</span>  {<span class="ot"> attributes ::</span> <span class="dt">Human</span>,<span class="ot"> hometown ::</span> <span class="dt">String</span>}</a></code></pre></div>
 <!--
 
 > instance Show Pirate where
@@ -134,46 +134,46 @@ cpt' <span class="fu">=</span> cpt {name <span class="fu">=</span> <span class="
 
 -->
 <p>The customer asks for a demo so you make a new crew based on the old examples.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="fu">&gt;</span> cpt <span class="fu">=</span> <span class="dt">Captain</span> ( <span class="dt">Attributes</span>  <span class="st">&quot;Blackbeard&quot;</span>
-<span class="fu">&gt;</span>                            ( <span class="dt">Body</span> ( <span class="dt">Just</span> <span class="dt">Tricorne</span>)
-<span class="fu">&gt;</span>                                   ( <span class="dt">Just</span> (<span class="dt">Beard</span> <span class="dt">Black</span> <span class="dt">FullBeard</span>))
-<span class="fu">&gt;</span>                                     <span class="dt">Vest</span>
-<span class="fu">&gt;</span>                                     [<span class="dt">Parrot</span>, <span class="dt">PegLeg</span>]
-<span class="fu">&gt;</span>                                   )
-<span class="fu">&gt;</span>                             <span class="dv">42</span>)
-<span class="fu">&gt;</span>                 <span class="st">&quot;SS Sea Serpent&quot;</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb6-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="fu">&gt;</span> cpt <span class="fu">=</span> <span class="dt">Captain</span> ( <span class="dt">Attributes</span>  <span class="st">&quot;Blackbeard&quot;</span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="fu">&gt;</span>                            ( <span class="dt">Body</span> ( <span class="dt">Just</span> <span class="dt">Tricorne</span>)</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="fu">&gt;</span>                                   ( <span class="dt">Just</span> (<span class="dt">Beard</span> <span class="dt">Black</span> <span class="dt">FullBeard</span>))</a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="fu">&gt;</span>                                     <span class="dt">Vest</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="fu">&gt;</span>                                     [<span class="dt">Parrot</span>, <span class="dt">PegLeg</span>]</a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="fu">&gt;</span>                                   )</a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="fu">&gt;</span>                             <span class="dv">42</span>)</a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="fu">&gt;</span>                 <span class="st">&quot;SS Sea Serpent&quot;</span></a></code></pre></div>
 <p>Not really good and readable code so you try it a bit more verbose.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="fu">&gt;</span> mt1 <span class="fu">=</span> <span class="dt">FirstMate</span> { attributes <span class="fu">=</span> <span class="dt">Attributes</span> { name <span class="fu">=</span> <span class="st">&quot;Redbeard&quot;</span>
-<span class="fu">&gt;</span>                                           , body <span class="fu">=</span> <span class="dt">Body</span> { hat   <span class="fu">=</span> <span class="dt">Just</span> <span class="dt">WideBrimmedHat</span>
-<span class="fu">&gt;</span>                                                         , beard <span class="fu">=</span> <span class="dt">Nothing</span>
-<span class="fu">&gt;</span>                                                         , torso <span class="fu">=</span> <span class="dt">Naked</span>
-<span class="fu">&gt;</span>                                                         , accessories <span class="fu">=</span> [<span class="dt">EarRing</span>, <span class="dt">Monkey</span>]
-<span class="fu">&gt;</span>                                                         }
-<span class="fu">&gt;</span>                                           , age <span class="fu">=</span> <span class="dv">30</span>
-<span class="fu">&gt;</span>                                           }
-<span class="fu">&gt;</span>                 , shanty <span class="fu">=</span> <span class="st">&quot;What shall we do with the drunken sailor&quot;</span>
-<span class="fu">&gt;</span>                 }</code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb7-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="fu">&gt;</span> mt1 <span class="fu">=</span> <span class="dt">FirstMate</span> { attributes <span class="fu">=</span> <span class="dt">Attributes</span> { name <span class="fu">=</span> <span class="st">&quot;Redbeard&quot;</span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="fu">&gt;</span>                                           , body <span class="fu">=</span> <span class="dt">Body</span> { hat   <span class="fu">=</span> <span class="dt">Just</span> <span class="dt">WideBrimmedHat</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="fu">&gt;</span>                                                         , beard <span class="fu">=</span> <span class="dt">Nothing</span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="fu">&gt;</span>                                                         , torso <span class="fu">=</span> <span class="dt">Naked</span></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="fu">&gt;</span>                                                         , accessories <span class="fu">=</span> [<span class="dt">EarRing</span>, <span class="dt">Monkey</span>]</a>
+<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="fu">&gt;</span>                                                         }</a>
+<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="fu">&gt;</span>                                           , age <span class="fu">=</span> <span class="dv">30</span></a>
+<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="fu">&gt;</span>                                           }</a>
+<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="fu">&gt;</span>                 , shanty <span class="fu">=</span> <span class="st">&quot;What shall we do with the drunken sailor&quot;</span></a>
+<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="fu">&gt;</span>                 }</a></code></pre></div>
 <p>The last piece - a.k.a. the crew was not too easy in the first example so you don’t expect this to be a piece of cake, well it isn’t.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="fu">&gt;</span> mrd <span class="fu">=</span> <span class="dt">Marauder</span> { attributes <span class="fu">=</span> <span class="dt">Attributes</span> { name <span class="fu">=</span> <span class="st">&quot;Neckbeard &quot;</span>
-<span class="fu">&gt;</span>                                           , body <span class="fu">=</span> <span class="dt">Body</span> { hat   <span class="fu">=</span> <span class="dt">Just</span> <span class="dt">Bandana</span>
-<span class="fu">&gt;</span>                                                         , beard <span class="fu">=</span> <span class="dt">Just</span> (<span class="dt">Beard</span> <span class="dt">Brown</span> <span class="dt">Goatee</span>)
-<span class="fu">&gt;</span>                                                         , torso <span class="fu">=</span> <span class="dt">ShabbyShirt</span>
-<span class="fu">&gt;</span>                                                         , accessories <span class="fu">=</span> [<span class="dt">EyePatch</span>]
-<span class="fu">&gt;</span>                                                         }
-<span class="fu">&gt;</span>                                           , age <span class="fu">=</span> <span class="dv">20</span>
-<span class="fu">&gt;</span>                                           }
-<span class="fu">&gt;</span>                 }</code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb8-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="fu">&gt;</span> mrd <span class="fu">=</span> <span class="dt">Marauder</span> { attributes <span class="fu">=</span> <span class="dt">Attributes</span> { name <span class="fu">=</span> <span class="st">&quot;Neckbeard &quot;</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="fu">&gt;</span>                                           , body <span class="fu">=</span> <span class="dt">Body</span> { hat   <span class="fu">=</span> <span class="dt">Just</span> <span class="dt">Bandana</span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="fu">&gt;</span>                                                         , beard <span class="fu">=</span> <span class="dt">Just</span> (<span class="dt">Beard</span> <span class="dt">Brown</span> <span class="dt">Goatee</span>)</a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="fu">&gt;</span>                                                         , torso <span class="fu">=</span> <span class="dt">ShabbyShirt</span></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="fu">&gt;</span>                                                         , accessories <span class="fu">=</span> [<span class="dt">EyePatch</span>]</a>
+<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="fu">&gt;</span>                                                         }</a>
+<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="fu">&gt;</span>                                           , age <span class="fu">=</span> <span class="dv">20</span></a>
+<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="fu">&gt;</span>                                           }</a>
+<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="fu">&gt;</span>                 }</a></code></pre></div>
 <p>After the initial constructor the tricky part just begins - it takes four tries and a lot of hard thinking to get the following lambda expression right.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="fu">&gt;</span> crw <span class="fu">=</span> map (\(n,t) <span class="ot">-&gt;</span> mrd { attributes <span class="fu">=</span> (attributes mrd) {name <span class="fu">=</span> (name<span class="fu">.</span>attributes) mrd <span class="fu">++</span>  n}
-<span class="fu">&gt;</span>                          , hometown   <span class="fu">=</span> t})
-<span class="fu">&gt;</span>           [(<span class="st">&quot;Joe&quot;</span>  , <span class="st">&quot;Yorkshire&quot;</span>     )
-<span class="fu">&gt;</span>           ,(<span class="st">&quot;Jack&quot;</span> , <span class="st">&quot;Jamestown&quot;</span>     )
-<span class="fu">&gt;</span>           ,(<span class="st">&quot;Igor&quot;</span> , <span class="st">&quot;Moscow&quot;</span>        )
-<span class="fu">&gt;</span>           ,(<span class="st">&quot;Maria&quot;</span>, <span class="st">&quot;Port-au-Prince&quot;</span>)]</code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb9-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="fu">&gt;</span> crw <span class="fu">=</span> map (\(n,t) <span class="ot">-&gt;</span> mrd { attributes <span class="fu">=</span> (attributes mrd) {name <span class="fu">=</span> (name<span class="fu">.</span>attributes) mrd <span class="fu">++</span>  n}</a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="fu">&gt;</span>                          , hometown   <span class="fu">=</span> t})</a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="fu">&gt;</span>           [(<span class="st">&quot;Joe&quot;</span>  , <span class="st">&quot;Yorkshire&quot;</span>     )</a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="fu">&gt;</span>           ,(<span class="st">&quot;Jack&quot;</span> , <span class="st">&quot;Jamestown&quot;</span>     )</a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="fu">&gt;</span>           ,(<span class="st">&quot;Igor&quot;</span> , <span class="st">&quot;Moscow&quot;</span>        )</a>
+<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="fu">&gt;</span>           ,(<span class="st">&quot;Maria&quot;</span>, <span class="st">&quot;Port-au-Prince&quot;</span>)]</a></code></pre></div>
 <p>There are signs of bad code in this, a lot of signs - <code>mrd</code> is written three times, it is complicated not only to a programmer new to the haskell world.</p>
 <p>But then there comes Edward Kmett’s lens library to the rescue.</p>
     </p>

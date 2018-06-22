@@ -12,41 +12,69 @@
   <link rel="stylesheet" href="https://cdn.bootcss.com/reveal.js/3.5.0/css/reveal.css">
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="https://cdn.bootcss.com/reveal.js/3.5.0/css/theme/solarized.css" id="theme">
   <link rel="stylesheet" href="./custom.css" />
@@ -73,20 +101,20 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   <p class="date">2017-06-28</p>
 </section>
 
-<section><section id="intro" class="titleslide slide level1"><h1>Intro</h1></section><section id="überblick" class="slide level2">
+<section><section id="intro" class="title-slide slide level1"><h1>Intro</h1></section><section id="überblick" class="slide level2">
 <h2>Überblick</h2>
 <figure>
-<img src="./img/tiobe.com-12.6.2017.png" title="Tiobe - Programmiersprachen" alt="Tiobe - Programmiersprachen" width="700" /><figcaption>Tiobe - Programmiersprachen</figcaption>
+<img data-src="./img/tiobe.com-12.6.2017.png" title="Tiobe - Programmiersprachen" alt="Tiobe - Programmiersprachen" width="700" /><figcaption>Tiobe - Programmiersprachen</figcaption>
 </figure>
 <figure>
-<img src="./img/tiobe.com-12.6.2017-haskell.png" title="Tiobe - Haskell" alt="Tiobe - Haskell" width="700" /><figcaption>Tiobe - Haskell</figcaption>
+<img data-src="./img/tiobe.com-12.6.2017-haskell.png" title="Tiobe - Haskell" alt="Tiobe - Haskell" width="700" /><figcaption>Tiobe - Haskell</figcaption>
 </figure>
 <aside class="notes">
 Welche Sprachen haben “funktionale Features”? Welche Sprachen haben ein starkes Typsystem?
 </aside>
 </section><section id="timeline" class="slide level2">
 <h2>Timeline</h2>
-<p><img src="./img/history_of_programming_languages-haskell.png" title="Timeline - Haskell" alt="Timeline - Haskell" /> <img src="./img/history_of_programming_languages-java.png" title="Timeline - Java" alt="Timeline - Java" /></p>
+<p><img data-src="./img/history_of_programming_languages-haskell.png" title="Timeline - Haskell" alt="Timeline - Haskell" /> <img data-src="./img/history_of_programming_languages-java.png" title="Timeline - Java" alt="Timeline - Java" /></p>
 <p><a href title="http://cdn.oreillystatic.com/news/graphics/prog_lang_poster.pdf">History of Programming languages</a></p>
 </section><section id="syntax-features" class="slide level2">
 <h2>Syntax &amp; Features</h2>
@@ -97,13 +125,13 @@ Welche Sprachen haben “funktionale Features”? Welche Sprachen haben ein star
 </colgroup>
 <tbody>
 <tr class="odd">
-<td><div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">main ::</span> <span class="dt">IO</span> ()
-main <span class="fu">=</span> putStrLn <span class="st">&quot;Hello Haskell&quot;</span></code></pre></div></td>
-<td><div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> HelloWorld {
-  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">Main</span> (<span class="bu">String</span>[] args) {
-    <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">printLn</span>(<span class="st">&quot;Hello Java!&quot;</span>);
-  }
-}</code></pre></div></td>
+<td><div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="ot">main ::</span> <span class="dt">IO</span> ()</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">main <span class="fu">=</span> putStrLn <span class="st">&quot;Hello Haskell&quot;</span></a></code></pre></div></td>
+<td><div class="sourceCode" id="cb2"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">public</span> <span class="kw">class</span> HelloWorld {</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">Main</span> (<span class="bu">String</span>[] args) {</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">    <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">printLn</span>(<span class="st">&quot;Hello Java!&quot;</span>);</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">  }</a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">}</a></code></pre></div></td>
 </tr>
 <tr class="even">
 <td><ul>
@@ -123,7 +151,7 @@ main <span class="fu">=</span> putStrLn <span class="st">&quot;Hello Haskell&quo
 </tbody>
 </table>
 </section></section>
-<section><section id="funktionales-programmieren" class="titleslide slide level1"><h1>Funktionales Programmieren</h1></section><section id="was-ist-funktional" class="slide level2">
+<section><section id="funktionales-programmieren" class="title-slide slide level1"><h1>Funktionales Programmieren</h1></section><section id="was-ist-funktional" class="slide level2">
 <h2>Was ist funktional?</h2>
 <table>
 <colgroup>
@@ -132,50 +160,50 @@ main <span class="fu">=</span> putStrLn <span class="st">&quot;Hello Haskell&quo
 </colgroup>
 <tbody>
 <tr class="odd">
-<td><div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">module</span> <span class="dt">Card</span> <span class="kw">where</span> (sortBy, on, <span class="kw">module</span> <span class="dt">Card</span>)
-<span class="kw">import </span><span class="dt">Data.List</span>
-<span class="kw">import </span><span class="dt">Data.Function</span>
-
-<span class="kw">data</span> <span class="dt">Suit</span> <span class="fu">=</span> <span class="dt">Heart</span> <span class="fu">|</span> <span class="dt">Clubs</span> <span class="fu">|</span> <span class="dt">Diamond</span> <span class="fu">|</span> <span class="dt">Spades</span>
-          <span class="kw">deriving</span> (<span class="dt">Eq</span>, <span class="dt">Show</span>, <span class="dt">Ord</span>, <span class="dt">Enum</span>)
-
-<span class="kw">data</span> <span class="dt">Rank</span> <span class="fu">=</span> <span class="dt">Ace</span>   <span class="fu">|</span> <span class="dt">King</span>  <span class="fu">|</span> <span class="dt">Queen</span> <span class="fu">|</span> <span class="dt">Jack</span> <span class="fu">|</span> <span class="dt">Ten</span> <span class="fu">|</span> <span class="dt">Nine</span>
-          <span class="fu">|</span> <span class="dt">Eight</span> <span class="fu">|</span> <span class="dt">Seven</span> <span class="fu">|</span> <span class="dt">Six</span>   <span class="fu">|</span> <span class="dt">Five</span> <span class="fu">|</span> <span class="dt">Four</span><span class="fu">|</span> <span class="dt">Three</span>
-          <span class="fu">|</span> <span class="dt">Two</span> <span class="kw">deriving</span> (<span class="dt">Eq</span>, <span class="dt">Show</span>, <span class="dt">Ord</span>, <span class="dt">Enum</span>)
-
-<span class="kw">data</span> <span class="dt">Card</span> <span class="fu">=</span> <span class="dt">Card</span> {<span class="ot">suit ::</span> <span class="dt">Suit</span>,<span class="ot"> rank ::</span> <span class="dt">Rank</span>}
-          <span class="kw">deriving</span> (<span class="dt">Show</span>, <span class="dt">Eq</span>)
-
-<span class="ot">allCards ::</span> [<span class="dt">Card</span>]
-allCards <span class="fu">=</span> [<span class="dt">Card</span> s v <span class="fu">|</span> s <span class="ot">&lt;-</span> [<span class="fu">Heart..</span>], v <span class="ot">&lt;-</span> [<span class="fu">Ace..</span>]]</code></pre></div></td>
-<td><div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">enum</span> Suit {
-  Heart , Clubs , Diamond , Spades
-}
-
-<span class="kw">public</span> <span class="kw">enum</span> Rank {
-  Ace , King , Queen , Jack , Ten , Nine , Eight,
-  Seven , Six , Five , Four , Three , Two
-}
-
-<span class="kw">public</span> <span class="kw">class</span> Card {
-  <span class="kw">public</span> Suit suit;
-  <span class="kw">public</span> Rank rank;
-
-  <span class="kw">public</span> <span class="kw">class</span> <span class="fu">Card</span>(Suit suit, Rank rank) {
-     <span class="kw">this</span>.<span class="fu">suit</span> = suit;
-     <span class="kw">this</span>.<span class="fu">rank</span> = rank;
-  }
-}
-
-<span class="kw">public</span> <span class="bu">List</span>&lt;Card&gt; <span class="fu">allCards</span>() {
-  <span class="bu">List</span>&lt;Card&gt; result = <span class="kw">new</span> <span class="bu">LinkedList</span>&lt;&gt;();
-  <span class="kw">for</span> (Suit s : Suit.<span class="fu">values</span>()) {
-    <span class="kw">for</span> (Rank r : Rank.<span class="fu">values</span>()) {
-       result.<span class="fu">append</span>(<span class="fu">Card</span>(r,s));
-    }
-  }
-  <span class="kw">return</span> result;
-}</code></pre></div></td>
+<td><div class="sourceCode" id="cb3"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">module</span> <span class="dt">Card</span> <span class="kw">where</span> (sortBy, on, <span class="kw">module</span> <span class="dt">Card</span>)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">import</span> <span class="dt">Data.List</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw">import</span> <span class="dt">Data.Function</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="kw">data</span> <span class="dt">Suit</span> <span class="fu">=</span> <span class="dt">Heart</span> <span class="fu">|</span> <span class="dt">Clubs</span> <span class="fu">|</span> <span class="dt">Diamond</span> <span class="fu">|</span> <span class="dt">Spades</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">          <span class="kw">deriving</span> (<span class="dt">Eq</span>, <span class="dt">Show</span>, <span class="dt">Ord</span>, <span class="dt">Enum</span>)</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="kw">data</span> <span class="dt">Rank</span> <span class="fu">=</span> <span class="dt">Ace</span>   <span class="fu">|</span> <span class="dt">King</span>  <span class="fu">|</span> <span class="dt">Queen</span> <span class="fu">|</span> <span class="dt">Jack</span> <span class="fu">|</span> <span class="dt">Ten</span> <span class="fu">|</span> <span class="dt">Nine</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9">          <span class="fu">|</span> <span class="dt">Eight</span> <span class="fu">|</span> <span class="dt">Seven</span> <span class="fu">|</span> <span class="dt">Six</span>   <span class="fu">|</span> <span class="dt">Five</span> <span class="fu">|</span> <span class="dt">Four</span><span class="fu">|</span> <span class="dt">Three</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10">          <span class="fu">|</span> <span class="dt">Two</span> <span class="kw">deriving</span> (<span class="dt">Eq</span>, <span class="dt">Show</span>, <span class="dt">Ord</span>, <span class="dt">Enum</span>)</a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="kw">data</span> <span class="dt">Card</span> <span class="fu">=</span> <span class="dt">Card</span> {<span class="ot">suit ::</span> <span class="dt">Suit</span>,<span class="ot"> rank ::</span> <span class="dt">Rank</span>}</a>
+<a class="sourceLine" id="cb3-13" data-line-number="13">          <span class="kw">deriving</span> (<span class="dt">Show</span>, <span class="dt">Eq</span>)</a>
+<a class="sourceLine" id="cb3-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="ot">allCards ::</span> [<span class="dt">Card</span>]</a>
+<a class="sourceLine" id="cb3-16" data-line-number="16">allCards <span class="fu">=</span> [<span class="dt">Card</span> s v <span class="fu">|</span> s <span class="ot">&lt;-</span> [<span class="fu">Heart..</span>], v <span class="ot">&lt;-</span> [<span class="fu">Ace..</span>]]</a></code></pre></div></td>
+<td><div class="sourceCode" id="cb4"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">public</span> <span class="kw">enum</span> Suit {</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">  Heart , Clubs , Diamond , Spades</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">}</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="kw">public</span> <span class="kw">enum</span> Rank {</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6">  Ace , King , Queen , Jack , Ten , Nine , Eight,</a>
+<a class="sourceLine" id="cb4-7" data-line-number="7">  Seven , Six , Five , Four , Three , Two</a>
+<a class="sourceLine" id="cb4-8" data-line-number="8">}</a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="kw">public</span> <span class="kw">class</span> Card {</a>
+<a class="sourceLine" id="cb4-11" data-line-number="11">  <span class="kw">public</span> Suit suit;</a>
+<a class="sourceLine" id="cb4-12" data-line-number="12">  <span class="kw">public</span> Rank rank;</a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb4-14" data-line-number="14">  <span class="kw">public</span> <span class="kw">class</span> <span class="fu">Card</span>(Suit suit, Rank rank) {</a>
+<a class="sourceLine" id="cb4-15" data-line-number="15">     <span class="kw">this</span>.<span class="fu">suit</span> = suit;</a>
+<a class="sourceLine" id="cb4-16" data-line-number="16">     <span class="kw">this</span>.<span class="fu">rank</span> = rank;</a>
+<a class="sourceLine" id="cb4-17" data-line-number="17">  }</a>
+<a class="sourceLine" id="cb4-18" data-line-number="18">}</a>
+<a class="sourceLine" id="cb4-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb4-20" data-line-number="20"><span class="kw">public</span> <span class="bu">List</span>&lt;Card&gt; <span class="fu">allCards</span>() {</a>
+<a class="sourceLine" id="cb4-21" data-line-number="21">  <span class="bu">List</span>&lt;Card&gt; result = <span class="kw">new</span> <span class="bu">LinkedList</span>&lt;&gt;();</a>
+<a class="sourceLine" id="cb4-22" data-line-number="22">  <span class="kw">for</span> (Suit s : Suit.<span class="fu">values</span>()) {</a>
+<a class="sourceLine" id="cb4-23" data-line-number="23">    <span class="kw">for</span> (Rank r : Rank.<span class="fu">values</span>()) {</a>
+<a class="sourceLine" id="cb4-24" data-line-number="24">       result.<span class="fu">append</span>(<span class="fu">Card</span>(r,s));</a>
+<a class="sourceLine" id="cb4-25" data-line-number="25">    }</a>
+<a class="sourceLine" id="cb4-26" data-line-number="26">  }</a>
+<a class="sourceLine" id="cb4-27" data-line-number="27">  <span class="kw">return</span> result;</a>
+<a class="sourceLine" id="cb4-28" data-line-number="28">}</a></code></pre></div></td>
 </tr>
 </tbody>
 </table>
@@ -197,8 +225,8 @@ allCards <span class="fu">=</span> [<span class="dt">Card</span> s v <span class
 </colgroup>
 <tbody>
 <tr class="odd">
-<td><div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">f ::</span> a <span class="ot">-&gt;</span> b
-<span class="ot">g ::</span> a <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> c</code></pre></div></td>
+<td><div class="sourceCode" id="cb5"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="ot">f ::</span> a <span class="ot">-&gt;</span> b</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="ot">g ::</span> a <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> c</a></code></pre></div></td>
 <td><a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/package-summary.html">Java8</a></td>
 </tr>
 </tbody>
@@ -212,14 +240,14 @@ allCards <span class="fu">=</span> [<span class="dt">Card</span> s v <span class
 </colgroup>
 <tbody>
 <tr class="odd">
-<td><div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">λ<span class="fu">&gt;</span> <span class="fu">:</span>set <span class="fu">-</span><span class="dt">XOverloadedStrings</span>
-λ<span class="fu">&gt;</span> <span class="kw">import qualified</span> <span class="dt">Data.Text</span> <span class="kw">as</span> <span class="dt">T</span>
-λ<span class="fu">&gt;</span> uppercased <span class="fu">=</span> T.toUpper <span class="st">&quot;lowercase&quot;</span>
-λ<span class="fu">&gt;</span> uppercaser <span class="fu">=</span> T.toUpper</code></pre></div></td>
-<td><div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">
-
-☕&gt; <span class="st">&quot;lowercase&quot;</span>.<span class="fu">toUpperCase</span>()
-☕&gt; <span class="bu">String</span>::<span class="fu">toUpperCase</span>()</code></pre></div></td>
+<td><div class="sourceCode" id="cb6"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb6-1" data-line-number="1">λ<span class="fu">&gt;</span> <span class="fu">:</span>set <span class="fu">-</span><span class="dt">XOverloadedStrings</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">λ<span class="fu">&gt;</span> <span class="kw">import</span> <span class="kw">qualified</span> <span class="dt">Data.Text</span> <span class="kw">as</span> <span class="dt">T</span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">λ<span class="fu">&gt;</span> uppercased <span class="fu">=</span> T.toUpper <span class="st">&quot;lowercase&quot;</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">λ<span class="fu">&gt;</span> uppercaser <span class="fu">=</span> T.toUpper</a></code></pre></div></td>
+<td><div class="sourceCode" id="cb7"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb7-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">☕&gt; <span class="st">&quot;lowercase&quot;</span>.<span class="fu">toUpperCase</span>()</a>
+<a class="sourceLine" id="cb7-4" data-line-number="4">☕&gt; <span class="bu">String</span>::<span class="fu">toUpperCase</span>()</a></code></pre></div></td>
 </tr>
 </tbody>
 </table>
@@ -233,19 +261,19 @@ allCards <span class="fu">=</span> [<span class="dt">Card</span> s v <span class
 </colgroup>
 <tbody>
 <tr class="odd">
-<td><div class="sourceCode"><pre class="sourceCode java fragment"><code class="sourceCode java"><span class="bu">String</span> <span class="fu">fence</span> (<span class="bu">List</span>&lt;<span class="bu">Integer</span>&gt; lst){
-    <span class="bu">String</span> result = <span class="st">&quot;+&quot;</span>;
-    <span class="kw">for</span>( <span class="bu">Integer</span> i : lst) {
-        <span class="kw">for</span> (<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; i,j++){
-          result += <span class="st">&quot;-&quot;</span>;
-        }
-        result += <span class="st">&quot;+&quot;</span>;
-    }
-    <span class="kw">return</span> result;
-}</code></pre></div></td>
-<td><div class="sourceCode"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><span class="ot">fence ::</span> [<span class="dt">Int</span>] <span class="ot">-&gt;</span> <span class="dt">String</span>
-fence <span class="fu">=</span> between <span class="ch">'+'</span> <span class="fu">.</span> intercalate <span class="st">&quot;+&quot;</span> <span class="fu">.</span> map (<span class="ot">`replicate`</span> <span class="ch">'-'</span>)
-  <span class="kw">where</span> between c str <span class="fu">=</span>  c<span class="fu">:</span>(str <span class="fu">++</span>[c])</code></pre></div></td>
+<td><div class="sourceCode" id="cb8"><pre class="sourceCode java fragment"><code class="sourceCode java"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="bu">String</span> <span class="fu">fence</span> (<span class="bu">List</span>&lt;<span class="bu">Integer</span>&gt; lst){</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">    <span class="bu">String</span> result = <span class="st">&quot;+&quot;</span>;</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">    <span class="kw">for</span>( <span class="bu">Integer</span> i : lst) {</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4">        <span class="kw">for</span> (<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; i,j++){</a>
+<a class="sourceLine" id="cb8-5" data-line-number="5">          result += <span class="st">&quot;-&quot;</span>;</a>
+<a class="sourceLine" id="cb8-6" data-line-number="6">        }</a>
+<a class="sourceLine" id="cb8-7" data-line-number="7">        result += <span class="st">&quot;+&quot;</span>;</a>
+<a class="sourceLine" id="cb8-8" data-line-number="8">    }</a>
+<a class="sourceLine" id="cb8-9" data-line-number="9">    <span class="kw">return</span> result;</a>
+<a class="sourceLine" id="cb8-10" data-line-number="10">}</a></code></pre></div></td>
+<td><div class="sourceCode" id="cb9"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="ot">fence ::</span> [<span class="dt">Int</span>] <span class="ot">-&gt;</span> <span class="dt">String</span></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2">fence <span class="fu">=</span> between <span class="ch">'+'</span> <span class="fu">.</span> intercalate <span class="st">&quot;+&quot;</span> <span class="fu">.</span> map (<span class="ot">`replicate`</span> <span class="ch">'-'</span>)</a>
+<a class="sourceLine" id="cb9-3" data-line-number="3">  <span class="kw">where</span> between c str <span class="fu">=</span>  c<span class="fu">:</span>(str <span class="fu">++</span>[c])</a></code></pre></div></td>
 </tr>
 </tbody>
 </table>
@@ -259,41 +287,41 @@ fence <span class="fu">=</span> between <span class="ch">'+'</span> <span class=
 </colgroup>
 <tbody>
 <tr class="odd">
-<td><div class="sourceCode"><pre class="sourceCode java fragment"><code class="sourceCode java"><span class="bu">String</span> <span class="fu">fence</span> (<span class="bu">List</span>&lt;<span class="bu">Integer</span>&gt; lst){
-    <span class="bu">String</span> result = <span class="st">&quot;+&quot;</span>;
-    <span class="kw">for</span>( <span class="bu">Integer</span> i : lst) {
-        <span class="kw">for</span> (<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; i,j++){
-          result += <span class="st">&quot;-&quot;</span>;
-        }
-        result += <span class="st">&quot;+&quot;</span>;
-    }
-    <span class="kw">return</span> result;
-}
-
-<span class="bu">String</span> <span class="fu">wall</span> (<span class="bu">List</span>&lt;<span class="bu">Integer</span>&gt; lst){
-    <span class="bu">String</span> result = <span class="st">&quot;|&quot;</span>;
-    <span class="kw">for</span>( <span class="bu">Integer</span> i : lst) {
-        <span class="kw">for</span> (<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; i,j++){
-          result += <span class="st">&quot; &quot;</span>;
-        }
-        result += <span class="st">&quot;+&quot;</span>;
-    }
-    <span class="kw">return</span> result.<span class="fu">subString</span>(<span class="dv">0</span>,result.<span class="fu">length</span>()-<span class="dv">1</span>) + <span class="st">&quot;|&quot;</span>;
-}</code></pre></div></td>
-<td><div class="sourceCode"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><span class="ot">fence ::</span> [<span class="dt">Int</span>] <span class="ot">-&gt;</span> <span class="dt">String</span>
-fence <span class="fu">=</span> between <span class="ch">'|'</span> <span class="fu">.</span> sepBy <span class="ch">'+'</span> <span class="fu">.</span> fillWith <span class="ch">'-'</span>
-
-<span class="ot">wall ::</span> [<span class="dt">Int</span>] <span class="ot">-&gt;</span> <span class="dt">String</span>
-wall <span class="fu">=</span> between <span class="ch">'|'</span> <span class="fu">.</span> sepBy <span class="ch">'+'</span> <span class="fu">.</span> fillWith <span class="ch">' '</span>
-
-<span class="ot">fillWith ::</span> <span class="dt">Char</span> <span class="ot">-&gt;</span> [<span class="dt">Int</span>] <span class="ot">-&gt;</span> [<span class="dt">String</span>]
-fillWith c ints <span class="fu">=</span> map (flip replicate c) ints
-
-<span class="ot">sepBy ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> [<span class="dt">String</span>] <span class="ot">-&gt;</span> <span class="dt">String</span>
-sepBy i str <span class="fu">=</span> intercalate i strs
-
-<span class="ot">between ::</span> <span class="dt">Char</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span>
-between c str <span class="fu">=</span> c<span class="fu">:</span>(str<span class="fu">++</span>[c])</code></pre></div></td>
+<td><div class="sourceCode" id="cb10"><pre class="sourceCode java fragment"><code class="sourceCode java"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="bu">String</span> <span class="fu">fence</span> (<span class="bu">List</span>&lt;<span class="bu">Integer</span>&gt; lst){</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">    <span class="bu">String</span> result = <span class="st">&quot;+&quot;</span>;</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3">    <span class="kw">for</span>( <span class="bu">Integer</span> i : lst) {</a>
+<a class="sourceLine" id="cb10-4" data-line-number="4">        <span class="kw">for</span> (<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; i,j++){</a>
+<a class="sourceLine" id="cb10-5" data-line-number="5">          result += <span class="st">&quot;-&quot;</span>;</a>
+<a class="sourceLine" id="cb10-6" data-line-number="6">        }</a>
+<a class="sourceLine" id="cb10-7" data-line-number="7">        result += <span class="st">&quot;+&quot;</span>;</a>
+<a class="sourceLine" id="cb10-8" data-line-number="8">    }</a>
+<a class="sourceLine" id="cb10-9" data-line-number="9">    <span class="kw">return</span> result;</a>
+<a class="sourceLine" id="cb10-10" data-line-number="10">}</a>
+<a class="sourceLine" id="cb10-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb10-12" data-line-number="12"><span class="bu">String</span> <span class="fu">wall</span> (<span class="bu">List</span>&lt;<span class="bu">Integer</span>&gt; lst){</a>
+<a class="sourceLine" id="cb10-13" data-line-number="13">    <span class="bu">String</span> result = <span class="st">&quot;|&quot;</span>;</a>
+<a class="sourceLine" id="cb10-14" data-line-number="14">    <span class="kw">for</span>( <span class="bu">Integer</span> i : lst) {</a>
+<a class="sourceLine" id="cb10-15" data-line-number="15">        <span class="kw">for</span> (<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; i,j++){</a>
+<a class="sourceLine" id="cb10-16" data-line-number="16">          result += <span class="st">&quot; &quot;</span>;</a>
+<a class="sourceLine" id="cb10-17" data-line-number="17">        }</a>
+<a class="sourceLine" id="cb10-18" data-line-number="18">        result += <span class="st">&quot;+&quot;</span>;</a>
+<a class="sourceLine" id="cb10-19" data-line-number="19">    }</a>
+<a class="sourceLine" id="cb10-20" data-line-number="20">    <span class="kw">return</span> result.<span class="fu">subString</span>(<span class="dv">0</span>,result.<span class="fu">length</span>()-<span class="dv">1</span>) + <span class="st">&quot;|&quot;</span>;</a>
+<a class="sourceLine" id="cb10-21" data-line-number="21">}</a></code></pre></div></td>
+<td><div class="sourceCode" id="cb11"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="ot">fence ::</span> [<span class="dt">Int</span>] <span class="ot">-&gt;</span> <span class="dt">String</span></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2">fence <span class="fu">=</span> between <span class="ch">'|'</span> <span class="fu">.</span> sepBy <span class="ch">'+'</span> <span class="fu">.</span> fillWith <span class="ch">'-'</span></a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="ot">wall ::</span> [<span class="dt">Int</span>] <span class="ot">-&gt;</span> <span class="dt">String</span></a>
+<a class="sourceLine" id="cb11-5" data-line-number="5">wall <span class="fu">=</span> between <span class="ch">'|'</span> <span class="fu">.</span> sepBy <span class="ch">'+'</span> <span class="fu">.</span> fillWith <span class="ch">' '</span></a>
+<a class="sourceLine" id="cb11-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb11-7" data-line-number="7"><span class="ot">fillWith ::</span> <span class="dt">Char</span> <span class="ot">-&gt;</span> [<span class="dt">Int</span>] <span class="ot">-&gt;</span> [<span class="dt">String</span>]</a>
+<a class="sourceLine" id="cb11-8" data-line-number="8">fillWith c ints <span class="fu">=</span> map (flip replicate c) ints</a>
+<a class="sourceLine" id="cb11-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb11-10" data-line-number="10"><span class="ot">sepBy ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> [<span class="dt">String</span>] <span class="ot">-&gt;</span> <span class="dt">String</span></a>
+<a class="sourceLine" id="cb11-11" data-line-number="11">sepBy i str <span class="fu">=</span> intercalate i strs</a>
+<a class="sourceLine" id="cb11-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb11-13" data-line-number="13"><span class="ot">between ::</span> <span class="dt">Char</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span></a>
+<a class="sourceLine" id="cb11-14" data-line-number="14">between c str <span class="fu">=</span> c<span class="fu">:</span>(str<span class="fu">++</span>[c])</a></code></pre></div></td>
 </tr>
 </tbody>
 </table>
@@ -306,16 +334,16 @@ between c str <span class="fu">=</span> c<span class="fu">:</span>(str<span clas
 </colgroup>
 <tbody>
 <tr class="odd">
-<td><div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">λ<span class="fu">&gt;</span> sortBy (compare <span class="ot">`on`</span> rank) allCards
-λ<span class="fu">&gt;</span> <span class="fu">:</span>t sortBy
-<span class="ot">sortBy ::</span> (a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Ordering</span>) <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> [a]
-λ<span class="fu">&gt;</span> <span class="fu">:</span>t on
-<span class="ot">on ::</span> (b <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> c) <span class="ot">-&gt;</span> (a <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> c</code></pre></div></td>
-<td><div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">☕&gt; <span class="bu">Collections</span>.<span class="fu">sort</span>(<span class="fu">allCards</span>(),<span class="kw">new</span> <span class="bu">Comparator</span>(){..}
-☕&gt; <span class="fu">typeOf</span>(sortBy)
-<span class="bu">List</span>&lt;T&gt; <span class="fu">sortBy</span> (BiFunction&lt;T,T,<span class="dt">int</span>&gt; cmp, <span class="bu">List</span>&lt;T&gt; in)
-☕&gt; <span class="fu">typeOf</span>(sortBy)
-BiFunction&lt;A,A,C&gt; <span class="fu">on</span> (BiFunction&lt;B,B,C&gt; cmp, Function&lt;A,B&gt; f)</code></pre></div></td>
+<td><div class="sourceCode" id="cb12"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb12-1" data-line-number="1">λ<span class="fu">&gt;</span> sortBy (compare <span class="ot">`on`</span> rank) allCards</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2">λ<span class="fu">&gt;</span> <span class="fu">:</span>t sortBy</a>
+<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="ot">sortBy ::</span> (a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Ordering</span>) <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> [a]</a>
+<a class="sourceLine" id="cb12-4" data-line-number="4">λ<span class="fu">&gt;</span> <span class="fu">:</span>t on</a>
+<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="ot">on ::</span> (b <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> c) <span class="ot">-&gt;</span> (a <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> c</a></code></pre></div></td>
+<td><div class="sourceCode" id="cb13"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb13-1" data-line-number="1">☕&gt; <span class="bu">Collections</span>.<span class="fu">sort</span>(<span class="fu">allCards</span>(),<span class="kw">new</span> <span class="bu">Comparator</span>(){..}</a>
+<a class="sourceLine" id="cb13-2" data-line-number="2">☕&gt; <span class="fu">typeOf</span>(sortBy)</a>
+<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="bu">List</span>&lt;T&gt; <span class="fu">sortBy</span> (BiFunction&lt;T,T,<span class="dt">int</span>&gt; cmp, <span class="bu">List</span>&lt;T&gt; in)</a>
+<a class="sourceLine" id="cb13-4" data-line-number="4">☕&gt; <span class="fu">typeOf</span>(sortBy)</a>
+<a class="sourceLine" id="cb13-5" data-line-number="5">BiFunction&lt;A,A,C&gt; <span class="fu">on</span> (BiFunction&lt;B,B,C&gt; cmp, Function&lt;A,B&gt; f)</a></code></pre></div></td>
 </tr>
 </tbody>
 </table>
@@ -328,19 +356,19 @@ BiFunction&lt;A,A,C&gt; <span class="fu">on</span> (BiFunction&lt;B,B,C&gt; cmp,
 </colgroup>
 <tbody>
 <tr class="odd">
-<td><div class="sourceCode"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><span class="dt">Employee</span><span class="ot"> ::</span> <span class="dt">Company</span> <span class="ot">-&gt;</span> <span class="dt">Name</span> <span class="ot">-&gt;</span> <span class="dt">Employee</span>
-tSystems <span class="fu">=</span> <span class="dt">Employee</span> <span class="st">&quot;T-Systems&quot;</span>
-map tSystems [<span class="st">&quot;Martin Heuschober&quot;</span> <span class="fu">..</span>]
-map (<span class="dt">Employee</span> <span class="st">&quot;T-Systems&quot;</span>) [<span class="st">&quot;Martin Heuschober&quot;</span><span class="fu">..</span>]</code></pre></div></td>
-<td><div class="sourceCode"><pre class="sourceCode java fragment"><code class="sourceCode java"><span class="fu">Employee</span> (<span class="bu">String</span> company, <span class="bu">String</span> name) {..}
-Employee <span class="fu">tSystems</span>(<span class="bu">String</span> name) = <span class="fu">Employee</span>(<span class="st">&quot;T-Systems&quot;</span>, name)
-<span class="bu">List</span>&lt;<span class="bu">String</span>&gt; employeeNames = <span class="kw">new</span> <span class="bu">ArrayList</span>&lt;&gt; ([<span class="st">&quot;Martin Heuschober&quot;</span>..])
-employeeNames.<span class="fu">map</span>(tSystems)</code></pre></div></td>
+<td><div class="sourceCode" id="cb14"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="dt">Employee</span><span class="ot"> ::</span> <span class="dt">Company</span> <span class="ot">-&gt;</span> <span class="dt">Name</span> <span class="ot">-&gt;</span> <span class="dt">Employee</span></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">tSystems <span class="fu">=</span> <span class="dt">Employee</span> <span class="st">&quot;T-Systems&quot;</span></a>
+<a class="sourceLine" id="cb14-3" data-line-number="3">map tSystems [<span class="st">&quot;Martin Heuschober&quot;</span> <span class="fu">..</span>]</a>
+<a class="sourceLine" id="cb14-4" data-line-number="4">map (<span class="dt">Employee</span> <span class="st">&quot;T-Systems&quot;</span>) [<span class="st">&quot;Martin Heuschober&quot;</span><span class="fu">..</span>]</a></code></pre></div></td>
+<td><div class="sourceCode" id="cb15"><pre class="sourceCode java fragment"><code class="sourceCode java"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="fu">Employee</span> (<span class="bu">String</span> company, <span class="bu">String</span> name) {..}</a>
+<a class="sourceLine" id="cb15-2" data-line-number="2">Employee <span class="fu">tSystems</span>(<span class="bu">String</span> name) = <span class="fu">Employee</span>(<span class="st">&quot;T-Systems&quot;</span>, name)</a>
+<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="bu">List</span>&lt;<span class="bu">String</span>&gt; employeeNames = <span class="kw">new</span> <span class="bu">ArrayList</span>&lt;&gt; ([<span class="st">&quot;Martin Heuschober&quot;</span>..])</a>
+<a class="sourceLine" id="cb15-4" data-line-number="4">employeeNames.<span class="fu">map</span>(tSystems)</a></code></pre></div></td>
 </tr>
 </tbody>
 </table>
 </section></section>
-<section><section id="higher-order-functions" class="titleslide slide level1"><h1>Higher order functions</h1></section><section id="map" class="slide level2">
+<section><section id="higher-order-functions" class="title-slide slide level1"><h1>Higher order functions</h1></section><section id="map" class="slide level2">
 <h2><code>map</code></h2>
 <ul>
 <li class="fragment">macht aus einer Liste eine neue Liste</li>
@@ -356,18 +384,18 @@ employeeNames.<span class="fu">map</span>(tSystems)</code></pre></div></td>
 </colgroup>
 <tbody>
 <tr class="odd">
-<td><div class="sourceCode"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell">map<span class="ot"> ::</span> (a <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> [b]
-map _ [] <span class="fu">=</span> []
-map f (x<span class="fu">:</span>xs) <span class="fu">=</span> f x <span class="fu">:</span> map f xs</code></pre></div></td>
-<td><div class="sourceCode"><pre class="sourceCode java fragment"><code class="sourceCode java"><span class="kw">for</span> (Elmtclass e : lst) {
-  e' = <span class="fu">f</span>(e)
-}</code></pre></div></td>
+<td><div class="sourceCode" id="cb16"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><a class="sourceLine" id="cb16-1" data-line-number="1">map<span class="ot"> ::</span> (a <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> [b]</a>
+<a class="sourceLine" id="cb16-2" data-line-number="2">map _ [] <span class="fu">=</span> []</a>
+<a class="sourceLine" id="cb16-3" data-line-number="3">map f (x<span class="fu">:</span>xs) <span class="fu">=</span> f x <span class="fu">:</span> map f xs</a></code></pre></div></td>
+<td><div class="sourceCode" id="cb17"><pre class="sourceCode java fragment"><code class="sourceCode java"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw">for</span> (Elmtclass e : lst) {</a>
+<a class="sourceLine" id="cb17-2" data-line-number="2">  e' = <span class="fu">f</span>(e)</a>
+<a class="sourceLine" id="cb17-3" data-line-number="3">}</a></code></pre></div></td>
 </tr>
 <tr class="even">
 <td></td>
-<td><div class="sourceCode"><pre class="sourceCode java fragment"><code class="sourceCode java"><span class="kw">for</span>( <span class="dt">int</span> i = <span class="dv">1</span>, i &lt; lst.<span class="fu">length</span>(), i++) {
-  e' = <span class="fu">f</span>(lst[i]) + <span class="fu">f</span>(lst[i-<span class="dv">1</span>])
-}</code></pre></div></td>
+<td><div class="sourceCode" id="cb18"><pre class="sourceCode java fragment"><code class="sourceCode java"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw">for</span>( <span class="dt">int</span> i = <span class="dv">1</span>, i &lt; lst.<span class="fu">length</span>(), i++) {</a>
+<a class="sourceLine" id="cb18-2" data-line-number="2">  e' = <span class="fu">f</span>(lst[i]) + <span class="fu">f</span>(lst[i<span class="dv">-1</span>])</a>
+<a class="sourceLine" id="cb18-3" data-line-number="3">}</a></code></pre></div></td>
 </tr>
 </tbody>
 </table>
@@ -389,13 +417,13 @@ map f (x<span class="fu">:</span>xs) <span class="fu">=</span> f x <span class="
 </colgroup>
 <tbody>
 <tr class="odd">
-<td><div class="sourceCode"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><span class="ot">fold ::</span> (a <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> a) <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> [b] <span class="ot">-&gt;</span> a
-fold _ acc [] <span class="fu">=</span> acc
-fold f acc (x<span class="fu">:</span>xs) <span class="fu">=</span> fold f (f acc x) xs</code></pre></div></td>
-<td><div class="sourceCode"><pre class="sourceCode java fragment"><code class="sourceCode java"><span class="kw">for</span> (Elmtclass e : lst) {
-  acc = <span class="fu">f</span>(acc, e);
-}
-<span class="kw">return</span> acc;</code></pre></div></td>
+<td><div class="sourceCode" id="cb19"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="ot">fold ::</span> (a <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> a) <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> [b] <span class="ot">-&gt;</span> a</a>
+<a class="sourceLine" id="cb19-2" data-line-number="2">fold _ acc [] <span class="fu">=</span> acc</a>
+<a class="sourceLine" id="cb19-3" data-line-number="3">fold f acc (x<span class="fu">:</span>xs) <span class="fu">=</span> fold f (f acc x) xs</a></code></pre></div></td>
+<td><div class="sourceCode" id="cb20"><pre class="sourceCode java fragment"><code class="sourceCode java"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw">for</span> (Elmtclass e : lst) {</a>
+<a class="sourceLine" id="cb20-2" data-line-number="2">  acc = <span class="fu">f</span>(acc, e);</a>
+<a class="sourceLine" id="cb20-3" data-line-number="3">}</a>
+<a class="sourceLine" id="cb20-4" data-line-number="4"><span class="kw">return</span> acc;</a></code></pre></div></td>
 </tr>
 </tbody>
 </table>
@@ -408,17 +436,17 @@ fold f acc (x<span class="fu">:</span>xs) <span class="fu">=</span> fold f (f ac
 </colgroup>
 <tbody>
 <tr class="odd">
-<td><div class="sourceCode"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell">filter<span class="ot"> ::</span> (a <span class="ot">-&gt;</span> <span class="dt">Bool</span>) <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> [a]
-filter _ [] <span class="fu">=</span> []
-filter p (x<span class="fu">:</span>xs) <span class="fu">=</span> <span class="kw">let</span> xs' <span class="fu">=</span> filter p xs
-                   <span class="kw">in</span> <span class="kw">if</span> p x <span class="kw">then</span> x <span class="fu">:</span> xs' <span class="kw">else</span> xs'</code></pre></div></td>
-<td><div class="sourceCode"><pre class="sourceCode java fragment"><code class="sourceCode java"><span class="kw">for</span> (Elmtclass e : lst) {
-  <span class="kw">if</span> (<span class="fu">p</span>(e)) newlist.<span class="fu">append</span>(e);
-}
-<span class="kw">return</span> newlist;</code></pre></div></td>
+<td><div class="sourceCode" id="cb21"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><a class="sourceLine" id="cb21-1" data-line-number="1">filter<span class="ot"> ::</span> (a <span class="ot">-&gt;</span> <span class="dt">Bool</span>) <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> [a]</a>
+<a class="sourceLine" id="cb21-2" data-line-number="2">filter _ [] <span class="fu">=</span> []</a>
+<a class="sourceLine" id="cb21-3" data-line-number="3">filter p (x<span class="fu">:</span>xs) <span class="fu">=</span> <span class="kw">let</span> xs' <span class="fu">=</span> filter p xs</a>
+<a class="sourceLine" id="cb21-4" data-line-number="4">                   <span class="kw">in</span> <span class="kw">if</span> p x <span class="kw">then</span> x <span class="fu">:</span> xs' <span class="kw">else</span> xs'</a></code></pre></div></td>
+<td><div class="sourceCode" id="cb22"><pre class="sourceCode java fragment"><code class="sourceCode java"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw">for</span> (Elmtclass e : lst) {</a>
+<a class="sourceLine" id="cb22-2" data-line-number="2">  <span class="kw">if</span> (<span class="fu">p</span>(e)) newlist.<span class="fu">append</span>(e);</a>
+<a class="sourceLine" id="cb22-3" data-line-number="3">}</a>
+<a class="sourceLine" id="cb22-4" data-line-number="4"><span class="kw">return</span> newlist;</a></code></pre></div></td>
 </tr>
 <tr class="even">
-<td><div class="sourceCode"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell">filter p <span class="fu">=</span> foldr (\y acc <span class="ot">-&gt;</span> <span class="kw">if</span> p y <span class="kw">then</span> y<span class="fu">:</span>acc <span class="kw">else</span> acc) []</code></pre></div></td>
+<td><div class="sourceCode" id="cb23"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><a class="sourceLine" id="cb23-1" data-line-number="1">filter p <span class="fu">=</span> foldr (\y acc <span class="ot">-&gt;</span> <span class="kw">if</span> p y <span class="kw">then</span> y<span class="fu">:</span>acc <span class="kw">else</span> acc) []</a></code></pre></div></td>
 <td></td>
 </tr>
 </tbody>
@@ -432,37 +460,37 @@ filter p (x<span class="fu">:</span>xs) <span class="fu">=</span> <span class="k
 </colgroup>
 <tbody>
 <tr class="odd">
-<td><div class="sourceCode"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell">any<span class="ot"> ::</span> (a <span class="ot">-&gt;</span> <span class="dt">Bool</span>) <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> <span class="dt">Bool</span>
-any _ [] <span class="fu">=</span> <span class="dt">False</span>
-any p (x<span class="fu">:</span>xs) <span class="fu">=</span> <span class="kw">if</span> p x <span class="kw">then</span> <span class="dt">True</span>
-                      <span class="kw">else</span> any p xs</code></pre></div></td>
-<td><div class="sourceCode"><pre class="sourceCode java fragment"><code class="sourceCode java"><span class="kw">for</span> (Elmtclass e : lst) {
-  <span class="kw">if</span> (<span class="fu">p</span>(e)) <span class="kw">return</span> <span class="kw">true</span>;
-}
-<span class="kw">return</span> <span class="kw">false</span>;</code></pre></div></td>
+<td><div class="sourceCode" id="cb24"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><a class="sourceLine" id="cb24-1" data-line-number="1">any<span class="ot"> ::</span> (a <span class="ot">-&gt;</span> <span class="dt">Bool</span>) <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> <span class="dt">Bool</span></a>
+<a class="sourceLine" id="cb24-2" data-line-number="2">any _ [] <span class="fu">=</span> <span class="dt">False</span></a>
+<a class="sourceLine" id="cb24-3" data-line-number="3">any p (x<span class="fu">:</span>xs) <span class="fu">=</span> <span class="kw">if</span> p x <span class="kw">then</span> <span class="dt">True</span></a>
+<a class="sourceLine" id="cb24-4" data-line-number="4">                      <span class="kw">else</span> any p xs</a></code></pre></div></td>
+<td><div class="sourceCode" id="cb25"><pre class="sourceCode java fragment"><code class="sourceCode java"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="kw">for</span> (Elmtclass e : lst) {</a>
+<a class="sourceLine" id="cb25-2" data-line-number="2">  <span class="kw">if</span> (<span class="fu">p</span>(e)) <span class="kw">return</span> <span class="kw">true</span>;</a>
+<a class="sourceLine" id="cb25-3" data-line-number="3">}</a>
+<a class="sourceLine" id="cb25-4" data-line-number="4"><span class="kw">return</span> <span class="kw">false</span>;</a></code></pre></div></td>
 </tr>
 <tr class="even">
-<td><div class="sourceCode"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell">all<span class="ot"> ::</span> (a <span class="ot">-&gt;</span> <span class="dt">Bool</span>) <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> <span class="dt">Bool</span>
-all _ [] <span class="fu">=</span> <span class="dt">True</span>
-all p (x<span class="fu">:</span>xs) <span class="fu">=</span> p x <span class="fu">&amp;&amp;</span> all p xs</code></pre></div></td>
-<td><div class="sourceCode"><pre class="sourceCode java fragment"><code class="sourceCode java"><span class="kw">for</span> (Elmtclass e : lst) {
-  <span class="kw">if</span> (!<span class="fu">p</span>(e)) <span class="kw">return</span> <span class="kw">false</span>;
-}
-<span class="kw">return</span> <span class="kw">true</span>;</code></pre></div></td>
+<td><div class="sourceCode" id="cb26"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><a class="sourceLine" id="cb26-1" data-line-number="1">all<span class="ot"> ::</span> (a <span class="ot">-&gt;</span> <span class="dt">Bool</span>) <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> <span class="dt">Bool</span></a>
+<a class="sourceLine" id="cb26-2" data-line-number="2">all _ [] <span class="fu">=</span> <span class="dt">True</span></a>
+<a class="sourceLine" id="cb26-3" data-line-number="3">all p (x<span class="fu">:</span>xs) <span class="fu">=</span> p x <span class="fu">&amp;&amp;</span> all p xs</a></code></pre></div></td>
+<td><div class="sourceCode" id="cb27"><pre class="sourceCode java fragment"><code class="sourceCode java"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="kw">for</span> (Elmtclass e : lst) {</a>
+<a class="sourceLine" id="cb27-2" data-line-number="2">  <span class="kw">if</span> (!<span class="fu">p</span>(e)) <span class="kw">return</span> <span class="kw">false</span>;</a>
+<a class="sourceLine" id="cb27-3" data-line-number="3">}</a>
+<a class="sourceLine" id="cb27-4" data-line-number="4"><span class="kw">return</span> <span class="kw">true</span>;</a></code></pre></div></td>
 </tr>
 <tr class="odd">
-<td><div class="sourceCode"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell">any p <span class="fu">=</span> foldr (\y acc <span class="ot">-&gt;</span> p y <span class="fu">||</span> acc ) <span class="dt">False</span>
-all p <span class="fu">=</span> foldr (\y acc <span class="ot">-&gt;</span> p y <span class="fu">&amp;&amp;</span> acc ) <span class="dt">True</span></code></pre></div></td>
+<td><div class="sourceCode" id="cb28"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><a class="sourceLine" id="cb28-1" data-line-number="1">any p <span class="fu">=</span> foldr (\y acc <span class="ot">-&gt;</span> p y <span class="fu">||</span> acc ) <span class="dt">False</span></a>
+<a class="sourceLine" id="cb28-2" data-line-number="2">all p <span class="fu">=</span> foldr (\y acc <span class="ot">-&gt;</span> p y <span class="fu">&amp;&amp;</span> acc ) <span class="dt">True</span></a></code></pre></div></td>
 <td></td>
 </tr>
 <tr class="even">
-<td><div class="sourceCode"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell">all p <span class="fu">=</span> not <span class="fu">.</span> all (not <span class="fu">.</span> p)</code></pre></div></td>
+<td><div class="sourceCode" id="cb29"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><a class="sourceLine" id="cb29-1" data-line-number="1">all p <span class="fu">=</span> not <span class="fu">.</span> all (not <span class="fu">.</span> p)</a></code></pre></div></td>
 <td></td>
 </tr>
 </tbody>
 </table>
 </section></section>
-<section><section id="typsystem" class="titleslide slide level1"><h1>Typsystem</h1></section><section id="info" class="slide level2">
+<section><section id="typsystem" class="title-slide slide level1"><h1>Typsystem</h1></section><section id="info" class="slide level2">
 <h2>Info</h2>
 <ul>
 <li class="fragment">Hindley-Milner</li>
@@ -477,8 +505,8 @@ all p <span class="fu">=</span> foldr (\y acc <span class="ot">-&gt;</span> p y 
 <li class="fragment"><code>flags &lt;string&gt; | &lt;number&gt;</code></li>
 <li class="fragment"><code>mode &lt;integer&gt;</code></li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode javascript fragment"><code class="sourceCode javascript"><span class="co">// get the file descriptor of the file to be truncated</span>
-<span class="kw">const</span> fd <span class="op">=</span> <span class="va">fs</span>.<span class="at">openSync</span>(<span class="st">'temp.txt'</span><span class="op">,</span> <span class="st">'r+'</span>)<span class="op">;</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode javascript fragment"><code class="sourceCode javascript"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="co">// get the file descriptor of the file to be truncated</span></a>
+<a class="sourceLine" id="cb30-2" data-line-number="2"><span class="kw">const</span> fd <span class="op">=</span> <span class="va">fs</span>.<span class="at">openSync</span>(<span class="st">'temp.txt'</span><span class="op">,</span> <span class="st">'r+'</span>)<span class="op">;</span></a></code></pre></div>
 </div>
 <div class="fragment">
 <p>Synchronous version of fs.open(). Returns an integer representing the file descriptor.</p>
@@ -499,20 +527,20 @@ all p <span class="fu">=</span> foldr (\y acc <span class="ot">-&gt;</span> p y 
 </section><section id="typsysteme-sind-ja-da-den-programmierern-helfen-keine-fehler-zu-machen" class="slide level2">
 <h2>Typsysteme sind ja da den Programmierern helfen keine Fehler zu machen</h2>
 <p><a href="https://nodejs.org/api/fs.html#fs_fs_ftruncate_fd_len_callback"><code>fs.truncate(&lt;integer&gt;, &lt;integer&gt;, &lt;Function&gt;)</code></a></p>
-<div class="sourceCode"><pre class="sourceCode javascript fragment"><code class="sourceCode javascript"><span class="co">// truncate the file to first four bytes</span>
-<span class="va">fs</span>.<span class="at">ftruncate</span>(<span class="dv">4</span><span class="op">,</span> fd<span class="op">,</span> (err) <span class="op">=&gt;</span> <span class="op">{</span>
-  <span class="va">assert</span>.<span class="at">ifError</span>(err)<span class="op">;</span>
-  <span class="va">console</span>.<span class="at">log</span>(<span class="va">fs</span>.<span class="at">readFileSync</span>(<span class="st">'temp.txt'</span><span class="op">,</span> <span class="st">'utf8'</span>))<span class="op">;</span>
-<span class="op">}</span>)<span class="op">;</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode javascript fragment"><code class="sourceCode javascript"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="co">// truncate the file to first four bytes</span></a>
+<a class="sourceLine" id="cb31-2" data-line-number="2"><span class="va">fs</span>.<span class="at">ftruncate</span>(<span class="dv">4</span><span class="op">,</span> fd<span class="op">,</span> (err) <span class="op">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb31-3" data-line-number="3">  <span class="va">assert</span>.<span class="at">ifError</span>(err)<span class="op">;</span></a>
+<a class="sourceLine" id="cb31-4" data-line-number="4">  <span class="va">console</span>.<span class="at">log</span>(<span class="va">fs</span>.<span class="at">readFileSync</span>(<span class="st">'temp.txt'</span><span class="op">,</span> <span class="st">'utf8'</span>))<span class="op">;</span></a>
+<a class="sourceLine" id="cb31-5" data-line-number="5"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
 </section><section id="ok-das-kann-ja-nicht-passieren-wenn-man-die-doku-ordentlich-liest" class="slide level2">
 <h2>Ok das kann ja nicht passieren wenn man die Doku ordentlich liest</h2>
 <p>machen ja auch alle - und kopieren nicht einfach Code von Stackoverflow</p>
 <div class="fragment">
 <p><a href="https://nodejs.org/api/fs.html#fs_fs_ftruncate_fd_len_callback"><code>fs.truncate(fd &lt;integer&gt;, len &lt;integer&gt;, callback &lt;Function&gt;)</code></a></p>
-<div class="sourceCode"><pre class="sourceCode javascript fragment"><code class="sourceCode javascript"><span class="va">fs</span>.<span class="at">ftruncate</span>(fd<span class="op">+</span><span class="dv">1</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span> (err) <span class="op">=&gt;</span> <span class="op">{</span>
-  <span class="va">assert</span>.<span class="at">ifError</span>(err)<span class="op">;</span>
-  <span class="va">console</span>.<span class="at">log</span>(<span class="va">fs</span>.<span class="at">readFileSync</span>(<span class="st">'temp.txt'</span><span class="op">,</span> <span class="st">'utf8'</span>))<span class="op">;</span>
-<span class="op">}</span>)<span class="op">;</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode javascript fragment"><code class="sourceCode javascript"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="va">fs</span>.<span class="at">ftruncate</span>(fd<span class="op">+</span><span class="dv">1</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span> (err) <span class="op">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb32-2" data-line-number="2">  <span class="va">assert</span>.<span class="at">ifError</span>(err)<span class="op">;</span></a>
+<a class="sourceLine" id="cb32-3" data-line-number="3">  <span class="va">console</span>.<span class="at">log</span>(<span class="va">fs</span>.<span class="at">readFileSync</span>(<span class="st">'temp.txt'</span><span class="op">,</span> <span class="st">'utf8'</span>))<span class="op">;</span></a>
+<a class="sourceLine" id="cb32-4" data-line-number="4"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
 </div>
 </section><section id="wozu-typsysteme-also" class="slide level2">
 <h2>Wozu Typsysteme also?</h2>
@@ -524,86 +552,86 @@ all p <span class="fu">=</span> foldr (\y acc <span class="ot">-&gt;</span> p y 
 </ol>
 <p>Jeder Fehler der zur Compile-time erkannt wird, landet nie bei einem Kunden.</p>
 </section></section>
-<section><section id="dinge-die-das-haskell-typsystem-gut-macht" class="titleslide slide level1"><h1>Dinge die das Haskell Typsystem gut macht</h1></section><section id="und-andere-systeme-nicht-können" class="slide level2">
+<section><section id="dinge-die-das-haskell-typsystem-gut-macht" class="title-slide slide level1"><h1>Dinge die das Haskell Typsystem gut macht</h1></section><section id="und-andere-systeme-nicht-können" class="slide level2">
 <h2>Und andere Systeme nicht können:</h2>
 </section><section id="io-eingrenzen" class="slide level2">
 <h2>IO eingrenzen</h2>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">readLn<span class="ot"> ::</span> <span class="dt">Read</span> a <span class="ot">=&gt;</span> <span class="dt">IO</span> a
-fmap readMay <span class="fu">.</span><span class="ot"> getLine ::</span> <span class="dt">Read</span> a <span class="ot">=&gt;</span> <span class="dt">IO</span> (<span class="dt">Maybe</span> a)
-<span class="ot">withSqliteConn ::</span> <span class="dt">ConnString</span> <span class="ot">-&gt;</span> <span class="dt">Query</span> a <span class="ot">-&gt;</span> <span class="dt">IO</span> a</code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb33-1" data-line-number="1">readLn<span class="ot"> ::</span> <span class="dt">Read</span> a <span class="ot">=&gt;</span> <span class="dt">IO</span> a</a>
+<a class="sourceLine" id="cb33-2" data-line-number="2">fmap readMay <span class="fu">.</span><span class="ot"> getLine ::</span> <span class="dt">Read</span> a <span class="ot">=&gt;</span> <span class="dt">IO</span> (<span class="dt">Maybe</span> a)</a>
+<a class="sourceLine" id="cb33-3" data-line-number="3"><span class="ot">withSqliteConn ::</span> <span class="dt">ConnString</span> <span class="ot">-&gt;</span> <span class="dt">Query</span> a <span class="ot">-&gt;</span> <span class="dt">IO</span> a</a></code></pre></div>
 </section><section id="sum-types" class="slide level2">
 <h2>Sum types</h2>
-<div class="sourceCode"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">Either</span> a b <span class="fu">=</span> <span class="dt">Left</span> a <span class="fu">|</span> <span class="dt">Right</span> b</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">JSON</span> <span class="fu">=</span> <span class="dt">JsonString</span> <span class="dt">Text</span>
-          <span class="fu">|</span> <span class="dt">JsonNumber</span> <span class="dt">Rational</span>
-          <span class="fu">|</span> <span class="dt">JsonBool</span>   <span class="dt">Bool</span>
-          <span class="fu">|</span> <span class="dt">JsonNull</span>
-          <span class="fu">|</span> <span class="dt">JsonObject</span> (<span class="dt">Map</span> <span class="dt">Text</span> <span class="dt">JSON</span>)
-          <span class="fu">|</span> <span class="dt">JsonArray</span> [<span class="dt">JSON</span>]</code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw">data</span> <span class="dt">Either</span> a b <span class="fu">=</span> <span class="dt">Left</span> a <span class="fu">|</span> <span class="dt">Right</span> b</a></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="kw">data</span> <span class="dt">JSON</span> <span class="fu">=</span> <span class="dt">JsonString</span> <span class="dt">Text</span></a>
+<a class="sourceLine" id="cb35-2" data-line-number="2">          <span class="fu">|</span> <span class="dt">JsonNumber</span> <span class="dt">Rational</span></a>
+<a class="sourceLine" id="cb35-3" data-line-number="3">          <span class="fu">|</span> <span class="dt">JsonBool</span>   <span class="dt">Bool</span></a>
+<a class="sourceLine" id="cb35-4" data-line-number="4">          <span class="fu">|</span> <span class="dt">JsonNull</span></a>
+<a class="sourceLine" id="cb35-5" data-line-number="5">          <span class="fu">|</span> <span class="dt">JsonObject</span> (<span class="dt">Map</span> <span class="dt">Text</span> <span class="dt">JSON</span>)</a>
+<a class="sourceLine" id="cb35-6" data-line-number="6">          <span class="fu">|</span> <span class="dt">JsonArray</span> [<span class="dt">JSON</span>]</a></code></pre></div>
 </section><section id="pattern-matching" class="slide level2">
 <h2>Pattern matching</h2>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">IPv4</span> <span class="fu">=</span> <span class="dt">IPv4</span> <span class="dt">Word8</span> <span class="dt">Word8</span> <span class="dt">Word8</span> <span class="dt">Word8</span>
-<span class="ot">runParser ::</span> <span class="dt">Parser</span> a <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Either</span> <span class="dt">String</span> a</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><span class="kw">case</span> runParser ipv4 <span class="st">&quot;127.-1.120.255&quot;</span>
-  <span class="kw">of</span> <span class="dt">Left</span> msg <span class="ot">-&gt;</span> <span class="kw">do</span> something with errormessage
-     <span class="dt">Right</span> x <span class="ot">-&gt;</span> <span class="kw">do</span> something with result</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><span class="ot">ipv4 ::</span> <span class="dt">Parser</span> <span class="dt">IPv4</span>
-ipv4 <span class="fu">=</span> <span class="kw">do</span> a <span class="ot">&lt;-</span> check <span class="fu">=&lt;&lt;</span> decimal
-          dot
-          b <span class="ot">&lt;-</span> check <span class="fu">=&lt;&lt;</span> decimal
-          dot
-          c <span class="ot">&lt;-</span> check <span class="fu">=&lt;&lt;</span> decimal
-          dot
-          d <span class="ot">&lt;-</span> check <span class="fu">=&lt;&lt;</span> decimal
-          return <span class="dt">IPv4</span> a b c d
-  <span class="kw">where</span><span class="ot"> dot ::</span> <span class="dt">Parser</span> ()
-        dot <span class="fu">=</span> void <span class="fu">$</span> char <span class="ch">'.'</span>
-<span class="ot">        check ::</span> <span class="dt">Integral</span> <span class="ot">-&gt;</span> <span class="dt">Parser</span> <span class="dt">Word8</span>
-        check x <span class="fu">=</span> <span class="kw">do</span> unless (<span class="dv">0</span> <span class="fu">&lt;=</span> x <span class="fu">&amp;&amp;</span> x <span class="fu">&lt;=</span> <span class="dv">256</span>) <span class="fu">$</span>
-                       fail <span class="st">&quot;Failed parsing IPv4&quot;</span>
-                     return <span class="fu">$</span> fromIntegral x</code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">data</span> <span class="dt">IPv4</span> <span class="fu">=</span> <span class="dt">IPv4</span> <span class="dt">Word8</span> <span class="dt">Word8</span> <span class="dt">Word8</span> <span class="dt">Word8</span></a>
+<a class="sourceLine" id="cb36-2" data-line-number="2"><span class="ot">runParser ::</span> <span class="dt">Parser</span> a <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Either</span> <span class="dt">String</span> a</a></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="kw">case</span> runParser ipv4 <span class="st">&quot;127.-1.120.255&quot;</span></a>
+<a class="sourceLine" id="cb37-2" data-line-number="2">  <span class="kw">of</span> <span class="dt">Left</span> msg <span class="ot">-&gt;</span> <span class="kw">do</span> something with errormessage</a>
+<a class="sourceLine" id="cb37-3" data-line-number="3">     <span class="dt">Right</span> x <span class="ot">-&gt;</span> <span class="kw">do</span> something with result</a></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="ot">ipv4 ::</span> <span class="dt">Parser</span> <span class="dt">IPv4</span></a>
+<a class="sourceLine" id="cb38-2" data-line-number="2">ipv4 <span class="fu">=</span> <span class="kw">do</span> a <span class="ot">&lt;-</span> check <span class="fu">=&lt;&lt;</span> decimal</a>
+<a class="sourceLine" id="cb38-3" data-line-number="3">          dot</a>
+<a class="sourceLine" id="cb38-4" data-line-number="4">          b <span class="ot">&lt;-</span> check <span class="fu">=&lt;&lt;</span> decimal</a>
+<a class="sourceLine" id="cb38-5" data-line-number="5">          dot</a>
+<a class="sourceLine" id="cb38-6" data-line-number="6">          c <span class="ot">&lt;-</span> check <span class="fu">=&lt;&lt;</span> decimal</a>
+<a class="sourceLine" id="cb38-7" data-line-number="7">          dot</a>
+<a class="sourceLine" id="cb38-8" data-line-number="8">          d <span class="ot">&lt;-</span> check <span class="fu">=&lt;&lt;</span> decimal</a>
+<a class="sourceLine" id="cb38-9" data-line-number="9">          return <span class="dt">IPv4</span> a b c d</a>
+<a class="sourceLine" id="cb38-10" data-line-number="10">  <span class="kw">where</span><span class="ot"> dot ::</span> <span class="dt">Parser</span> ()</a>
+<a class="sourceLine" id="cb38-11" data-line-number="11">        dot <span class="fu">=</span> void <span class="fu">$</span> char <span class="ch">'.'</span></a>
+<a class="sourceLine" id="cb38-12" data-line-number="12"><span class="ot">        check ::</span> <span class="dt">Integral</span> <span class="ot">-&gt;</span> <span class="dt">Parser</span> <span class="dt">Word8</span></a>
+<a class="sourceLine" id="cb38-13" data-line-number="13">        check x <span class="fu">=</span> <span class="kw">do</span> unless (<span class="dv">0</span> <span class="fu">&lt;=</span> x <span class="fu">&amp;&amp;</span> x <span class="fu">&lt;=</span> <span class="dv">256</span>) <span class="fu">$</span></a>
+<a class="sourceLine" id="cb38-14" data-line-number="14">                       fail <span class="st">&quot;Failed parsing IPv4&quot;</span></a>
+<a class="sourceLine" id="cb38-15" data-line-number="15">                     return <span class="fu">$</span> fromIntegral x</a></code></pre></div>
 </section><section id="typinferez" class="slide level2">
 <h2>Typinferez</h2>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">map<span class="ot"> ::</span> _
-map f [] <span class="fu">=</span> []
-map f (x<span class="fu">:</span>xx) <span class="fu">=</span> f x<span class="fu">:</span> map f xx</code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb39-1" data-line-number="1">map<span class="ot"> ::</span> _</a>
+<a class="sourceLine" id="cb39-2" data-line-number="2">map f [] <span class="fu">=</span> []</a>
+<a class="sourceLine" id="cb39-3" data-line-number="3">map f (x<span class="fu">:</span>xx) <span class="fu">=</span> f x<span class="fu">:</span> map f xx</a></code></pre></div>
 </section><section class="slide level2">
 
 <p><code>[]</code> und <code>(:)</code> sind Listenkonstruktoren (leere Liste und <code>cons</code>-Operator) =&gt; 2tes Argument von <code>map</code> muss eine Liste sein.</p>
-<div class="sourceCode"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><span class="ot">    map ::</span> _ <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> _</code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="ot">    map ::</span> _ <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> _</a></code></pre></div>
 <div class="fragment">
 <p>ebenso das Ergebnis</p>
-<div class="sourceCode"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><span class="ot">    map ::</span> _ <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> [b]</code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="ot">    map ::</span> _ <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> [b]</a></code></pre></div>
 </div>
 </section><section class="slide level2">
 
 <p><code>f</code> wird in Zeile 2 auf das erste Element der Argument-Liste angewandt =&gt; damit muss <code>f</code> eine Funktion sein</p>
-<div class="sourceCode"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><span class="ot">    map ::</span> (x <span class="ot">-&gt;</span> y) <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> [b]</code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="ot">    map ::</span> (x <span class="ot">-&gt;</span> y) <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> [b]</a></code></pre></div>
 <div class="fragment">
 <p><code>f</code> wird in Zeile 2 auf das erste Element der Argument-Liste angewandt =&gt; damit muss <code>f</code> der Wertebereich von <code>f</code> <code>a</code> sein und der Zielbereich <code>b</code></p>
-<div class="sourceCode"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><span class="ot">    map ::</span> (a <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> [b]</code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><a class="sourceLine" id="cb43-1" data-line-number="1"><span class="ot">    map ::</span> (a <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> [b]</a></code></pre></div>
 </div>
 </section><section id="und-man-sich-klauen-kann" class="slide level2">
 <h2>Und man sich klauen kann</h2>
 </section><section id="generics-verwenden-und-arrays-vermeiden" class="slide level2">
 <h2>Generics verwenden und Arrays vermeiden</h2>
-<div class="sourceCode"><pre class="sourceCode java fragment"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
-    Circle[] circles = <span class="kw">new</span> Circle[<span class="dv">2</span>];
-    <span class="bu">Shape</span>[] arr = circles;
-    arr[<span class="dv">0</span>] = <span class="kw">new</span> <span class="fu">Circle</span>(<span class="fl">1.0</span>);
-    arr[<span class="dv">1</span>] = <span class="kw">new</span> <span class="fu">Square</span>(<span class="fl">1.0</span>);
-    <span class="kw">for</span> (<span class="bu">Shape</span> s : arr) {
-       <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(s);
-    }
-}</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode java fragment"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
-    <span class="bu">List</span> &lt;Circle&gt; lst = <span class="kw">new</span> <span class="bu">ArrayList</span>&lt;&gt;();
-    lst.<span class="fu">add</span>(<span class="kw">new</span> <span class="fu">Circle</span>(<span class="fl">1.0</span>));
-    lst.<span class="fu">add</span>(<span class="kw">new</span> <span class="fu">Square</span>(<span class="fl">1.0</span>));
-    <span class="kw">for</span> (<span class="bu">Shape</span> s : lst) {
-       <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(s.<span class="fu">area</span>());
-    }
-}</code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode java fragment"><code class="sourceCode java"><a class="sourceLine" id="cb44-1" data-line-number="1"><span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {</a>
+<a class="sourceLine" id="cb44-2" data-line-number="2">    Circle[] circles = <span class="kw">new</span> Circle[<span class="dv">2</span>];</a>
+<a class="sourceLine" id="cb44-3" data-line-number="3">    <span class="bu">Shape</span>[] arr = circles;</a>
+<a class="sourceLine" id="cb44-4" data-line-number="4">    arr[<span class="dv">0</span>] = <span class="kw">new</span> <span class="fu">Circle</span>(<span class="fl">1.0</span>);</a>
+<a class="sourceLine" id="cb44-5" data-line-number="5">    arr[<span class="dv">1</span>] = <span class="kw">new</span> <span class="fu">Square</span>(<span class="fl">1.0</span>);</a>
+<a class="sourceLine" id="cb44-6" data-line-number="6">    <span class="kw">for</span> (<span class="bu">Shape</span> s : arr) {</a>
+<a class="sourceLine" id="cb44-7" data-line-number="7">       <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(s);</a>
+<a class="sourceLine" id="cb44-8" data-line-number="8">    }</a>
+<a class="sourceLine" id="cb44-9" data-line-number="9">}</a></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode java fragment"><code class="sourceCode java"><a class="sourceLine" id="cb45-1" data-line-number="1"><span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {</a>
+<a class="sourceLine" id="cb45-2" data-line-number="2">    <span class="bu">List</span> &lt;Circle&gt; lst = <span class="kw">new</span> <span class="bu">ArrayList</span>&lt;&gt;();</a>
+<a class="sourceLine" id="cb45-3" data-line-number="3">    lst.<span class="fu">add</span>(<span class="kw">new</span> <span class="fu">Circle</span>(<span class="fl">1.0</span>));</a>
+<a class="sourceLine" id="cb45-4" data-line-number="4">    lst.<span class="fu">add</span>(<span class="kw">new</span> <span class="fu">Square</span>(<span class="fl">1.0</span>));</a>
+<a class="sourceLine" id="cb45-5" data-line-number="5">    <span class="kw">for</span> (<span class="bu">Shape</span> s : lst) {</a>
+<a class="sourceLine" id="cb45-6" data-line-number="6">       <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(s.<span class="fu">area</span>());</a>
+<a class="sourceLine" id="cb45-7" data-line-number="7">    }</a>
+<a class="sourceLine" id="cb45-8" data-line-number="8">}</a></code></pre></div>
 </section><section id="haskell-ist-pure" class="slide level2">
 <h2>Haskell ist pure</h2>
 <ul>
@@ -619,60 +647,60 @@ map f (x<span class="fu">:</span>xx) <span class="fu">=</span> f x<span class="f
 </blockquote>
 <p>Butler Lampson</p>
 </section></section>
-<section><section id="functor" class="titleslide slide level1"><h1>Functor</h1></section><section id="what" class="slide level2">
+<section><section id="functor" class="title-slide slide level1"><h1>Functor</h1></section><section id="what" class="slide level2">
 <h2>What?</h2>
 <p>Ziel: Einen Container-Datentyp elementweise verändern, aber die Struktur des Containers beibehalten. Warum: Fast jeder Container hat diese Eigenschaft.</p>
 </section><section id="haskell" class="slide level2">
 <h2>Haskell</h2>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">class</span> <span class="dt">Functor</span> c <span class="kw">where</span>
-<span class="ot">    fmap ::</span> (a <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> c a <span class="ot">-&gt;</span> c b</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">data</span> [a] <span class="fu">=</span> <span class="fu">..</span>
-<span class="kw">data</span> <span class="dt">Maybe</span> a <span class="fu">=</span> <span class="dt">Nothing</span> <span class="fu">|</span> <span class="dt">Just</span> a
-<span class="kw">data</span> <span class="dt">Tree</span> a <span class="fu">=</span> <span class="dt">Empty</span>
-            <span class="fu">|</span> <span class="dt">Tree</span> {<span class="ot"> label ::</span> a
-                   ,<span class="ot"> leftBranch  ::</span> <span class="dt">Tree</span> a
-                   ,<span class="ot"> rightBranch ::</span> <span class="dt">Tree</span> a }
-<span class="kw">data</span> <span class="dt">RoseTree</span> a <span class="fu">=</span> <span class="dt">RoseTree</span> {<span class="ot"> label ::</span> a
-                           ,<span class="ot"> children ::</span> [<span class="dt">RoseTree</span> a]
-                           }
-<span class="kw">data</span> <span class="dt">IntMap</span> a <span class="fu">=</span> <span class="fu">..</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb46-1" data-line-number="1"><span class="kw">class</span> <span class="dt">Functor</span> c <span class="kw">where</span></a>
+<a class="sourceLine" id="cb46-2" data-line-number="2"><span class="ot">    fmap ::</span> (a <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> c a <span class="ot">-&gt;</span> c b</a></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb47-1" data-line-number="1"><span class="kw">data</span> [a] <span class="fu">=</span> <span class="fu">..</span></a>
+<a class="sourceLine" id="cb47-2" data-line-number="2"><span class="kw">data</span> <span class="dt">Maybe</span> a <span class="fu">=</span> <span class="dt">Nothing</span> <span class="fu">|</span> <span class="dt">Just</span> a</a>
+<a class="sourceLine" id="cb47-3" data-line-number="3"><span class="kw">data</span> <span class="dt">Tree</span> a <span class="fu">=</span> <span class="dt">Empty</span></a>
+<a class="sourceLine" id="cb47-4" data-line-number="4">            <span class="fu">|</span> <span class="dt">Tree</span> {<span class="ot"> label ::</span> a</a>
+<a class="sourceLine" id="cb47-5" data-line-number="5">                   ,<span class="ot"> leftBranch  ::</span> <span class="dt">Tree</span> a</a>
+<a class="sourceLine" id="cb47-6" data-line-number="6">                   ,<span class="ot"> rightBranch ::</span> <span class="dt">Tree</span> a }</a>
+<a class="sourceLine" id="cb47-7" data-line-number="7"><span class="kw">data</span> <span class="dt">RoseTree</span> a <span class="fu">=</span> <span class="dt">RoseTree</span> {<span class="ot"> label ::</span> a</a>
+<a class="sourceLine" id="cb47-8" data-line-number="8">                           ,<span class="ot"> children ::</span> [<span class="dt">RoseTree</span> a]</a>
+<a class="sourceLine" id="cb47-9" data-line-number="9">                           }</a>
+<a class="sourceLine" id="cb47-10" data-line-number="10"><span class="kw">data</span> <span class="dt">IntMap</span> a <span class="fu">=</span> <span class="fu">..</span></a></code></pre></div>
 </section><section class="slide level2">
 
-<div class="sourceCode"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><span class="kw">instance</span> <span class="dt">Functor</span> [] <span class="kw">where</span>
-  fmap _ [] <span class="fu">=</span> []
-  fmap f (x<span class="fu">:</span>xs) <span class="fu">=</span> f x <span class="fu">:</span> fmap f xs</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><span class="kw">instance</span> <span class="dt">Functor</span> <span class="dt">Maybe</span> <span class="kw">where</span>
-  fmap _ <span class="dt">Nothing</span> <span class="fu">=</span> <span class="dt">Nothing</span>
-  fmap f (<span class="dt">Just</span> a) <span class="fu">=</span> <span class="dt">Just</span> (f a)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><span class="kw">instance</span> <span class="dt">Functor</span> <span class="dt">Tree</span> <span class="kw">where</span>
-  fmap _ <span class="dt">Empty</span> <span class="fu">=</span> <span class="dt">Empty</span>
-  fmap f (<span class="dt">Tree</span> x lB rB) <span class="fu">=</span> <span class="dt">Tree</span> (f x) (fmap f lB) (fmap f rB)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><span class="kw">instance</span> <span class="dt">Functor</span> <span class="dt">Tree</span> <span class="kw">where</span>
-  fmap f (<span class="dt">RoseTree</span> x xs) <span class="fu">=</span> <span class="dt">RoseTree</span> (f x) (fmap (fmap f) xs)</code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><a class="sourceLine" id="cb48-1" data-line-number="1"><span class="kw">instance</span> <span class="dt">Functor</span> [] <span class="kw">where</span></a>
+<a class="sourceLine" id="cb48-2" data-line-number="2">  fmap _ [] <span class="fu">=</span> []</a>
+<a class="sourceLine" id="cb48-3" data-line-number="3">  fmap f (x<span class="fu">:</span>xs) <span class="fu">=</span> f x <span class="fu">:</span> fmap f xs</a></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="kw">instance</span> <span class="dt">Functor</span> <span class="dt">Maybe</span> <span class="kw">where</span></a>
+<a class="sourceLine" id="cb49-2" data-line-number="2">  fmap _ <span class="dt">Nothing</span> <span class="fu">=</span> <span class="dt">Nothing</span></a>
+<a class="sourceLine" id="cb49-3" data-line-number="3">  fmap f (<span class="dt">Just</span> a) <span class="fu">=</span> <span class="dt">Just</span> (f a)</a></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><a class="sourceLine" id="cb50-1" data-line-number="1"><span class="kw">instance</span> <span class="dt">Functor</span> <span class="dt">Tree</span> <span class="kw">where</span></a>
+<a class="sourceLine" id="cb50-2" data-line-number="2">  fmap _ <span class="dt">Empty</span> <span class="fu">=</span> <span class="dt">Empty</span></a>
+<a class="sourceLine" id="cb50-3" data-line-number="3">  fmap f (<span class="dt">Tree</span> x lB rB) <span class="fu">=</span> <span class="dt">Tree</span> (f x) (fmap f lB) (fmap f rB)</a></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode haskell fragment"><code class="sourceCode haskell"><a class="sourceLine" id="cb51-1" data-line-number="1"><span class="kw">instance</span> <span class="dt">Functor</span> <span class="dt">Tree</span> <span class="kw">where</span></a>
+<a class="sourceLine" id="cb51-2" data-line-number="2">  fmap f (<span class="dt">RoseTree</span> x xs) <span class="fu">=</span> <span class="dt">RoseTree</span> (f x) (fmap (fmap f) xs)</a></code></pre></div>
 </section><section id="java" class="slide level2">
 <h2>Java</h2>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">import</span><span class="im"> java.util.function.Function;</span>
-
-<span class="kw">interface</span> Functor&lt;T&gt; {
-    &lt;R&gt; Functor&lt;R&gt; <span class="fu">fmap</span>(Function&lt;T, R&gt; f);
-}
-
-<span class="kw">interface</span> Functor&lt;T,F <span class="kw">extends</span> Functor&lt;?,?&gt;&gt; {
-    &lt;R&gt; F <span class="fu">fmap</span>(Function&lt;T,R&gt; f);
-}
-
-<span class="kw">class</span> <span class="bu">Identity</span>&lt;T&gt; <span class="kw">implements</span> Functor&lt;T,<span class="bu">Identity</span>&lt;?&gt;&gt; {
-    <span class="kw">private</span> <span class="dt">final</span> T value;
-
-    <span class="bu">Identity</span>(T value) { <span class="kw">this</span>.<span class="fu">value</span> = value; }
-
-    <span class="kw">public</span> &lt;R&gt; <span class="bu">Identity</span>&lt;R&gt; <span class="fu">fmap</span>(Function&lt;T,R&gt; f) {
-        <span class="dt">final</span> R result = f.<span class="fu">apply</span>(value);
-        <span class="kw">return</span> <span class="kw">new</span> <span class="bu">Identity</span>&lt;&gt;(result);
-    }
-}</code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="kw">import</span><span class="im"> java.util.function.Function;</span></a>
+<a class="sourceLine" id="cb52-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb52-3" data-line-number="3"><span class="kw">interface</span> Functor&lt;T&gt; {</a>
+<a class="sourceLine" id="cb52-4" data-line-number="4">    &lt;R&gt; Functor&lt;R&gt; <span class="fu">fmap</span>(Function&lt;T, R&gt; f);</a>
+<a class="sourceLine" id="cb52-5" data-line-number="5">}</a>
+<a class="sourceLine" id="cb52-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb52-7" data-line-number="7"><span class="kw">interface</span> Functor&lt;T,F <span class="kw">extends</span> Functor&lt;?,?&gt;&gt; {</a>
+<a class="sourceLine" id="cb52-8" data-line-number="8">    &lt;R&gt; F <span class="fu">fmap</span>(Function&lt;T,R&gt; f);</a>
+<a class="sourceLine" id="cb52-9" data-line-number="9">}</a>
+<a class="sourceLine" id="cb52-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb52-11" data-line-number="11"><span class="kw">class</span> <span class="bu">Identity</span>&lt;T&gt; <span class="kw">implements</span> Functor&lt;T,<span class="bu">Identity</span>&lt;?&gt;&gt; {</a>
+<a class="sourceLine" id="cb52-12" data-line-number="12">    <span class="kw">private</span> <span class="dt">final</span> T value;</a>
+<a class="sourceLine" id="cb52-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb52-14" data-line-number="14">    <span class="bu">Identity</span>(T value) { <span class="kw">this</span>.<span class="fu">value</span> = value; }</a>
+<a class="sourceLine" id="cb52-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb52-16" data-line-number="16">    <span class="kw">public</span> &lt;R&gt; <span class="bu">Identity</span>&lt;R&gt; <span class="fu">fmap</span>(Function&lt;T,R&gt; f) {</a>
+<a class="sourceLine" id="cb52-17" data-line-number="17">        <span class="dt">final</span> R result = f.<span class="fu">apply</span>(value);</a>
+<a class="sourceLine" id="cb52-18" data-line-number="18">        <span class="kw">return</span> <span class="kw">new</span> <span class="bu">Identity</span>&lt;&gt;(result);</a>
+<a class="sourceLine" id="cb52-19" data-line-number="19">    }</a>
+<a class="sourceLine" id="cb52-20" data-line-number="20">}</a></code></pre></div>
 </section></section>
-<section><section id="links" class="titleslide slide level1"><h1>Links</h1></section><section id="haskell-1" class="slide level2">
+<section><section id="links" class="title-slide slide level1"><h1>Links</h1></section><section id="haskell-1" class="slide level2">
 <h2>Haskell</h2>
 <ul>
 <li class="fragment"><a href="https://www.haskell.org">haskell.org</a></li>

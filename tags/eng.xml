@@ -48,22 +48,22 @@
 
 
 -->
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Town</span> <span class="fu">=</span> <span class="dt">Prague</span> <span class="fu">|</span> <span class="dt">Vienna</span> <span class="fu">|</span> <span class="dt">Kingston</span> <span class="fu">|</span> <span class="dt">London</span> <span class="fu">|</span> <span class="dt">Hipsterhausen</span> <span class="kw">deriving</span> (<span class="dt">Show</span>, <span class="dt">Eq</span>)
-
-<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Pirate</span> <span class="fu">=</span> <span class="dt">Captain</span>   {<span class="ot"> _attributes ::</span> <span class="dt">Human</span>,<span class="ot"> _ship ::</span> <span class="dt">String</span>}
-<span class="fu">&gt;</span>             <span class="fu">|</span> <span class="dt">FirstMate</span> {<span class="ot"> _attributes ::</span> <span class="dt">Human</span>,<span class="ot"> _shanty ::</span> <span class="dt">String</span>}
-<span class="fu">&gt;</span>             <span class="fu">|</span> <span class="dt">Marauder</span>  {<span class="ot"> _attributes ::</span> <span class="dt">Human</span>,<span class="ot"> _hometown ::</span> <span class="dt">Town</span>}
-
-<span class="fu">&gt;</span> makeLenses <span class="ch">&#39;&#39;</span><span class="dt">Human</span>
-<span class="fu">&gt;</span> makeLenses <span class="ch">&#39;&#39;</span><span class="dt">Body</span>
-<span class="fu">&gt;</span> makeLenses <span class="ch">&#39;&#39;</span><span class="dt">Pirate</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb1-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Town</span> <span class="fu">=</span> <span class="dt">Prague</span> <span class="fu">|</span> <span class="dt">Vienna</span> <span class="fu">|</span> <span class="dt">Kingston</span> <span class="fu">|</span> <span class="dt">London</span> <span class="fu">|</span> <span class="dt">Hipsterhausen</span> <span class="kw">deriving</span> (<span class="dt">Show</span>, <span class="dt">Eq</span>)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Pirate</span> <span class="fu">=</span> <span class="dt">Captain</span>   {<span class="ot"> _attributes ::</span> <span class="dt">Human</span>,<span class="ot"> _ship ::</span> <span class="dt">String</span>}</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="fu">&gt;</span>             <span class="fu">|</span> <span class="dt">FirstMate</span> {<span class="ot"> _attributes ::</span> <span class="dt">Human</span>,<span class="ot"> _shanty ::</span> <span class="dt">String</span>}</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="fu">&gt;</span>             <span class="fu">|</span> <span class="dt">Marauder</span>  {<span class="ot"> _attributes ::</span> <span class="dt">Human</span>,<span class="ot"> _hometown ::</span> <span class="dt">Town</span>}</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="fu">&gt;</span> makeLenses <span class="ch">&#39;&#39;</span><span class="dt">Human</span></a>
+<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="fu">&gt;</span> makeLenses <span class="ch">&#39;&#39;</span><span class="dt">Body</span></a>
+<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="fu">&gt;</span> makeLenses <span class="ch">&#39;&#39;</span><span class="dt">Pirate</span></a></code></pre></div>
 <p>Pirate is a sum type - with different records in each constructor.</p>
 <h1 id="a-tangent-on-sums-and-products">A tangent on sums and products</h1>
 <h2 id="sums">Sums</h2>
 <p>Why is the above called a sum type, just let us calculate the number of options we have in a sum type:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="kw">data</span> <span class="dt">Sum</span> <span class="fu">=</span> <span class="dt">One</span> <span class="fu">|</span> <span class="dt">Two</span> <span class="fu">|</span> <span class="dt">Three</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb2-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">data</span> <span class="dt">Sum</span> <span class="fu">=</span> <span class="dt">One</span> <span class="fu">|</span> <span class="dt">Two</span> <span class="fu">|</span> <span class="dt">Three</span></a></code></pre></div>
 <p>If I have a variable <code>x :: Sum</code> it has exactly three values it can be</p>
 <ul>
 <li><code>x = One</code></li>
@@ -73,8 +73,8 @@
 <p>so the sum of the number of constructors is the solution of how many options <code>x</code> can be.</p>
 <h2 id="product">Product</h2>
 <p>So how come product types to their names - you might already guess it.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="kw">data</span> <span class="dt">Product</span> <span class="fu">=</span> <span class="dt">P</span> <span class="dt">Sum</span> <span class="dt">Sum</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb3-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">data</span> <span class="dt">Product</span> <span class="fu">=</span> <span class="dt">P</span> <span class="dt">Sum</span> <span class="dt">Sum</span></a></code></pre></div>
 <p>For a variable <code>y :: Product</code> we find <code>y</code> can be <code>|Sum|×|Sum|</code> many possible values:</p>
 <ul>
 <li><code>y = P One One</code></li>
@@ -89,43 +89,43 @@
 </ul>
 <h2 id="so-can-anybody-find-what-exponential-types-are">So can anybody find what exponential types are?</h2>
 <p>The answer is functions</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="kw">data</span> <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">One</span> <span class="fu">|</span> <span class="dt">Two</span>
-<span class="kw">data</span> <span class="dt">THREE</span> <span class="fu">=</span> <span class="dt">ONE</span> <span class="fu">|</span> <span class="dt">TWO</span> <span class="fu">|</span> <span class="dt">THREE</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb4-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw">data</span> <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">One</span> <span class="fu">|</span> <span class="dt">Two</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw">data</span> <span class="dt">THREE</span> <span class="fu">=</span> <span class="dt">ONE</span> <span class="fu">|</span> <span class="dt">TWO</span> <span class="fu">|</span> <span class="dt">THREE</span></a></code></pre></div>
 <p>So the functions from <code>Two -&gt; THREE</code> have exactly <code>|Two|^|THREE|</code> many elements.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-one,two,three,four,five,six,seven,<span class="ot">eight ::</span> <span class="dt">Two</span> <span class="ot">-&gt;</span> <span class="dt">THREE</span>
-one   <span class="dt">One</span> <span class="fu">=</span> <span class="dt">ONE</span>
-one   <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">ONE</span>
-two   <span class="dt">One</span> <span class="fu">=</span> <span class="dt">TWO</span>
-two   <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">TWO</span>
-three <span class="dt">One</span> <span class="fu">=</span> <span class="dt">THREE</span>
-three <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">THREE</span>
-four  <span class="dt">One</span> <span class="fu">=</span> <span class="dt">ONE</span>
-four  <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">TWO</span>
-five  <span class="dt">One</span> <span class="fu">=</span> <span class="dt">ONE</span>
-five  <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">THREE</span>
-six   <span class="dt">One</span> <span class="fu">=</span> <span class="dt">TWO</span>
-six   <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">THREE</span>
-seven <span class="dt">One</span> <span class="fu">=</span> <span class="dt">THREE</span>
-seven <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">ONE</span>
-eight <span class="dt">One</span> <span class="fu">=</span> <span class="dt">THREE</span>
-eight <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">TWO</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb5-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">one,two,three,four,five,six,seven,<span class="ot">eight ::</span> <span class="dt">Two</span> <span class="ot">-&gt;</span> <span class="dt">THREE</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">one   <span class="dt">One</span> <span class="fu">=</span> <span class="dt">ONE</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">one   <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">ONE</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">two   <span class="dt">One</span> <span class="fu">=</span> <span class="dt">TWO</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">two   <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">TWO</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">three <span class="dt">One</span> <span class="fu">=</span> <span class="dt">THREE</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">three <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">THREE</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9">four  <span class="dt">One</span> <span class="fu">=</span> <span class="dt">ONE</span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10">four  <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">TWO</span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11">five  <span class="dt">One</span> <span class="fu">=</span> <span class="dt">ONE</span></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12">five  <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">THREE</span></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13">six   <span class="dt">One</span> <span class="fu">=</span> <span class="dt">TWO</span></a>
+<a class="sourceLine" id="cb5-14" data-line-number="14">six   <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">THREE</span></a>
+<a class="sourceLine" id="cb5-15" data-line-number="15">seven <span class="dt">One</span> <span class="fu">=</span> <span class="dt">THREE</span></a>
+<a class="sourceLine" id="cb5-16" data-line-number="16">seven <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">ONE</span></a>
+<a class="sourceLine" id="cb5-17" data-line-number="17">eight <span class="dt">One</span> <span class="fu">=</span> <span class="dt">THREE</span></a>
+<a class="sourceLine" id="cb5-18" data-line-number="18">eight <span class="dt">Two</span> <span class="fu">=</span> <span class="dt">TWO</span></a></code></pre></div>
 <h1 id="back-to-prisms">Back to Prisms</h1>
 <p>The problem with lenses is that <code>cpt</code> some getters don’t make sense. For datatypes that have a special elements, so called monoids like <code>String</code> with <code>&quot;&quot;</code> we get special getters, but for <code>Town</code> for example …</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="dt">Prelude</span> <span class="fu">&gt;</span> cpt<span class="fu">^.</span>shanty
-<span class="st">&quot;&quot;</span>
-<span class="dt">Prelude</span> <span class="fu">&gt;</span> cpt<span class="fu">^.</span>hometown
-<span class="fu">...</span>
-error message complaining about <span class="dt">Town</span> not being a monoid
-<span class="fu">...</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb6-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="dt">Prelude</span> <span class="fu">&gt;</span> cpt<span class="fu">^.</span>shanty</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="st">&quot;&quot;</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="dt">Prelude</span> <span class="fu">&gt;</span> cpt<span class="fu">^.</span>hometown</a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="fu">...</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6">error message complaining about <span class="dt">Town</span> not being a monoid</a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="fu">...</span></a></code></pre></div>
 <p>So an easy way to get <em>special</em> elements is combining it with <code>Maybe</code>. And that’s what prisms are - getters with <code>Maybe</code>-values instead of errors.</p>
 <p>So how do we get them - again as with prisms we (have to) build them with template haskell magic using</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="fu">&gt;</span> makePrisms <span class="ch">&#39;&#39;</span><span class="dt">Human</span>
-<span class="fu">&gt;</span> makePrisms <span class="ch">&#39;&#39;</span><span class="dt">Body</span>
-<span class="fu">&gt;</span> makePrisms <span class="ch">&#39;&#39;</span><span class="dt">Pirate</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb7-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="fu">&gt;</span> makePrisms <span class="ch">&#39;&#39;</span><span class="dt">Human</span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="fu">&gt;</span> makePrisms <span class="ch">&#39;&#39;</span><span class="dt">Body</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="fu">&gt;</span> makePrisms <span class="ch">&#39;&#39;</span><span class="dt">Pirate</span></a></code></pre></div>
 <p>This magic words create “Constructors” <code>_Captain</code>, <code>_FirstMate</code> and <code>_Marauder</code> and the lens library provides functions <code>preview</code>, <code>review</code> and <code>^?</code>.</p>
 <!--
 
@@ -173,36 +173,36 @@ error message complaining about <span class="dt">Town</span> not being a monoid
 
 -->
 <p>Now what are those functions doing - they select one <em>branch</em> in a sum type.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="dt">Prelude</span> <span class="fu">&gt;</span> preview _Captain cpt
-<span class="dt">Just</span> (<span class="dt">Attributes</span> {<span class="fu">...</span>},<span class="st">&quot;SS Sea Serpent&quot;</span>)
-<span class="dt">Prelude</span> <span class="fu">&gt;</span> preview _Captain mrd
-<span class="dt">Nothing</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb8-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="dt">Prelude</span> <span class="fu">&gt;</span> preview _Captain cpt</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="dt">Just</span> (<span class="dt">Attributes</span> {<span class="fu">...</span>},<span class="st">&quot;SS Sea Serpent&quot;</span>)</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="dt">Prelude</span> <span class="fu">&gt;</span> preview _Captain mrd</a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="dt">Nothing</span></a></code></pre></div>
 <p>But there is also an infix shortcut for <code>preview</code> - <code>(^?)</code> so we could have written the above <code>cpt^._Captain</code> or use it with accessor-like functions as <code>hometown</code>,<code>ship</code>,<code>shanty</code> or <code>attributes</code>.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="dt">Prelude</span> <span class="fu">&gt;</span> cpt<span class="fu">^?</span>hometown
-<span class="dt">Nothing</span>
-<span class="dt">Prelude</span> <span class="fu">&gt;</span> cpt<span class="fu">^?</span>ship
-<span class="dt">Just</span> <span class="st">&quot;SS Sea Serpent&quot;</span>
-<span class="dt">Prelude</span> <span class="fu">&gt;</span> mrd<span class="fu">^?</span>hometown
-<span class="dt">Just</span> <span class="dt">Hipsterhausen</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb9-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="dt">Prelude</span> <span class="fu">&gt;</span> cpt<span class="fu">^?</span>hometown</a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="dt">Nothing</span></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="dt">Prelude</span> <span class="fu">&gt;</span> cpt<span class="fu">^?</span>ship</a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="dt">Just</span> <span class="st">&quot;SS Sea Serpent&quot;</span></a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="dt">Prelude</span> <span class="fu">&gt;</span> mrd<span class="fu">^?</span>hometown</a>
+<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="dt">Just</span> <span class="dt">Hipsterhausen</span></a></code></pre></div>
 <h2 id="so-what-about-review">So what about <code>review</code>?</h2>
 <p>The <code>review</code> function can create new things from the results of <code>preview</code>, well not exactly but almost and with use of <code>(&lt;$&gt;)</code> from <code>Control.Applicative</code> we can make them work together</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="fu">:</span>t preview _Captain cpt
-preview _Captain<span class="ot"> cpt ::</span> <span class="dt">Maybe</span> (<span class="dt">Human</span>, <span class="dt">String</span>)
-<span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="kw">let</span> <span class="dt">Just</span> x <span class="fu">=</span> preview _Captain cpt
-<span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="fu">:</span>t review _Captain x
-review _Captain<span class="ot"> x ::</span> <span class="dt">Pirate</span>
-<span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="fu">:</span>t review _Captain <span class="fu">&lt;$&gt;</span> preview _Captain cpt
-review _Captain <span class="fu">&lt;$&gt;</span> preview _Captain<span class="ot"> cpt ::</span> <span class="dt">Maybe</span> <span class="dt">Pirate</span>
-<span class="dt">Prelude</span><span class="fu">&gt;</span> review _Captain <span class="fu">&lt;$&gt;</span> preview _Captain cpt
-<span class="dt">Just</span> <span class="dt">Captain</span> {<span class="dt">Attributes</span> {<span class="fu">...</span>},<span class="st">&quot;SS Sea Serpent&quot;</span>}
-<span class="dt">Prelude</span><span class="fu">&gt;</span> review _Captain <span class="fu">&lt;$&gt;</span> preview _Captain mrd
-<span class="dt">Nothing</span>
-<span class="dt">Prelude</span><span class="fu">&gt;</span> review _Captain <span class="fu">&lt;$&gt;</span> preview _Marauder mrd
-<span class="fu">...</span> <span class="dt">Error</span> <span class="fu">...</span> <span class="co">-- Captain needs String (ship name) where Marauder has a Town as</span>
-a second argument</code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb10-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="fu">:</span>t preview _Captain cpt</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3">preview _Captain<span class="ot"> cpt ::</span> <span class="dt">Maybe</span> (<span class="dt">Human</span>, <span class="dt">String</span>)</a>
+<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="kw">let</span> <span class="dt">Just</span> x <span class="fu">=</span> preview _Captain cpt</a>
+<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="fu">:</span>t review _Captain x</a>
+<a class="sourceLine" id="cb10-6" data-line-number="6">review _Captain<span class="ot"> x ::</span> <span class="dt">Pirate</span></a>
+<a class="sourceLine" id="cb10-7" data-line-number="7"><span class="dt">Prelude</span><span class="fu">&gt;</span> <span class="fu">:</span>t review _Captain <span class="fu">&lt;$&gt;</span> preview _Captain cpt</a>
+<a class="sourceLine" id="cb10-8" data-line-number="8">review _Captain <span class="fu">&lt;$&gt;</span> preview _Captain<span class="ot"> cpt ::</span> <span class="dt">Maybe</span> <span class="dt">Pirate</span></a>
+<a class="sourceLine" id="cb10-9" data-line-number="9"><span class="dt">Prelude</span><span class="fu">&gt;</span> review _Captain <span class="fu">&lt;$&gt;</span> preview _Captain cpt</a>
+<a class="sourceLine" id="cb10-10" data-line-number="10"><span class="dt">Just</span> <span class="dt">Captain</span> {<span class="dt">Attributes</span> {<span class="fu">...</span>},<span class="st">&quot;SS Sea Serpent&quot;</span>}</a>
+<a class="sourceLine" id="cb10-11" data-line-number="11"><span class="dt">Prelude</span><span class="fu">&gt;</span> review _Captain <span class="fu">&lt;$&gt;</span> preview _Captain mrd</a>
+<a class="sourceLine" id="cb10-12" data-line-number="12"><span class="dt">Nothing</span></a>
+<a class="sourceLine" id="cb10-13" data-line-number="13"><span class="dt">Prelude</span><span class="fu">&gt;</span> review _Captain <span class="fu">&lt;$&gt;</span> preview _Marauder mrd</a>
+<a class="sourceLine" id="cb10-14" data-line-number="14"><span class="fu">...</span> <span class="dt">Error</span> <span class="fu">...</span> <span class="co">-- Captain needs String (ship name) where Marauder has a Town as</span></a>
+<a class="sourceLine" id="cb10-15" data-line-number="15">a second argument</a></code></pre></div>
 <p>So Prisms do not fix everything - but provide a safety layer for simple accessing stuff and sometimes for generating stuff as well.</p>
 <p>So thats all I know about Lenses and Prisms - for understanding the type signatures - I still do not feel confident to present about.</p>]]></description>
     <pubDate>Sun, 07 Sep 2014 00:00:00 UT</pubDate>
@@ -217,8 +217,8 @@ a second argument</code></pre></div>
 <p>The convention is to put an <code>_</code> at the beginning of the record names in the record syntax definition. And then use the magic of template haskell to generate the corresponding lenses a.k.a. functional getters and setters with <code>makeLenses ''MyADT</code>.</p>
 <p>Going back to the old examples one could rewrite it as follows.</p>
 <p>For one we need the template haskell language pragma to make the magic work.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="fu">&gt;</span> <span class="ot">{-# LANGUAGE TemplateHaskell #-}</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb1-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="fu">&gt;</span> <span class="ot">{-# LANGUAGE TemplateHaskell #-}</span></a></code></pre></div>
 <p>And we also need the lens library to be installed for which I recommend using <code>cabal</code>, the interface to the haskell packaging system.</p>
 <pre class="shell"><code>~ $ cabal update
 ~ $ cabal install lens
@@ -232,14 +232,14 @@ Installed lens-4.3.3 (the current lens version as of 11th of August 2014)</code>
 > import Data.List (intercalate)
 
 -->
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="fu">&gt;</span> <span class="kw">import </span><span class="dt">Control.Lens</span>
-
-<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Human</span> <span class="fu">=</span> <span class="dt">Attributes</span> {<span class="ot"> _name ::</span> <span class="dt">String</span>,<span class="ot"> _body ::</span> <span class="dt">Body</span>,<span class="ot"> _age ::</span> <span class="dt">Int</span>} <span class="kw">deriving</span> (<span class="dt">Show</span>)
-<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Body</span> <span class="fu">=</span> <span class="dt">Body</span> {<span class="ot"> _hat ::</span> <span class="dt">Maybe</span> <span class="dt">Hat</span>
-<span class="fu">&gt;</span>                  ,<span class="ot"> _beard ::</span> <span class="dt">Maybe</span> <span class="dt">Beard</span>
-<span class="fu">&gt;</span>                  ,<span class="ot"> _torso ::</span> <span class="dt">Torso</span>
-<span class="fu">&gt;</span>                  ,<span class="ot"> _accessories ::</span> [<span class="dt">Accessories</span>]}</code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb3-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="fu">&gt;</span> <span class="kw">import</span> <span class="dt">Control.Lens</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Human</span> <span class="fu">=</span> <span class="dt">Attributes</span> {<span class="ot"> _name ::</span> <span class="dt">String</span>,<span class="ot"> _body ::</span> <span class="dt">Body</span>,<span class="ot"> _age ::</span> <span class="dt">Int</span>} <span class="kw">deriving</span> (<span class="dt">Show</span>)</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Body</span> <span class="fu">=</span> <span class="dt">Body</span> {<span class="ot"> _hat ::</span> <span class="dt">Maybe</span> <span class="dt">Hat</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="fu">&gt;</span>                  ,<span class="ot"> _beard ::</span> <span class="dt">Maybe</span> <span class="dt">Beard</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="fu">&gt;</span>                  ,<span class="ot"> _torso ::</span> <span class="dt">Torso</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="fu">&gt;</span>                  ,<span class="ot"> _accessories ::</span> [<span class="dt">Accessories</span>]}</a></code></pre></div>
 <!--
 
 > data Hat = Tricorne | WideBrimmedHat | Bandana deriving (Show)
@@ -258,22 +258,22 @@ Installed lens-4.3.3 (the current lens version as of 11th of August 2014)</code>
 >          ++"\t Accessories: "++ (intercalate ", " $ map show (_accessories b))
 
 -->
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Pirate</span> <span class="fu">=</span> <span class="dt">Captain</span>   {<span class="ot"> _attributes ::</span> <span class="dt">Human</span>,<span class="ot"> _ship ::</span> <span class="dt">String</span>}
-<span class="fu">&gt;</span>             <span class="fu">|</span> <span class="dt">FirstMate</span> {<span class="ot"> _attributes ::</span> <span class="dt">Human</span>,<span class="ot"> _shanty ::</span> <span class="dt">String</span>}
-<span class="fu">&gt;</span>             <span class="fu">|</span> <span class="dt">Marauder</span>  {<span class="ot"> _attributes ::</span> <span class="dt">Human</span>,<span class="ot"> _hometown ::</span> <span class="dt">String</span>}</code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb4-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Pirate</span> <span class="fu">=</span> <span class="dt">Captain</span>   {<span class="ot"> _attributes ::</span> <span class="dt">Human</span>,<span class="ot"> _ship ::</span> <span class="dt">String</span>}</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="fu">&gt;</span>             <span class="fu">|</span> <span class="dt">FirstMate</span> {<span class="ot"> _attributes ::</span> <span class="dt">Human</span>,<span class="ot"> _shanty ::</span> <span class="dt">String</span>}</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="fu">&gt;</span>             <span class="fu">|</span> <span class="dt">Marauder</span>  {<span class="ot"> _attributes ::</span> <span class="dt">Human</span>,<span class="ot"> _hometown ::</span> <span class="dt">String</span>}</a></code></pre></div>
 <p>… and of course create the lenses. (In the background template haskell now creates functions attributes, ship, shanty and so on.)</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="fu">&gt;</span> makeLenses <span class="ch">&#39;&#39;</span><span class="dt">Human</span>
-<span class="fu">&gt;</span> makeLenses <span class="ch">&#39;&#39;</span><span class="dt">Body</span>
-<span class="fu">&gt;</span> makeLenses <span class="ch">&#39;&#39;</span><span class="dt">Pirate</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb5-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="fu">&gt;</span> makeLenses <span class="ch">&#39;&#39;</span><span class="dt">Human</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="fu">&gt;</span> makeLenses <span class="ch">&#39;&#39;</span><span class="dt">Body</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="fu">&gt;</span> makeLenses <span class="ch">&#39;&#39;</span><span class="dt">Pirate</span></a></code></pre></div>
 <p>Now would be a great moment to talk about the types of Lens and the famous Lens-laws, but I’d rather have some use of them before I bore you to death.</p>
 <p>So let us have a look at the instance declaration for <code>Show</code></p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="fu">&gt;</span> <span class="kw">instance</span> <span class="dt">Show</span> <span class="dt">Pirate</span> <span class="kw">where</span>
-<span class="fu">&gt;</span>   show (<span class="dt">Captain</span> a s)   <span class="fu">=</span>  <span class="st">&quot;The infamous Captain &quot;</span><span class="fu">++</span> a<span class="fu">^.</span>name<span class="fu">++</span><span class="st">&quot; of the &quot;</span><span class="fu">++</span> s<span class="fu">++</span><span class="st">&quot;\n&quot;</span>
-<span class="fu">&gt;</span>                        <span class="fu">++</span> show (a<span class="fu">^.</span>body)<span class="fu">++</span><span class="st">&quot;\n&quot;</span>
-<span class="fu">&gt;</span>                        <span class="fu">++</span> <span class="st">&quot;\t Age: &quot;</span><span class="fu">++</span>show (a<span class="fu">^.</span>age)</code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb6-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="fu">&gt;</span> <span class="kw">instance</span> <span class="dt">Show</span> <span class="dt">Pirate</span> <span class="kw">where</span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="fu">&gt;</span>   show (<span class="dt">Captain</span> a s)   <span class="fu">=</span>  <span class="st">&quot;The infamous Captain &quot;</span><span class="fu">++</span> a<span class="fu">^.</span>name<span class="fu">++</span><span class="st">&quot; of the &quot;</span><span class="fu">++</span> s<span class="fu">++</span><span class="st">&quot;\n&quot;</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="fu">&gt;</span>                        <span class="fu">++</span> show (a<span class="fu">^.</span>body)<span class="fu">++</span><span class="st">&quot;\n&quot;</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="fu">&gt;</span>                        <span class="fu">++</span> <span class="st">&quot;\t Age: &quot;</span><span class="fu">++</span>show (a<span class="fu">^.</span>age)</a></code></pre></div>
 <!--
 
 >   show (FirstMate a s) =  "Mate "++a^.name++" sings "++s
@@ -286,17 +286,17 @@ Installed lens-4.3.3 (the current lens version as of 11th of August 2014)</code>
 -->
 <p>I wouldn’t call that an improvement but the average object oriented programmer might. So what is this <code>^.</code> operator, it is an alias for the <code>view</code>-function that can focus on the parts of a lens.</p>
 <p>The type signature for <code>(^.)</code> is a bit complicated, but if we combine it with the generated functions we see</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="dt">GHCi</span><span class="fu">&gt;</span> <span class="fu">:</span>t (<span class="fu">^.</span>attributes)
-(<span class="fu">^.</span>attributes)<span class="ot"> ::</span> <span class="dt">Pirate</span> <span class="ot">-&gt;</span> <span class="dt">Human</span>
-<span class="dt">GHCi</span><span class="fu">&gt;</span> <span class="fu">:</span>t (<span class="fu">^.</span>attributes<span class="fu">.</span>name)
-(<span class="fu">^.</span>attributes<span class="fu">.</span>name)<span class="ot"> ::</span> <span class="dt">Pirate</span> <span class="ot">-&gt;</span> <span class="dt">String</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb7-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="dt">GHCi</span><span class="fu">&gt;</span> <span class="fu">:</span>t (<span class="fu">^.</span>attributes)</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">(<span class="fu">^.</span>attributes)<span class="ot"> ::</span> <span class="dt">Pirate</span> <span class="ot">-&gt;</span> <span class="dt">Human</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="dt">GHCi</span><span class="fu">&gt;</span> <span class="fu">:</span>t (<span class="fu">^.</span>attributes<span class="fu">.</span>name)</a>
+<a class="sourceLine" id="cb7-5" data-line-number="5">(<span class="fu">^.</span>attributes<span class="fu">.</span>name)<span class="ot"> ::</span> <span class="dt">Pirate</span> <span class="ot">-&gt;</span> <span class="dt">String</span></a></code></pre></div>
 <p>But where the combined type signature of <code>(^.)</code> and <code>attributes</code> is simple their own type signature is - let’s just call it <em>not</em> simple.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="dt">GHCi</span><span class="fu">&gt;</span> <span class="fu">:</span>t (<span class="fu">^.</span>)
-<span class="ot">(^.) ::</span> s <span class="ot">-&gt;</span> <span class="dt">Getting</span> a s a <span class="ot">-&gt;</span> a
-<span class="dt">GHCi</span><span class="fu">&gt;</span> <span class="fu">:</span>t attributes
-<span class="ot">attributes ::</span> <span class="dt">Functor</span> f <span class="ot">=&gt;</span> (<span class="dt">Human</span> <span class="ot">-&gt;</span> f <span class="dt">Human</span>) <span class="ot">-&gt;</span> <span class="dt">Pirate</span> <span class="ot">-&gt;</span> f <span class="dt">Pirate</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb8-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="dt">GHCi</span><span class="fu">&gt;</span> <span class="fu">:</span>t (<span class="fu">^.</span>)</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="ot">(^.) ::</span> s <span class="ot">-&gt;</span> <span class="dt">Getting</span> a s a <span class="ot">-&gt;</span> a</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="dt">GHCi</span><span class="fu">&gt;</span> <span class="fu">:</span>t attributes</a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="ot">attributes ::</span> <span class="dt">Functor</span> f <span class="ot">=&gt;</span> (<span class="dt">Human</span> <span class="ot">-&gt;</span> f <span class="dt">Human</span>) <span class="ot">-&gt;</span> <span class="dt">Pirate</span> <span class="ot">-&gt;</span> f <span class="dt">Pirate</span></a></code></pre></div>
 <p>As we saw we have something called <code>Getting</code> so there should also be some setting stuff and indeed we have a <code>set</code>-function and the infix alias <code>(.~)</code> which is more useful with the <code>&amp;</code>-operator which is just reverse function application: <code>x &amp; f = f x</code>.</p>
 <!--
 
@@ -333,33 +333,33 @@ Installed lens-4.3.3 (the current lens version as of 11th of August 2014)</code>
 
 -->
 <p>A few examples should provide a bit more insight…</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="fu">&gt;</span> hel <span class="fu">=</span> cpt <span class="fu">&amp;</span> attributes<span class="fu">.</span>name<span class="fu">.~</span> <span class="st">&quot;Hellscream&quot;</span>
-
-<span class="dt">GHCi</span> <span class="fu">&gt;</span> hel
-<span class="dt">The</span> infamous <span class="dt">Captain</span> <span class="dt">Hellscream</span> <span class="kw">of</span> the <span class="dt">SS</span> <span class="dt">Sea</span> <span class="dt">Serpent</span>
-        <span class="dt">Hat</span><span class="fu">:</span> <span class="dt">Just</span> <span class="dt">Tricorne</span>
-        <span class="fu">...</span>
-        <span class="dt">Age</span><span class="fu">:</span> <span class="dv">42</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb9-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="fu">&gt;</span> hel <span class="fu">=</span> cpt <span class="fu">&amp;</span> attributes<span class="fu">.</span>name<span class="fu">.~</span> <span class="st">&quot;Hellscream&quot;</span></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="dt">GHCi</span> <span class="fu">&gt;</span> hel</a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="dt">The</span> infamous <span class="dt">Captain</span> <span class="dt">Hellscream</span> <span class="kw">of</span> the <span class="dt">SS</span> <span class="dt">Sea</span> <span class="dt">Serpent</span></a>
+<a class="sourceLine" id="cb9-6" data-line-number="6">        <span class="dt">Hat</span><span class="fu">:</span> <span class="dt">Just</span> <span class="dt">Tricorne</span></a>
+<a class="sourceLine" id="cb9-7" data-line-number="7">        <span class="fu">...</span></a>
+<a class="sourceLine" id="cb9-8" data-line-number="8">        <span class="dt">Age</span><span class="fu">:</span> <span class="dv">42</span></a></code></pre></div>
 <p>… and see that now it is really easy to undress our pirates with:</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="fu">&gt;</span> undress pirate <span class="fu">=</span> pirate <span class="fu">&amp;</span> attributes <span class="fu">.</span> body <span class="fu">.</span> hat <span class="fu">.~</span> <span class="dt">Nothing</span>
-<span class="fu">&gt;</span>                         <span class="fu">&amp;</span> attributes <span class="fu">.</span> body <span class="fu">.</span> beard <span class="fu">.~</span> <span class="dt">Nothing</span>
-<span class="fu">&gt;</span>                         <span class="fu">&amp;</span> attributes <span class="fu">.</span> body <span class="fu">.</span> torso <span class="fu">.~</span> <span class="dt">Naked</span>
-<span class="fu">&gt;</span>                         <span class="fu">&amp;</span> attributes <span class="fu">.</span> body <span class="fu">.</span> accessories <span class="fu">.~</span> []</code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb10-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="fu">&gt;</span> undress pirate <span class="fu">=</span> pirate <span class="fu">&amp;</span> attributes <span class="fu">.</span> body <span class="fu">.</span> hat <span class="fu">.~</span> <span class="dt">Nothing</span></a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="fu">&gt;</span>                         <span class="fu">&amp;</span> attributes <span class="fu">.</span> body <span class="fu">.</span> beard <span class="fu">.~</span> <span class="dt">Nothing</span></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="fu">&gt;</span>                         <span class="fu">&amp;</span> attributes <span class="fu">.</span> body <span class="fu">.</span> torso <span class="fu">.~</span> <span class="dt">Naked</span></a>
+<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="fu">&gt;</span>                         <span class="fu">&amp;</span> attributes <span class="fu">.</span> body <span class="fu">.</span> accessories <span class="fu">.~</span> []</a></code></pre></div>
 <p>So we have getters and setters, but we want more we want to use functions, this is where the <code>over</code> function or the <code>(%~)</code>-operator comes into play.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="dt">GHCi</span><span class="fu">&gt;</span> hel <span class="fu">&amp;</span> attributes <span class="fu">.</span> name <span class="fu">%~</span> map toUpper 
-<span class="dt">The</span> infamous <span class="dt">Captain</span> <span class="dt">HELLSCREAM</span> <span class="kw">of</span> the <span class="dt">SS</span> <span class="dt">Sea</span> <span class="dt">Serpent</span>
-        <span class="dt">Hat</span><span class="fu">:</span> <span class="dt">Just</span> <span class="dt">Tricorne</span>
-        <span class="fu">...</span>
-        <span class="dt">Age</span><span class="fu">:</span> <span class="dv">42</span>
-
-<span class="dt">GHCi</span><span class="fu">&gt;</span> hel <span class="fu">&amp;</span> attributes <span class="fu">.</span> age <span class="fu">%~</span> (<span class="fu">+</span><span class="dv">10</span>)
-<span class="dt">The</span> infamous <span class="dt">Captain</span> <span class="dt">Hellscream</span> <span class="kw">of</span> the <span class="dt">SS</span> <span class="dt">Sea</span> <span class="dt">Serpent</span>
-        <span class="dt">Hat</span><span class="fu">:</span> <span class="dt">Just</span> <span class="dt">Tricorne</span>
-        <span class="fu">...</span>
-        <span class="dt">Age</span><span class="fu">:</span> <span class="dv">52</span></code></pre></div>]]></description>
+<div class="sourceCode" id="cb11"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb11-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="dt">GHCi</span><span class="fu">&gt;</span> hel <span class="fu">&amp;</span> attributes <span class="fu">.</span> name <span class="fu">%~</span> map toUpper </a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="dt">The</span> infamous <span class="dt">Captain</span> <span class="dt">HELLSCREAM</span> <span class="kw">of</span> the <span class="dt">SS</span> <span class="dt">Sea</span> <span class="dt">Serpent</span></a>
+<a class="sourceLine" id="cb11-4" data-line-number="4">        <span class="dt">Hat</span><span class="fu">:</span> <span class="dt">Just</span> <span class="dt">Tricorne</span></a>
+<a class="sourceLine" id="cb11-5" data-line-number="5">        <span class="fu">...</span></a>
+<a class="sourceLine" id="cb11-6" data-line-number="6">        <span class="dt">Age</span><span class="fu">:</span> <span class="dv">42</span></a>
+<a class="sourceLine" id="cb11-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb11-8" data-line-number="8"><span class="dt">GHCi</span><span class="fu">&gt;</span> hel <span class="fu">&amp;</span> attributes <span class="fu">.</span> age <span class="fu">%~</span> (<span class="fu">+</span><span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="dt">The</span> infamous <span class="dt">Captain</span> <span class="dt">Hellscream</span> <span class="kw">of</span> the <span class="dt">SS</span> <span class="dt">Sea</span> <span class="dt">Serpent</span></a>
+<a class="sourceLine" id="cb11-10" data-line-number="10">        <span class="dt">Hat</span><span class="fu">:</span> <span class="dt">Just</span> <span class="dt">Tricorne</span></a>
+<a class="sourceLine" id="cb11-11" data-line-number="11">        <span class="fu">...</span></a>
+<a class="sourceLine" id="cb11-12" data-line-number="12">        <span class="dt">Age</span><span class="fu">:</span> <span class="dv">52</span></a></code></pre></div>]]></description>
     <pubDate>Mon, 11 Aug 2014 00:00:00 UT</pubDate>
     <guid>//epsilonhalbe.github.io/posts/2014-08-11-Record%20Syntax%2C%20Lenses%20and%20Prisms.html</guid>
     <dc:creator>Martin Heuschober</dc:creator>
@@ -378,34 +378,34 @@ Installed lens-4.3.3 (the current lens version as of 11th of August 2014)</code>
 > import Data.List (intercalate)
 
 -->
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">Pirate</span> <span class="fu">=</span> <span class="dt">Captain</span> <span class="fu">|</span> <span class="dt">FirstMate</span> <span class="fu">|</span> <span class="dt">Marauder</span> <span class="kw">deriving</span> (<span class="dt">Show</span>)</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">data</span> <span class="dt">Pirate</span> <span class="fu">=</span> <span class="dt">Captain</span> <span class="fu">|</span> <span class="dt">FirstMate</span> <span class="fu">|</span> <span class="dt">Marauder</span> <span class="kw">deriving</span> (<span class="dt">Show</span>)</a></code></pre></div>
 <p>This definition above is quite similar to objects, but it actually defines a type which consists of three possible <em>“constructors”</em>, the last statement <code>deriving (Show)</code> is haskell’s way of saying we have a <code>toString</code>-method called <code>show</code>.</p>
 <p>But your customers want to customize those Pirates (hence the name). So you decide to come up with a more accurate model of pirates.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="kw">data</span> <span class="dt">Pirate</span> <span class="fu">=</span> <span class="dt">Captain</span>   {<span class="ot"> name ::</span> <span class="dt">String</span>,<span class="ot"> ship ::</span> <span class="dt">String</span>}
-            <span class="fu">|</span> <span class="dt">FirstMate</span> {<span class="ot"> name ::</span> <span class="dt">String</span>,<span class="ot"> shanty ::</span> <span class="dt">String</span>}
-            <span class="fu">|</span> <span class="dt">Marauder</span>  {<span class="ot"> name ::</span> <span class="dt">String</span>,<span class="ot"> hometown ::</span> <span class="dt">String</span>}
-
-<span class="kw">instance</span> <span class="dt">Show</span> <span class="dt">Pirate</span> <span class="kw">where</span>
-  show (<span class="dt">Captain</span> n s) <span class="fu">=</span> <span class="st">&quot;Captain &quot;</span><span class="fu">++</span>n<span class="fu">++</span><span class="st">&quot; of the &quot;</span><span class="fu">++</span>s
-  show (<span class="dt">FirstMate</span> n s) <span class="fu">=</span> <span class="st">&quot;Mate &quot;</span><span class="fu">++</span>n<span class="fu">++</span><span class="st">&quot; sings &quot;</span><span class="fu">++</span>s
-  show (<span class="dt">Marauder</span> n h) <span class="fu">=</span> <span class="st">&quot;Fearsome Pirate &quot;</span><span class="fu">++</span>n<span class="fu">++</span><span class="st">&quot; from &quot;</span><span class="fu">++</span>h</code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb2-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">data</span> <span class="dt">Pirate</span> <span class="fu">=</span> <span class="dt">Captain</span>   {<span class="ot"> name ::</span> <span class="dt">String</span>,<span class="ot"> ship ::</span> <span class="dt">String</span>}</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">            <span class="fu">|</span> <span class="dt">FirstMate</span> {<span class="ot"> name ::</span> <span class="dt">String</span>,<span class="ot"> shanty ::</span> <span class="dt">String</span>}</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">            <span class="fu">|</span> <span class="dt">Marauder</span>  {<span class="ot"> name ::</span> <span class="dt">String</span>,<span class="ot"> hometown ::</span> <span class="dt">String</span>}</a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="kw">instance</span> <span class="dt">Show</span> <span class="dt">Pirate</span> <span class="kw">where</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">  show (<span class="dt">Captain</span> n s) <span class="fu">=</span> <span class="st">&quot;Captain &quot;</span><span class="fu">++</span>n<span class="fu">++</span><span class="st">&quot; of the &quot;</span><span class="fu">++</span>s</a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">  show (<span class="dt">FirstMate</span> n s) <span class="fu">=</span> <span class="st">&quot;Mate &quot;</span><span class="fu">++</span>n<span class="fu">++</span><span class="st">&quot; sings &quot;</span><span class="fu">++</span>s</a>
+<a class="sourceLine" id="cb2-9" data-line-number="9">  show (<span class="dt">Marauder</span> n h) <span class="fu">=</span> <span class="st">&quot;Fearsome Pirate &quot;</span><span class="fu">++</span>n<span class="fu">++</span><span class="st">&quot; from &quot;</span><span class="fu">++</span>h</a></code></pre></div>
 <p>The customers like the prototype - but as they are very unfamiliar with functional programming they ask you to prepare a little demo.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-cpt <span class="fu">=</span> <span class="dt">Captain</span> <span class="st">&quot;Blackbeard&quot;</span> <span class="st">&quot;SS Sea Serpent&quot;</span>
-mt1 <span class="fu">=</span> <span class="dt">FirstMate</span> {name <span class="fu">=</span> <span class="st">&quot;Redbeard&quot;</span>, shanty <span class="fu">=</span> <span class="st">&quot;What shall we do with the drunken sailor&quot;</span>}
-mrd <span class="fu">=</span> <span class="dt">Marauder</span> {name <span class="fu">=</span> <span class="st">&quot;Neckbeard&quot;</span>}
-crw <span class="fu">=</span> map (\t <span class="ot">-&gt;</span> mrd {hometown <span class="fu">=</span> t}) [<span class="st">&quot;Yorkshire&quot;</span>, <span class="st">&quot;Jamestown&quot;</span>, <span class="st">&quot;Moscow&quot;</span>, <span class="st">&quot;Port-au-Prince&quot;</span>]
-pirates <span class="fu">=</span> [cpt,mt1]<span class="fu">++</span>crw
-
-cpt&#39; <span class="fu">=</span> cpt {name <span class="fu">=</span> <span class="st">&quot;Greybeard&quot;</span>} <span class="ot">=&gt;</span> <span class="st">&quot;Captain Greybeard of the SS Sea Serpent&quot;</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb3-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">cpt <span class="fu">=</span> <span class="dt">Captain</span> <span class="st">&quot;Blackbeard&quot;</span> <span class="st">&quot;SS Sea Serpent&quot;</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">mt1 <span class="fu">=</span> <span class="dt">FirstMate</span> {name <span class="fu">=</span> <span class="st">&quot;Redbeard&quot;</span>, shanty <span class="fu">=</span> <span class="st">&quot;What shall we do with the drunken sailor&quot;</span>}</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">mrd <span class="fu">=</span> <span class="dt">Marauder</span> {name <span class="fu">=</span> <span class="st">&quot;Neckbeard&quot;</span>}</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">crw <span class="fu">=</span> map (\t <span class="ot">-&gt;</span> mrd {hometown <span class="fu">=</span> t}) [<span class="st">&quot;Yorkshire&quot;</span>, <span class="st">&quot;Jamestown&quot;</span>, <span class="st">&quot;Moscow&quot;</span>, <span class="st">&quot;Port-au-Prince&quot;</span>]</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">pirates <span class="fu">=</span> [cpt,mt1]<span class="fu">++</span>crw</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8">cpt&#39; <span class="fu">=</span> cpt {name <span class="fu">=</span> <span class="st">&quot;Greybeard&quot;</span>} <span class="ot">=&gt;</span> <span class="st">&quot;Captain Greybeard of the SS Sea Serpent&quot;</span></a></code></pre></div>
 <p>Still the customers is impressed with the prototype but still not content, so you start with designing a very detailed model starting with humans.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Human</span> <span class="fu">=</span> <span class="dt">Attributes</span> {<span class="ot"> name ::</span> <span class="dt">String</span>,<span class="ot"> body ::</span> <span class="dt">Body</span>,<span class="ot"> age ::</span> <span class="dt">Int</span>} <span class="kw">deriving</span> (<span class="dt">Show</span>)
-<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Body</span> <span class="fu">=</span> <span class="dt">Body</span> {<span class="ot"> hat ::</span> <span class="dt">Maybe</span> <span class="dt">Hat</span>
-<span class="fu">&gt;</span>                  ,<span class="ot"> beard ::</span> <span class="dt">Maybe</span> <span class="dt">Beard</span>
-<span class="fu">&gt;</span>                  ,<span class="ot"> torso ::</span> <span class="dt">Torso</span>
-<span class="fu">&gt;</span>                  ,<span class="ot"> accessories ::</span> [<span class="dt">Accessories</span>]}</code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb4-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Human</span> <span class="fu">=</span> <span class="dt">Attributes</span> {<span class="ot"> name ::</span> <span class="dt">String</span>,<span class="ot"> body ::</span> <span class="dt">Body</span>,<span class="ot"> age ::</span> <span class="dt">Int</span>} <span class="kw">deriving</span> (<span class="dt">Show</span>)</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Body</span> <span class="fu">=</span> <span class="dt">Body</span> {<span class="ot"> hat ::</span> <span class="dt">Maybe</span> <span class="dt">Hat</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="fu">&gt;</span>                  ,<span class="ot"> beard ::</span> <span class="dt">Maybe</span> <span class="dt">Beard</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="fu">&gt;</span>                  ,<span class="ot"> torso ::</span> <span class="dt">Torso</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="fu">&gt;</span>                  ,<span class="ot"> accessories ::</span> [<span class="dt">Accessories</span>]}</a></code></pre></div>
 <!--
 
 > instance Show Body where
@@ -416,19 +416,19 @@ cpt&#39; <span class="fu">=</span> cpt {name <span class="fu">=</span> <span cla
 
 -->
 <p>Then you come up with the nitty gritty details like <code>Hat</code>, <code>Torso</code> and so on.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Hat</span> <span class="fu">=</span> <span class="dt">Tricorne</span> <span class="fu">|</span> <span class="dt">WideBrimmedHat</span> <span class="fu">|</span> <span class="dt">Bandana</span> <span class="kw">deriving</span> (<span class="dt">Show</span>)
-<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Torso</span> <span class="fu">=</span> <span class="dt">Naked</span> <span class="fu">|</span> <span class="dt">Vest</span> <span class="fu">|</span> <span class="dt">ShabbyShirt</span> <span class="kw">deriving</span> (<span class="dt">Show</span>)
-<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Accessories</span> <span class="fu">=</span> <span class="dt">Parrot</span> <span class="fu">|</span> <span class="dt">Monkey</span> <span class="fu">|</span> <span class="dt">PegLeg</span> <span class="fu">|</span> <span class="dt">EyePatch</span> <span class="fu">|</span> <span class="dt">EarRing</span> <span class="fu">|</span> <span class="dt">Hook</span> <span class="kw">deriving</span> (<span class="dt">Show</span>)
-
-<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Beard</span> <span class="fu">=</span> <span class="dt">Beard</span> <span class="dt">Colour</span> <span class="dt">BeardType</span>
-<span class="fu">&gt;</span> <span class="kw">instance</span> <span class="dt">Show</span> <span class="dt">Beard</span> <span class="kw">where</span> show (<span class="dt">Beard</span> c t) <span class="fu">=</span> <span class="st">&quot;an exquisite &quot;</span><span class="fu">++</span> map toLower (show c)<span class="fu">++</span><span class="st">&quot; &quot;</span><span class="fu">++</span>show t
-<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Colour</span> <span class="fu">=</span> <span class="dt">Black</span> <span class="fu">|</span> <span class="dt">Red</span> <span class="fu">|</span> <span class="dt">Blond</span> <span class="fu">|</span> <span class="dt">White</span> <span class="fu">|</span> <span class="dt">Brown</span> <span class="kw">deriving</span> (<span class="dt">Show</span>)
-<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">BeardType</span> <span class="fu">=</span> <span class="dt">Moustache</span> <span class="fu">|</span> <span class="dt">Ladybeard</span> <span class="fu">|</span> <span class="dt">Goatee</span> <span class="fu">|</span> <span class="dt">FullBeard</span> <span class="kw">deriving</span> (<span class="dt">Show</span>)
-
-<span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Pirate</span> <span class="fu">=</span> <span class="dt">Captain</span>   {<span class="ot"> attributes ::</span> <span class="dt">Human</span>,<span class="ot"> ship ::</span> <span class="dt">String</span>}
-<span class="fu">&gt;</span>             <span class="fu">|</span> <span class="dt">FirstMate</span> {<span class="ot"> attributes ::</span> <span class="dt">Human</span>,<span class="ot"> shanty ::</span> <span class="dt">String</span>}
-<span class="fu">&gt;</span>             <span class="fu">|</span> <span class="dt">Marauder</span>  {<span class="ot"> attributes ::</span> <span class="dt">Human</span>,<span class="ot"> hometown ::</span> <span class="dt">String</span>}</code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb5-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Hat</span> <span class="fu">=</span> <span class="dt">Tricorne</span> <span class="fu">|</span> <span class="dt">WideBrimmedHat</span> <span class="fu">|</span> <span class="dt">Bandana</span> <span class="kw">deriving</span> (<span class="dt">Show</span>)</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Torso</span> <span class="fu">=</span> <span class="dt">Naked</span> <span class="fu">|</span> <span class="dt">Vest</span> <span class="fu">|</span> <span class="dt">ShabbyShirt</span> <span class="kw">deriving</span> (<span class="dt">Show</span>)</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Accessories</span> <span class="fu">=</span> <span class="dt">Parrot</span> <span class="fu">|</span> <span class="dt">Monkey</span> <span class="fu">|</span> <span class="dt">PegLeg</span> <span class="fu">|</span> <span class="dt">EyePatch</span> <span class="fu">|</span> <span class="dt">EarRing</span> <span class="fu">|</span> <span class="dt">Hook</span> <span class="kw">deriving</span> (<span class="dt">Show</span>)</a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Beard</span> <span class="fu">=</span> <span class="dt">Beard</span> <span class="dt">Colour</span> <span class="dt">BeardType</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="fu">&gt;</span> <span class="kw">instance</span> <span class="dt">Show</span> <span class="dt">Beard</span> <span class="kw">where</span> show (<span class="dt">Beard</span> c t) <span class="fu">=</span> <span class="st">&quot;an exquisite &quot;</span><span class="fu">++</span> map toLower (show c)<span class="fu">++</span><span class="st">&quot; &quot;</span><span class="fu">++</span>show t</a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Colour</span> <span class="fu">=</span> <span class="dt">Black</span> <span class="fu">|</span> <span class="dt">Red</span> <span class="fu">|</span> <span class="dt">Blond</span> <span class="fu">|</span> <span class="dt">White</span> <span class="fu">|</span> <span class="dt">Brown</span> <span class="kw">deriving</span> (<span class="dt">Show</span>)</a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">BeardType</span> <span class="fu">=</span> <span class="dt">Moustache</span> <span class="fu">|</span> <span class="dt">Ladybeard</span> <span class="fu">|</span> <span class="dt">Goatee</span> <span class="fu">|</span> <span class="dt">FullBeard</span> <span class="kw">deriving</span> (<span class="dt">Show</span>)</a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Pirate</span> <span class="fu">=</span> <span class="dt">Captain</span>   {<span class="ot"> attributes ::</span> <span class="dt">Human</span>,<span class="ot"> ship ::</span> <span class="dt">String</span>}</a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="fu">&gt;</span>             <span class="fu">|</span> <span class="dt">FirstMate</span> {<span class="ot"> attributes ::</span> <span class="dt">Human</span>,<span class="ot"> shanty ::</span> <span class="dt">String</span>}</a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="fu">&gt;</span>             <span class="fu">|</span> <span class="dt">Marauder</span>  {<span class="ot"> attributes ::</span> <span class="dt">Human</span>,<span class="ot"> hometown ::</span> <span class="dt">String</span>}</a></code></pre></div>
 <!--
 
 > instance Show Pirate where
@@ -444,46 +444,46 @@ cpt&#39; <span class="fu">=</span> cpt {name <span class="fu">=</span> <span cla
 
 -->
 <p>The customer asks for a demo so you make a new crew based on the old examples.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="fu">&gt;</span> cpt <span class="fu">=</span> <span class="dt">Captain</span> ( <span class="dt">Attributes</span>  <span class="st">&quot;Blackbeard&quot;</span>
-<span class="fu">&gt;</span>                            ( <span class="dt">Body</span> ( <span class="dt">Just</span> <span class="dt">Tricorne</span>)
-<span class="fu">&gt;</span>                                   ( <span class="dt">Just</span> (<span class="dt">Beard</span> <span class="dt">Black</span> <span class="dt">FullBeard</span>))
-<span class="fu">&gt;</span>                                     <span class="dt">Vest</span>
-<span class="fu">&gt;</span>                                     [<span class="dt">Parrot</span>, <span class="dt">PegLeg</span>]
-<span class="fu">&gt;</span>                                   )
-<span class="fu">&gt;</span>                             <span class="dv">42</span>)
-<span class="fu">&gt;</span>                 <span class="st">&quot;SS Sea Serpent&quot;</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb6-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="fu">&gt;</span> cpt <span class="fu">=</span> <span class="dt">Captain</span> ( <span class="dt">Attributes</span>  <span class="st">&quot;Blackbeard&quot;</span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="fu">&gt;</span>                            ( <span class="dt">Body</span> ( <span class="dt">Just</span> <span class="dt">Tricorne</span>)</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="fu">&gt;</span>                                   ( <span class="dt">Just</span> (<span class="dt">Beard</span> <span class="dt">Black</span> <span class="dt">FullBeard</span>))</a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="fu">&gt;</span>                                     <span class="dt">Vest</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="fu">&gt;</span>                                     [<span class="dt">Parrot</span>, <span class="dt">PegLeg</span>]</a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="fu">&gt;</span>                                   )</a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="fu">&gt;</span>                             <span class="dv">42</span>)</a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="fu">&gt;</span>                 <span class="st">&quot;SS Sea Serpent&quot;</span></a></code></pre></div>
 <p>Not really good and readable code so you try it a bit more verbose.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="fu">&gt;</span> mt1 <span class="fu">=</span> <span class="dt">FirstMate</span> { attributes <span class="fu">=</span> <span class="dt">Attributes</span> { name <span class="fu">=</span> <span class="st">&quot;Redbeard&quot;</span>
-<span class="fu">&gt;</span>                                           , body <span class="fu">=</span> <span class="dt">Body</span> { hat   <span class="fu">=</span> <span class="dt">Just</span> <span class="dt">WideBrimmedHat</span>
-<span class="fu">&gt;</span>                                                         , beard <span class="fu">=</span> <span class="dt">Nothing</span>
-<span class="fu">&gt;</span>                                                         , torso <span class="fu">=</span> <span class="dt">Naked</span>
-<span class="fu">&gt;</span>                                                         , accessories <span class="fu">=</span> [<span class="dt">EarRing</span>, <span class="dt">Monkey</span>]
-<span class="fu">&gt;</span>                                                         }
-<span class="fu">&gt;</span>                                           , age <span class="fu">=</span> <span class="dv">30</span>
-<span class="fu">&gt;</span>                                           }
-<span class="fu">&gt;</span>                 , shanty <span class="fu">=</span> <span class="st">&quot;What shall we do with the drunken sailor&quot;</span>
-<span class="fu">&gt;</span>                 }</code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb7-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="fu">&gt;</span> mt1 <span class="fu">=</span> <span class="dt">FirstMate</span> { attributes <span class="fu">=</span> <span class="dt">Attributes</span> { name <span class="fu">=</span> <span class="st">&quot;Redbeard&quot;</span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="fu">&gt;</span>                                           , body <span class="fu">=</span> <span class="dt">Body</span> { hat   <span class="fu">=</span> <span class="dt">Just</span> <span class="dt">WideBrimmedHat</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="fu">&gt;</span>                                                         , beard <span class="fu">=</span> <span class="dt">Nothing</span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="fu">&gt;</span>                                                         , torso <span class="fu">=</span> <span class="dt">Naked</span></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="fu">&gt;</span>                                                         , accessories <span class="fu">=</span> [<span class="dt">EarRing</span>, <span class="dt">Monkey</span>]</a>
+<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="fu">&gt;</span>                                                         }</a>
+<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="fu">&gt;</span>                                           , age <span class="fu">=</span> <span class="dv">30</span></a>
+<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="fu">&gt;</span>                                           }</a>
+<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="fu">&gt;</span>                 , shanty <span class="fu">=</span> <span class="st">&quot;What shall we do with the drunken sailor&quot;</span></a>
+<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="fu">&gt;</span>                 }</a></code></pre></div>
 <p>The last piece - a.k.a. the crew was not too easy in the first example so you don’t expect this to be a piece of cake, well it isn’t.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="fu">&gt;</span> mrd <span class="fu">=</span> <span class="dt">Marauder</span> { attributes <span class="fu">=</span> <span class="dt">Attributes</span> { name <span class="fu">=</span> <span class="st">&quot;Neckbeard &quot;</span>
-<span class="fu">&gt;</span>                                           , body <span class="fu">=</span> <span class="dt">Body</span> { hat   <span class="fu">=</span> <span class="dt">Just</span> <span class="dt">Bandana</span>
-<span class="fu">&gt;</span>                                                         , beard <span class="fu">=</span> <span class="dt">Just</span> (<span class="dt">Beard</span> <span class="dt">Brown</span> <span class="dt">Goatee</span>)
-<span class="fu">&gt;</span>                                                         , torso <span class="fu">=</span> <span class="dt">ShabbyShirt</span>
-<span class="fu">&gt;</span>                                                         , accessories <span class="fu">=</span> [<span class="dt">EyePatch</span>]
-<span class="fu">&gt;</span>                                                         }
-<span class="fu">&gt;</span>                                           , age <span class="fu">=</span> <span class="dv">20</span>
-<span class="fu">&gt;</span>                                           }
-<span class="fu">&gt;</span>                 }</code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb8-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="fu">&gt;</span> mrd <span class="fu">=</span> <span class="dt">Marauder</span> { attributes <span class="fu">=</span> <span class="dt">Attributes</span> { name <span class="fu">=</span> <span class="st">&quot;Neckbeard &quot;</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="fu">&gt;</span>                                           , body <span class="fu">=</span> <span class="dt">Body</span> { hat   <span class="fu">=</span> <span class="dt">Just</span> <span class="dt">Bandana</span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="fu">&gt;</span>                                                         , beard <span class="fu">=</span> <span class="dt">Just</span> (<span class="dt">Beard</span> <span class="dt">Brown</span> <span class="dt">Goatee</span>)</a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="fu">&gt;</span>                                                         , torso <span class="fu">=</span> <span class="dt">ShabbyShirt</span></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="fu">&gt;</span>                                                         , accessories <span class="fu">=</span> [<span class="dt">EyePatch</span>]</a>
+<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="fu">&gt;</span>                                                         }</a>
+<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="fu">&gt;</span>                                           , age <span class="fu">=</span> <span class="dv">20</span></a>
+<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="fu">&gt;</span>                                           }</a>
+<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="fu">&gt;</span>                 }</a></code></pre></div>
 <p>After the initial constructor the tricky part just begins - it takes four tries and a lot of hard thinking to get the following lambda expression right.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">
-<span class="fu">&gt;</span> crw <span class="fu">=</span> map (\(n,t) <span class="ot">-&gt;</span> mrd { attributes <span class="fu">=</span> (attributes mrd) {name <span class="fu">=</span> (name<span class="fu">.</span>attributes) mrd <span class="fu">++</span>  n}
-<span class="fu">&gt;</span>                          , hometown   <span class="fu">=</span> t})
-<span class="fu">&gt;</span>           [(<span class="st">&quot;Joe&quot;</span>  , <span class="st">&quot;Yorkshire&quot;</span>     )
-<span class="fu">&gt;</span>           ,(<span class="st">&quot;Jack&quot;</span> , <span class="st">&quot;Jamestown&quot;</span>     )
-<span class="fu">&gt;</span>           ,(<span class="st">&quot;Igor&quot;</span> , <span class="st">&quot;Moscow&quot;</span>        )
-<span class="fu">&gt;</span>           ,(<span class="st">&quot;Maria&quot;</span>, <span class="st">&quot;Port-au-Prince&quot;</span>)]</code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb9-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="fu">&gt;</span> crw <span class="fu">=</span> map (\(n,t) <span class="ot">-&gt;</span> mrd { attributes <span class="fu">=</span> (attributes mrd) {name <span class="fu">=</span> (name<span class="fu">.</span>attributes) mrd <span class="fu">++</span>  n}</a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="fu">&gt;</span>                          , hometown   <span class="fu">=</span> t})</a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="fu">&gt;</span>           [(<span class="st">&quot;Joe&quot;</span>  , <span class="st">&quot;Yorkshire&quot;</span>     )</a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="fu">&gt;</span>           ,(<span class="st">&quot;Jack&quot;</span> , <span class="st">&quot;Jamestown&quot;</span>     )</a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="fu">&gt;</span>           ,(<span class="st">&quot;Igor&quot;</span> , <span class="st">&quot;Moscow&quot;</span>        )</a>
+<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="fu">&gt;</span>           ,(<span class="st">&quot;Maria&quot;</span>, <span class="st">&quot;Port-au-Prince&quot;</span>)]</a></code></pre></div>
 <p>There are signs of bad code in this, a lot of signs - <code>mrd</code> is written three times, it is complicated not only to a programmer new to the haskell world.</p>
 <p>But then there comes Edward Kmett’s lens library to the rescue.</p>]]></description>
     <pubDate>Sun, 10 Aug 2014 00:00:00 UT</pubDate>
